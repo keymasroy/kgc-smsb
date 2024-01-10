@@ -195,11 +195,24 @@
         </ul>
         <!-- //contents -->
         <div class="flex gap-2">
-          <Button class="flex-1" label="취소" size="large" outlined />
+          <Button class="flex-1" label="취소" size="large" outlined @click="onClickCancel" />
           <Button class="flex-1" label="완료" size="large" />
         </div>
       </form>
     </div>
+
+    <Dialog class="alert" v-model:visible="modalVisible" modal header="" :style="{ width: '410px' }">
+      <div class="alert-content-inner mt-[5px] mb-[12px]">
+        <h2>입력하신 내용이 모두 삭제됩니다.</h2>
+        <h2 class="font-bold">회원가입을 취소 하시겠습니까?</h2>
+      </div>
+      <template #footer>
+        <div class="alert-footer-inner flex-col">
+          <Button label="예. 회원가입을 취소할래요." @click="modalVisible = false" />
+          <Button label="아니오. 계속 할게요" @click="modalVisible = false" class="mt-[10px]" outlined />
+        </div>
+      </template>
+    </Dialog>
   </div>
 </template>
 
@@ -265,6 +278,13 @@ const domeins = ref([
 // checkbox
 const agreeAll = ref();
 const agree = ref();
+
+// modal visible
+const modalVisible = ref(false);
+
+const onClickCancel = () => {
+  modalVisible.value = true;
+};
 </script>
 
 <style lang="scss" scoped></style>

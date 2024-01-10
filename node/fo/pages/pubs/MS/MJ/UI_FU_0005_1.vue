@@ -58,7 +58,7 @@
         <!-- contents -->
         <ul class="pt-[20px] mb-[60px]">
           <li class="flex items-start mb-[24px]">
-            <label class="flex-none w-[150px] leading-[50px] text-[14px] text-[#222]" for="userId">아이디</label>
+            <label class="flex-none w-[150px] leading-[50px] text-[14px] text-[#222]" for="userId">ONE ID</label>
             <div class="flex flex-col w-full">
               <div class="flex gap-2">
                 <InputText v-model="userId" id="userId" class="flex-1" type="text" size="large" placeholder="아이디" />

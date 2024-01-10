@@ -31,7 +31,9 @@
           이미 입력되어 있는 정보가 있을 경우에는 기 입력되어 있는 정보를 유지됩니다. <br /><br />
           정관장 멤버스에서 제공하는 다양한 정보와 서비스를 이용하실 수 있습니다.
         </p>
-        <Button class="w-[160px] mt-[40px]" label="확인" size="large" />
+        <router-link to="/">
+          <Button class="w-[160px] mt-[40px]" label="확인" size="large" />
+        </router-link>
       </div>
     </div>
   </div>
