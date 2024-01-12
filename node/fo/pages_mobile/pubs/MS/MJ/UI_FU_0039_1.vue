@@ -8,11 +8,18 @@
       <p class="text-xl text-center mb-[30px]">정관장 멤버스 통합ONE ID를 위한 <br /><strong>서비스 약관동의</strong>를 선택해주세요.</p>
 
       <div>
-        <div :class="{ '!border-[#D20F27]': agreeAll1 }" class="flex items-center px-[24px] py-[16px] mb-[16px] border rounded-lg border-[#E7E7E7]">
+        <div :class="{ '!border-[#D20F27]': agreeAll1 }" class="flex items-center px-[16px] py-[16px] mb-[16px] border rounded-lg border-[#E7E7E7]">
           <Checkbox :binary="true" class="p-checkbox-box-lg" v-model="agreeAll1" inputId="agreeAll1" name="pizza" value="agreeAll" />
           <label :class="{ 'font-bold': agreeAll1 }" class="!text-base !ml-[12px]" for="agreeAll1"> 전체 약관동의 </label>
         </div>
-        <ul>
+
+        <ul class="pb-[16px] border-b border-[#E7E7E7]">
+          <li class="flex items-center justify-between px-[16px] h-[50px]">
+            <div class="flex items-center overflow-hidden text-ellipsis whitespace-nowrap">
+              <Checkbox checked class="p-checkbox-box-lg" v-model="agree" inputId="agree0" name="agree" value="agree0" />
+              <label class="!text-[15px] !ml-[12px] font-bold" for="agree0"> 정관장 멤버스 전체 약관 동의 </label>
+            </div>
+          </li>
           <li class="flex items-center justify-between px-[16px] h-[50px]">
             <div class="overflow-hidden text-ellipsis whitespace-nowrap">
               <Checkbox class="non-rounded p-checkbox-box-lg" v-model="agree" inputId="agree1" name="agree" value="agree1" />
@@ -36,18 +43,24 @@
           </li>
         </ul>
 
-        <div
-          :class="{ '!border-[#D20F27]': agreeAll2 }"
-          class="flex items-center mt-[20px] px-[24px] py-[16px] mb-[16px] border rounded-lg border-[#E7E7E7]"
-        >
-          <Checkbox :binary="true" class="p-checkbox-box-lg" v-model="agreeAll2" inputId="agreeAll2" name="pizza" value="agreeAll" />
-          <label :class="{ 'font-bold': agreeAll2 }" class="!text-base !ml-[12px]" for="agreeAll2"> 전체 약관동의 </label>
-        </div>
-        <ul class="pb-[16px] border-b border-[#E7E7E7]">
+        <ul class="py-[16px] border-b border-[#E7E7E7]">
+          <li class="flex items-center justify-between px-[16px] h-[50px]">
+            <div class="flex items-center overflow-hidden text-ellipsis whitespace-nowrap">
+              <Checkbox checked class="p-checkbox-box-lg" v-model="agree" inputId="agree7" name="agree" value="agree7" />
+              <label class="!text-[15px] !ml-[12px] font-bold" for="agree7"> 케어나우 전체 약관 동의 </label>
+            </div>
+          </li>
           <li class="flex items-center justify-between px-[16px] h-[50px]">
             <div class="overflow-hidden text-ellipsis whitespace-nowrap">
-              <Checkbox class="non-rounded p-checkbox-box-lg" v-model="agree" inputId="agree2" name="agree" value="agree2" />
-              <label class="!text-[15px] !ml-[8px]" for="agree2"> [필수] 케어나우 회원약관 </label>
+              <Checkbox class="non-rounded p-checkbox-box-lg" v-model="agree" inputId="agree5" name="agree" value="agree5" />
+              <label class="!text-[15px] !ml-[8px]" for="agree5"> [필수] 케어나우 회원약관 </label>
+            </div>
+            <Button class="flex-none" label="내용보기" text />
+          </li>
+          <li class="flex items-center justify-between px-[16px] h-[50px]">
+            <div class="overflow-hidden text-ellipsis whitespace-nowrap">
+              <Checkbox class="non-rounded p-checkbox-box-lg" v-model="agree" inputId="agree6" name="agree" value="agree6" />
+              <label class="!text-[15px] !ml-[8px]" for="agree6"> [필수] 개인정보 수집 및 이용 </label>
             </div>
             <Button class="flex-none" label="내용보기" text />
           </li>

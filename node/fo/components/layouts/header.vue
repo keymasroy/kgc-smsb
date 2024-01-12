@@ -1,21 +1,14 @@
 <template>
-  <header :class="{ '!bg-[#FFF]': headerActive }" class="header flex-none w-full bg-transparent h-[100px] px-[120px]">
-    <div class="flex justify-space-around min-w-[1280px] h-full">
+  <header class="header flex-none w-full h-[100px] px-[120px]">
+    <div class="flex justify-between min-w-[1280px] h-full">
       <router-link class="mt-[37px]" to="/">
-        <img v-if="!headerActive" src="@/assets/images/svg/logo-white.svg" alt="JUNG KWAN JANG Members" />
-        <img v-else src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
+        <img src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
       </router-link>
 
       <nav class="gnb">
         <router-link class="gnb__link" to="/">소개</router-link>
         <router-link class="gnb__link" to="/">마이페이지</router-link>
         <router-link class="gnb__link" to="/">고객센터</router-link>
-
-        <ul class="gnb__sub-list">
-          <li class="gnb__sub-item">
-            <router-link to="/">서브메뉴</router-link>
-          </li>
-        </ul>
       </nav>
 
       <nav class="sign-nav">
@@ -23,35 +16,37 @@
         <router-link class="gnb__link" to="/">회원가입</router-link>
       </nav>
     </div>
+
+    <!-- <nav class="sub-gnb">
+      <ul class="gnb__sub-list">
+        <li class="gnb__sub-item">
+          <router-link to="/">서브메뉴</router-link>
+        </li>
+      </ul>
+      <ul class="gnb__sub-list">
+        <li class="gnb__sub-item">
+          <router-link to="/">서브메뉴</router-link>
+        </li>
+      </ul>
+      <ul class="gnb__sub-list">
+        <li class="gnb__sub-item">
+          <router-link to="/">서브메뉴</router-link>
+        </li>
+      </ul>
+    </nav> -->
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useScroll, watchThrottled } from '@vueuse/core';
-
-const { y: winScoll } = useScroll(document);
-const headerActive = ref(false);
-
-watchThrottled(
-  () => winScoll.value,
-  newValue => {
-    if (winScoll.value > 0) {
-      headerActive.value = true;
-      document.querySelector('.header').classList.add('active');
-    } else {
-      headerActive.value = false;
-      document.querySelector('.header').classList.remove('active');
-    }
-  },
-  { throttle: 200 },
-);
 </script>
 
 <style lang="scss" scoped>
 .header {
+  position: relative;
   z-index: 10;
   position: fixed;
+  background-color: #fff;
   transition: 0.2s all;
 
   &.active {
@@ -76,7 +71,7 @@ watchThrottled(
     font-weight: 700;
     font-size: 17px;
     text-align: center;
-    color: white;
+    color: #000;
   }
 }
 
@@ -86,23 +81,31 @@ watchThrottled(
   height: 100%;
   > a {
     position: relative;
-    color: white;
+    color: #000;
 
     &:not(:first-child) {
       margin-left: 8px;
       padding-left: 8px;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 1px;
-        height: 10px;
-        background-color: #e7e7e7;
-      }
     }
+  }
+}
+
+.sub-gnb {
+  min-width: 1280px;
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .gnb__sub-item {
+    width: 160px;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: center;
+    color: #000;
   }
 }
 </style>
