@@ -1,21 +1,15 @@
 <template>
   <div class="flex flex-col h-full">
-    <SubHeader />
+    <subMainHeader />
     <main class="container !max-w-full bg-white flex flex-col flex-1">
       <slot></slot>
     </main>
-    <SubFooter v-show="footerVisible"/>
+    <SubFooter />
   </div>
 </template>
 <script lang="ts" setup>
 import SubFooter from '@/components/mobile/layouts/subFooter.vue';
-import SubHeader from '@/components/mobile/layouts/subHeader.vue';
-
-const route = useRoute();
-
-const footerVisible = computed(() => {
-  return route.meta.footer === "none" ? false : true ;
-})
+import subMainHeader from '@/components/mobile/layouts/subMainHeader.vue';
 
 </script>
 <style lang="scss"></style>
