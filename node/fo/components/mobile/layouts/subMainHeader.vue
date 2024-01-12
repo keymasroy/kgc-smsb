@@ -1,24 +1,33 @@
 <template>
-  <header :class="{ '!bg-[#FFF]': headerActive }" class="header flex-none w-full bg-transparent h-[50px] p-[15px]">
+  <header :class="{ '!bg-[#FFF]': headerActive || showSide }" class="header flex-none w-full bg-transparent h-[50px] p-[15px]">
     <div class="flex justify-between h-full">
       <router-link to="/">
-        <img v-if="!headerActive" src="@/assets/images/svg/logo-white-mobile.svg" alt="JUNG KWAN JANG Members" />
+        <img v-if="!headerActive && !showSide" src="@/assets/images/svg/logo-white-mobile.svg" alt="JUNG KWAN JANG Members" />
         <img v-else src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
       </router-link>
 
-      <button>
+      <button v-if="!showSide" @click="showSide=true">
         <img :style="{ filter: !headerActive ? 'invert(1)' : ''}" src="@/assets/images/svg/ico_menu.svg" alt="메뉴 아이콘">
+      </button>
+
+      <!-- 닫기 -->
+      <button v-if="showSide" @click="showSide=false">
+        <img src="@/assets/images/svg/ico_close.svg" alt="메뉴 닫기 아이콘">
       </button>
     </div>
   </header>
+
+  <SubSideMenu v-model="showSide" />
 </template>
 
 <script setup>
 import { useScroll, watchThrottled } from '@vueuse/core';
 import { ref } from 'vue';
+import SubSideMenu from './subSideMenu.vue';
 
 const { y: winScoll } = useScroll(document);
 const headerActive = ref(false);
+const showSide = ref(false);
 
 watchThrottled(
   () => winScoll.value,

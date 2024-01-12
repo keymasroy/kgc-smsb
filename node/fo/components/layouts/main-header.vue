@@ -49,7 +49,6 @@ const menuList = ref([
   ]},
 ]);
 
-
 const { y: winScoll } = useScroll(document);
 const headerActive = ref(false);
 
