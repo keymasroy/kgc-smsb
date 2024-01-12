@@ -1,5 +1,6 @@
 package kr.co.kgc.smsb.fo.config.authentication;
 
+import kr.co.kgc.smsb.common.base.config.authentication.SmsbSsoRequestToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +31,20 @@ public class AuthenticationController {
 	public LoginResultModel login(@RequestBody UserNamePasswordAuthenticationRequestToken in) throws Exception {
 		return this.getLoginResult(in);
 	}
+
+	/**
+	 *
+	 * @param in
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/api/authentication/sso-login")
+	public LoginResultModel ssoLogin(@RequestBody SmsbSsoRequestToken in) throws Exception {
+		return this.getLoginResult(in);
+	}
 	
 	/**
 	 * 로그아웃
-	 * @param in
 	 * @return
 	 * @throws Exception
 	 */

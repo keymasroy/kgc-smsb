@@ -64,7 +64,6 @@ public class SmsbAuthenticationProcessor extends UstraJwtAuthenticationProcessor
 	/**
 	 * FO Authentication Processor 생성
 	 * @param properties
-	 * @param requestTokenChecker
 	 * @return
 	 */
 	public static SmsbAuthenticationProcessor createFoProcessor(UstraJwtAuthenticationProperties properties) {
@@ -75,7 +74,7 @@ public class SmsbAuthenticationProcessor extends UstraJwtAuthenticationProcessor
 				new SmsbFoUserDetailProvider(),
 				new SmsbFoJwtClaimAppender(),
 				new SmsbFoAuthenticationListener(),
-				null,
+				new SmsbFoRequestTokenChecker(),
 				null, // new SmsbFoAuthenticationKeyChecker(),
 				new SmsbFoUserDetailChecker());
 

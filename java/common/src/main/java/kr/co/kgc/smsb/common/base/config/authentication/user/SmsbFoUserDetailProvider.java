@@ -3,6 +3,7 @@ package kr.co.kgc.smsb.common.base.config.authentication.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.kgc.smsb.common.base.config.authentication.SmsbSsoRequestToken;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
@@ -33,6 +34,9 @@ public class SmsbFoUserDetailProvider extends UstraCachedUserDetailProvider<Ustr
 
 	@Override
 	protected UstraUser getInternalUserDetails(UstraAuthenticationRequestToken authenticationRequestToken) {
+		if(authenticationRequestToken instanceof SmsbSsoRequestToken) {
+			return this.getUserWithSso(((SmsbSsoRequestToken) authenticationRequestToken).getSsoKey());
+		}
 		return this.getUser(authenticationRequestToken.getUserName(), "10,20");
 	}
 
@@ -85,6 +89,41 @@ public class SmsbFoUserDetailProvider extends UstraCachedUserDetailProvider<Ustr
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
+		SmsbFoUser userDetail = new SmsbFoUser(
+				user.getWebId(),
+				user.getLgnPwd(),
+				isEnabled,
+				isNonExpiredUser,
+				isCredentialsNonExpiredUser,
+				isAccountNonLockedUser,
+				authorities);
+
+		userDetail.setDisplayName(user.getMembNm());
+		userDetail.setUserId(user.getWebId());
+		userDetail.setLoginFailCnt(user.getLgnFailCnt());
+		// TODO: 비밀번호 강제 설정 로직 반영
+		userDetail.setResetPassword(false);
+		userDetail.setSmbrNo(user.getUmbrno());
+
+		return userDetail;
+	}
+
+	protected SmsbFoUser getUserWithSso(String ssoKey) {
+
+
+		SmsbFoAuthenticationModel user = smsbFoAuthenticationRepository.selectSsoUser(ssoKey);
+
+		if (user == null) {
+			return null;
+		}
+
+		boolean isEnabled = this.isEnabledUser(user);
+		boolean isNonExpiredUser = this.isNonExpiredUser(user);
+		boolean isCredentialsNonExpiredUser = this.isCredentialsNonExpiredUser(user);
+		boolean isAccountNonLockedUser = this.isAccountNonLockedUser(user);
+
+		List<GrantedAuthority> authorities = new ArrayList<>();
+
 		SmsbFoUser userDetail = new SmsbFoUser(
 				user.getWebId(),
 				user.getLgnPwd(),

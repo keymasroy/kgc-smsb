@@ -24,6 +24,7 @@ public class SmsbFoJwtClaimAppender extends SmsbJwtClaimAppender {
 
 				// JWT 토큰 클레임에 추가할 정보
 				claims.put("userNm", ustraSystemUser.getDisplayName());
+				claims.put("umbrNo", ustraSystemUser.getSmbrNo());
 			}
 		}
 	}
