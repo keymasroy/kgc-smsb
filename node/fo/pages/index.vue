@@ -257,7 +257,6 @@ const handleChangeImage = (value) => {
 
       .desc {
         font-size: 18px;
-        line-height: 48px;
         color: #8B8B8B;
         line-height: 28.8px;
       }
@@ -265,7 +264,6 @@ const handleChangeImage = (value) => {
       &:hover {
         transform: translateY(-10px);
         transition: 0.15s ease-in-out;
-        box-shadow: 0px 2px 12px 9px rgba(0, 0, 0, 0.1);
         .arrow {
           background-image: url("data:image/svg+xml,%3Csvg width='38' height='38' viewBox='0 0 38 38' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='19' cy='19' r='19' fill='%23F46144'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M23.0092 13.2188L28.7827 18.9719C29.0724 19.2636 29.0724 19.7364 28.7827 20.0281L23.0092 25.7812C22.7195 26.0729 22.2498 26.0729 21.9601 25.7812C21.6704 25.4896 21.6704 25.0167 21.9601 24.725L26.4674 20.2469H10.7418C10.3321 20.2469 10 19.9125 10 19.5C10 19.0875 10.3321 18.7531 10.7418 18.7531H26.4674L21.9601 14.275C21.6704 13.9833 21.6704 13.5104 21.9601 13.2188C22.2498 12.9271 22.7195 12.9271 23.0092 13.2188Z' fill='white'/%3E%3C/svg%3E%0A");
         }
@@ -305,13 +303,13 @@ const handleChangeImage = (value) => {
 .card3::after {
   width: 326px;
   height: 307px;
-  background-image: url('@/assets/images/main/card2.png');
+  background-image: url('@/assets/images/main/card3.png');
 }
 
 .card4::after {
   width: 335px;
   height: 234px;
-  background-image: url('@/assets/images/main/card2.png');
+  background-image: url('@/assets/images/main/card4.png');
 }
 // =====================
 
