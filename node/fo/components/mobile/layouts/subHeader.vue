@@ -1,6 +1,6 @@
 <template>
   <header class="sub-header">
-    <button>
+    <button @click="$router.go(-1)">
       <img src="@/assets/images/svg/ico_back.svg">
     </button>
     <div class="header-title">

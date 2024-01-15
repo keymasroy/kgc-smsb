@@ -5,11 +5,11 @@
         <img src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
       </router-link>
 
-      <!-- 닫기 -->
       <button @click="onClickClose()">
         <img src="@/assets/images/svg/ico_close.svg" alt="메뉴 닫기 아이콘">
       </button>
     </div>
+
     <div v-if="!isLogin" class="buttons">
       <Button label="로그인" severity="secondary" @click="onClickLogin()" />
       <Button label="회원가입" severity="secondary" />
@@ -52,7 +52,7 @@
             v-for="(child_menu, child_idx) in menu.children"
             :key="'child-' + child_idx"
             class="sideMenu__subTitle"
-            @click="$router.push(child_menu.url)"
+            @click="onChangeRouter(child_menu.url)"
           >
             <span>{{child_menu.title}}</span>
           </ul>
@@ -60,10 +60,28 @@
       </ul>
     </nav>
   </div>
+
+  <Dialog v-model:visible="isShowPopup" modal :style="{ width: '320px' }">
+    <div class="dialog-content-inner max-h-[456px]">
+      <p class="text-center text-[16px] text-black">
+        로그인이 필요한 메뉴입니다.
+        <br />
+        <strong>로그인 하시겠습니까?</strong>
+      </p>
+    </div>
+    <template #footer>
+      <div class="flex justify-center pt-[24px] pb-[30px] px-[30px] gap-[10px]">
+        <Button label="취소" @click="isShowPopup = false"  outlined />
+        <Button label="확인" @click="$router.push('/pubs/MS/LG/UI_FU_0034')" />
+      </div>
+    </template>
+  </Dialog>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+
+const isShowPopup = ref(false);
 
 const props = defineProps({
   /**
@@ -116,6 +134,15 @@ const onClickClose = () => {
 const onClickLogin = () => {
   emit('update:isLogin', true);
 };
+
+const onChangeRouter = (url) => {
+  if(props.isLogin) {
+    useRouter().push(url);
+    onClickClose();
+  } else {
+    isShowPopup.value = true;
+  }
+}
 
 </script>
 
@@ -310,5 +337,9 @@ const onClickLogin = () => {
       display: none;
     }
   }
+}
+
+.dialog-content-inner {
+  padding: 10px;
 }
 </style>
