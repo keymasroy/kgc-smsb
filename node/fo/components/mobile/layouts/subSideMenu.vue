@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'sideMenu': true, 'open': !!showSide }">
     <div v-if="!isLogin" class="buttons">
-      <Button label="로그인" severity="secondary" @click="isLogin=true" />
+      <Button label="로그인" severity="secondary" @click="onClickLogin()" />
       <Button label="회원가입" severity="secondary" />
     </div>
 
@@ -63,16 +63,17 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  /**
+   * Login 여부
+   */
+  isLogin: {
+    type: Boolean,
+    default: false
+  }
 })
 
-const emit = defineEmits(['update:showSide', 'openBarcode']);
+const emit = defineEmits(['update:showSide', 'update:isLogin', 'openBarcode']);
 
-const handleOpenBarcode = () => {
-  emit('update:showSide', false);
-  emit('openBarcode', true);
-}
-
-const isLogin = ref(false);
 const menuList = ref([
   { url: '', title: '소개', isOpen: false, children: [
     { url: '/pubs/MI/ID/UI_FU_0044', title: '멤버스 소개' },
@@ -92,6 +93,15 @@ const menuList = ref([
   ]},
 ]);
 
+// Barcode 클릭 시 사이드 메뉴 닫은 후 Barcode 화면 Open
+const handleOpenBarcode = () => {
+  emit('update:showSide', false);
+  emit('openBarcode', true);
+};
+
+const onClickLogin = () => {
+  emit('update:isLogin', true);
+}
 
 </script>
 

@@ -67,13 +67,13 @@ const { height: visualHeight, y: visualY } = useElementBounding(visual);
 const visualImagesType = [top1, top2, top3, top4];
 const visualImageSrc = ref(visualImagesType[0]);
 const visualImageTop = ref(null);
-const max_top = 160;
+const max_top = 120;
 
 const cardList = ref([
-  { title: '멤버십 혜택', desc: '회원에게만 드리는 큰 혜택', router: '/pubs/MI/ID/UI_FU_0012' },
-  { title: '통합 포인트', desc: '쇼핑할수록 더 해지는 즐거움', router: '/pubs/MP/PI/UI_FU_0019' },
-  { title: '생일쿠폰', desc: '기념일에 맞춰 정쿠폰 발급', router: '/pubs/MP/MI/UI_FU_0025' },
-  { title: '포인트 선물', desc: '가족 또는 친구에게 건강한 선물', router: '/pubs/MP/PG/UI_FU_0020' },
+  { title: '멤버십 혜택', desc: '회원에게만 드리는 큰 혜택', router: '/pubs/MI/ID/UI_FU_0044' },
+  { title: '통합 포인트', desc: '쇼핑할수록 더 해지는 즐거움', router: '/pubs/MP/PI/UI_FU_0051' },
+  { title: '생일쿠폰', desc: '기념일에 맞춰 정쿠폰 발급', router: '/pubs/MP/MI/UI_FU_0059' },
+  { title: '포인트 선물', desc: '가족 또는 친구에게 건강한 선물', router: '/pubs/MP/PG/UI_FU_0055' },
 ])
 
 watchThrottled(
@@ -202,10 +202,9 @@ const handleChangeImage = (value) => {
 
 .main__visual-image {
   position: absolute;
-  top: 13px; /* max top 160px */
   left: 85%;
-  width: 146px;
-  height: 76px;
+  width: 146.51px;
+  height: 76.75px;
   margin-left: -140px;
   transition: all 0.1s;
 }

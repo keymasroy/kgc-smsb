@@ -1,13 +1,21 @@
 <template>
   <div class="flex flex-col h-full">
-    <SubMainHeader v-model:showSide="showSide" />
+    <SubMainHeader
+      v-model:showSide="showSide"
+      v-model:isLogin="isLogin"
+      @openBarcode="handleChangeBarcodeState"
+    />
     <main class="container !max-w-full bg-white flex flex-col flex-1">
       <slot></slot>
     </main>
     <SubFooter />
   </div>
 
-  <SubSideMenu v-model:showSide="showSide" @openBarcode="handleChangeBarcodeState" />
+  <SubSideMenu
+    v-model:showSide="showSide"
+    v-model:isLogin="isLogin"
+    @openBarcode="handleChangeBarcodeState"
+  />
   <SubBarcode v-model:showBarcode="showBarcode" />
 </template>
 <script lang="ts" setup>
@@ -21,6 +29,9 @@ const showSide = ref(false);
 
 // Barcode Menu Open 여부
 const showBarcode = ref(false);
+
+// Login 여부
+const isLogin = ref(false);
 
 const handleChangeBarcodeState = (e) => {
   showBarcode.value = e;
