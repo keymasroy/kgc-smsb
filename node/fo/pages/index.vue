@@ -20,10 +20,10 @@
       <div class="main__contents-inner h-full">
         <div class="flex flex-col items-center bg-white mt-[120px] py-[20px] z-10">
           <span class="text-[44px] font-[350]">
-            쓸수록 쌓이는 <strong>쇼핑 재테크</strong>
+            쓸수록 쌓이는 <strong>쇼핑의 즐거움!</strong>
           </span>
           <span class="mt-[4px] text-[#222222]">
-            회원이 되시면 쿠폰부터 포인트까지 다양한 혜택을 만나보세요.
+            회원이 되시면 쿠폰부터 포인트까지 다양한 혜택을 받을 수 있습니다.
           </span>
         </div>
 
@@ -285,7 +285,7 @@ const handleChangeImage = (value) => {
   content: '';
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -1px;
   background-position: right bottom;
 }
 .card1::after {

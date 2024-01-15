@@ -28,32 +28,36 @@
       </span>
     </div>
 
-    <div class="purchase__list" v-if="list?.length > 0">
-      <div v-for="(item, i) in list" :key="i" class="purchase__item">
-        <div class="purchase__item-top">
-          <span class="title">{{ item.title }}</span>
-          <span class="date">{{ item.date }}</span>
-        </div>
+    <template v-if="list?.length > 0">
+      <div class="purchase__list">
+        <div v-for="(item, i) in list" :key="i" class="purchase__item">
+          <div class="purchase__item-top">
+            <span class="title">{{ item.title }}</span>
+            <span class="date">{{ item.date }}</span>
+          </div>
 
-        <div :class="[item.isOpen ? 'purchase__item-center expand' : 'purchase__item-center']" @click="onClickExpandButton(i)">
-          <span v-if="item.orderNumber">
-            <strong>주문번호</strong>
-            {{ item.orderNumber }}
-          </span>
-          <span v-if="item.pay">
-            <strong>결제금액</strong>
-            {{ `${item.pay}원` }}
-          </span>
-        </div>
+          <div :class="[item.isOpen ? 'purchase__item-center expand' : 'purchase__item-center']" @click="onClickExpandButton(i)">
+            <span v-if="item.orderNumber">
+              <strong>주문번호</strong>
+              {{ item.orderNumber }}
+            </span>
+            <span v-if="item.pay">
+              <strong>결제금액</strong>
+              {{ `${item.pay}원` }}
+            </span>
+          </div>
 
-        <div class="purchase__item-expand" v-if="item.isOpen">
-          <div v-for="(purchase, i) in item.list" class="purchase__item-expand-item">
-            <span>{{ purchase.name }}</span>
-            <span>{{ `${purchase.count}개` }}</span>
+          <div class="purchase__item-expand" v-if="item.isOpen">
+            <div v-for="(purchase, i) in item.list" class="purchase__item-expand-item">
+              <span>{{ purchase.name }}</span>
+              <span>{{ `${purchase.count}개` }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <Paginator class="mt-[20px]" :pageLinkSize="10" :rows="10" :totalRecords="120"></Paginator>
+    </template>
 
     <div v-else class="empty">
       <i ></i>
