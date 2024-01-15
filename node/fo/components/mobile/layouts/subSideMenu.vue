@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'sideMenu': true, 'open': !!modelValue }">
+  <div :class="{ 'sideMenu': true, 'open': !!showSide }">
     <div v-if="!isLogin" class="buttons">
       <Button label="로그인" severity="secondary" @click="isLogin=true" />
       <Button label="회원가입" severity="secondary" />
@@ -19,12 +19,12 @@
 
       <div class="barcode__bottom">
         <span class="w-full text-[12px] text-[#F46144]">나의 포인트</span>
-        <span class="text-[25px] text-[#F46144]">
-          <strong class="mr-0.5">5,000</strong>P
+        <span class="point">
+          <strong class="mr-0.5">10,999</strong>P
         </span>
 
-        <div class="barcodeButton">
-
+        <div class="barcodeButton" @click="handleOpenBarcode()">
+          <i class="barcodeImg"></i>
         </div>
       </div>
     </div>
@@ -59,11 +59,18 @@ const props = defineProps({
   /**
    * Side Menu Open 여부
    */
-  modelValue: {
+  showSide: {
     type: Boolean,
     default: true,
   },
 })
+
+const emit = defineEmits(['update:showSide', 'openBarcode']);
+
+const handleOpenBarcode = () => {
+  emit('update:showSide', false);
+  emit('openBarcode', true);
+}
 
 const isLogin = ref(false);
 const menuList = ref([
@@ -140,6 +147,9 @@ const menuList = ref([
     border-bottom: 1px solid #ffffff26;
     
     .settingButtons {
+      display: flex;
+      align-items: center;
+
       > * {
         width: 24px;
         height: 24px;
@@ -161,6 +171,13 @@ const menuList = ref([
     padding-top: 10px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+
+    .point {
+      font-family: 'Montserrat';
+      font-size: 25px;
+      color: var(--j-primary02);
+    }
 
     .barcodeButton {
       width: 80px;
@@ -168,6 +185,24 @@ const menuList = ref([
       background-color: #00000080;
       border-radius: 360px;
       margin-left: 15px;
+      display: flex;
+      position: relative;
+
+      .barcodeImg {
+        width: 100%;
+        background-position: 15px center;
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='16' viewBox='0 0 30 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.6533 1.28C21.6533 0.573076 22.3458 0 23.2 0C24.0542 0 24.7467 0.573075 24.7467 1.28L24.7467 14.72C24.7467 15.4269 24.0542 16 23.2 16C22.3458 16 21.6533 15.4269 21.6533 14.72L21.6533 1.28Z' fill='white'/%3E%3Cpath d='M6.18667 0.959999C6.18667 0.429806 6.70602 0 7.34667 0C7.98732 0 8.50667 0.429807 8.50667 0.96L8.50667 15.04C8.50667 15.5702 7.98732 16 7.34667 16C6.70602 16 6.18667 15.5702 6.18667 15.04L6.18667 0.959999Z' fill='white'/%3E%3Cpath d='M27.84 0.639999C27.84 0.286537 28.1862 0 28.6133 0C29.0404 0 29.3867 0.286538 29.3867 0.64L29.3867 15.36C29.3867 15.7135 29.0404 16 28.6133 16C28.1862 16 27.84 15.7135 27.84 15.36L27.84 0.639999Z' fill='white'/%3E%3Cpath d='M10.8267 0.448C10.8267 0.200576 11.069 0 11.368 0C11.667 0 11.9093 0.200576 11.9093 0.448L11.9093 15.552C11.9093 15.7994 11.667 16 11.368 16C11.069 16 10.8267 15.7994 10.8267 15.552L10.8267 0.448Z' fill='white'/%3E%3Cpath d='M13.92 0.448C13.92 0.200576 14.1624 0 14.4613 0C14.7603 0 15.0027 0.200576 15.0027 0.448L15.0027 15.552C15.0027 15.7994 14.7603 16 14.4613 16C14.1624 16 13.92 15.7994 13.92 15.552L13.92 0.448Z' fill='white'/%3E%3Cpath d='M4.37114e-07 1.6C4.37114e-07 0.716345 0.865583 0 1.93333 0C3.00108 0 3.86667 0.716344 3.86667 1.6L3.86667 14.4C3.86667 15.2837 3.00108 16 1.93333 16C0.865583 16 0 15.2837 0 14.4L4.37114e-07 1.6Z' fill='white'/%3E%3Cpath d='M16.748 1.92C16.748 0.859613 16.5054 0 17.7867 0C19.068 0 18.8253 0.859613 18.8253 1.92L18.8253 14.08C18.8253 15.1404 19.068 16 17.7867 16C16.5054 16 16.748 15.1404 16.748 14.08L16.748 1.92Z' fill='white'/%3E%3C/svg%3E%0A");
+      }
+
+      &::after {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.67949 18.0448L5.49683 16.8621L12.359 9.99993L5.49683 3.13775L6.67949 1.95508L14.7243 9.99993L6.67949 18.0448Z' fill='%23FDFDFD'/%3E%3C/svg%3E%0A");
+        width: 20px;
+        height: 100%;
+        position: absolute;
+        background-position: center;
+        right: 4px;
+      }
     }
   }
 }
@@ -192,7 +227,7 @@ const menuList = ref([
 
       &::after {
         content: '';
-        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.25 13C15.25 12.7969 15.1804 12.6211 15.0413 12.4727L10.1194 7.22266C9.98022 7.07422 9.81543 7 9.625 7C9.43457 7 9.26978 7.07422 9.13062 7.22266L4.20874 12.4727C4.06958 12.6211 4 12.7969 4 13C4 13.2031 4.06958 13.3789 4.20874 13.5273C4.3479 13.6758 4.5127 13.75 4.70312 13.75H14.5469C14.7373 13.75 14.9021 13.6758 15.0413 13.5273C15.1804 13.3789 15.25 13.2031 15.25 13Z' fill='%23C4C4C4'/%3E%3C/svg%3E%0A");
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.25 7.75C15.25 7.95313 15.1804 8.12891 15.0413 8.27734L10.1194 13.5273C9.98022 13.6758 9.81543 13.75 9.625 13.75C9.43457 13.75 9.26978 13.6758 9.13062 13.5273L4.20874 8.27734C4.06958 8.12891 4 7.95313 4 7.75C4 7.54688 4.06958 7.37109 4.20874 7.22266C4.3479 7.07422 4.5127 7 4.70312 7H14.5469C14.7373 7 14.9021 7.07422 15.0413 7.22266C15.1804 7.37109 15.25 7.54688 15.25 7.75Z' fill='%23C4C4C4'/%3E%3C/svg%3E%0A");
         width: 20px;
         height: 20px;
         transition: all 0.3s;

@@ -6,28 +6,42 @@
         <img v-else src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
       </router-link>
 
-      <button v-if="!showSide" @click="showSide=true">
+      <button v-if="!showSide" @click="onClickButton(true)">
         <img :style="{ filter: !headerActive ? 'invert(1)' : ''}" src="@/assets/images/svg/ico_menu.svg" alt="메뉴 아이콘">
       </button>
 
       <!-- 닫기 -->
-      <button v-if="showSide" @click="showSide=false">
+      <button v-if="showSide" @click="onClickButton(false)">
         <img src="@/assets/images/svg/ico_close.svg" alt="메뉴 닫기 아이콘">
       </button>
     </div>
   </header>
 
-  <SubSideMenu v-model="showSide" />
+
 </template>
 
 <script setup>
 import { useScroll, watchThrottled } from '@vueuse/core';
 import { ref } from 'vue';
-import SubSideMenu from './subSideMenu.vue';
 
 const { y: winScoll } = useScroll(document);
 const headerActive = ref(false);
-const showSide = ref(false);
+
+const props = defineProps({
+  /**
+   * Side Menu Open 여부
+   */
+   showSide: {
+    type: Boolean,
+    default: true,
+  },
+})
+
+const emit = defineEmits(['update:showSide']);
+
+const onClickButton = (value) => {
+  emit('update:showSide', value);
+}
 
 watchThrottled(
   () => winScoll.value,
