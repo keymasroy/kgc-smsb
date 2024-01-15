@@ -2207,3 +2207,14 @@
   padding: 0;
   border-left: 1px solid #f1f1f1;
 }
+.file-uploader {
+  position: relative;
+  margin-top: 20px;
+
+  .table-title-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+  }
+}

@@ -444,6 +444,7 @@ const items = ref([
 
   { col1: '회원', col2: '업무관리', col3: '업무담당자관리', col4: 'UI_BM_5101', col5: '', col6: 'grid-form', col7: 'X' },
   { col1: '회원', col2: '업무관리', col3: '업무담당자', col4: 'UI_BM_5102', col5: '', col6: 'board-vertical', col7: 'X' },
+  { col1: '회원', col2: '업무관리', col3: '업무도움말 미리보기', col4: 'UI_BM_5103', col5: '/pubs/SY/WM/UI_BM_5103_pubs', col6: 'popup-form', col7: 'X' },
 
   { col1: '회원', col2: 'APP관리', col3: '앱버전관리', col4: 'UI_BM_5201', col5: '', col6: 'grid-form', col7: 'X' },
 
