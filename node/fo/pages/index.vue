@@ -53,7 +53,7 @@ import top3 from '@/assets/images/main/top3.png';
 import top4 from '@/assets/images/main/top4.png';
 
 import { useElementBounding, useScroll, watchThrottled } from '@vueuse/core';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 definePageMeta({
   layout: 'main',
@@ -62,6 +62,8 @@ definePageMeta({
 const visual = ref(null);
 const { y: winScoll } = useScroll(document);
 const { height: visualHeight, y: visualY } = useElementBounding(visual);
+
+const org_visualY = ref(0);
 
 const visualImagesType = [top1, top2, top3, top4];
 const visualImageSrc = ref(visualImagesType[0]);
@@ -75,13 +77,16 @@ const cardList = ref([
   { title: '생일쿠폰', desc: '기념일에 맞춰 정쿠폰 발급', router: '/pubs/MP/MI/UI_FU_0025' },
 ])
 
+onMounted(() => {
+  org_visualY.value = visualY.value;
+})
+
 watchThrottled(
   () => winScoll.value,
   newValue => {
     // visualY 을 3등분 해서 포인트 잡아서 이미지 바꿔줄 거임
     // visualHeight - visualY 뺀 값을 100% 로 계산해서 이동시켜 줄거임
-    const offsetTop = visual.value.offsetTop;
-    const _top = visualHeight.value - visualY.value - offsetTop;
+    const _top = org_visualY.value - visualY.value;
 
     // 이미지 top pixel 변경
     visualImageTop.value = handleChangeTopImageTop(_top);

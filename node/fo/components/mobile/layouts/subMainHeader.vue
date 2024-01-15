@@ -1,18 +1,13 @@
 <template>
-  <header :class="{ '!bg-[#FFF]': headerActive || showSide }" class="header flex-none w-full bg-transparent h-[50px] p-[15px]">
+  <header :class="{ '!bg-[#FFF]': headerActive || showSide , 'header': true }">
     <div class="flex justify-between h-full">
       <router-link to="/">
         <img v-if="!headerActive && !showSide" src="@/assets/images/svg/logo-white-mobile.svg" alt="JUNG KWAN JANG Members" />
         <img v-else src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
       </router-link>
 
-      <button v-if="!showSide" @click="onClickButton(true)">
+      <button @click="onOpenSideMenu(true)">
         <img :style="{ filter: !headerActive ? 'invert(1)' : ''}" src="@/assets/images/svg/ico_menu.svg" alt="메뉴 아이콘">
-      </button>
-
-      <!-- 닫기 -->
-      <button v-if="showSide" @click="onClickButton(false)">
-        <img src="@/assets/images/svg/ico_close.svg" alt="메뉴 닫기 아이콘">
       </button>
     </div>
   </header>
@@ -56,8 +51,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:showSide', 'openBarcode']);
 
-const onClickButton = (value) => {
-  emit('update:showSide', value);
+const onOpenSideMenu = () => {
+  emit('update:showSide', true);
 }
 
 // Barcode 클릭 시 Barcode 화면 Open
@@ -85,6 +80,11 @@ watchThrottled(
   z-index: 30;
   position: fixed;
   transition: 0.2s all;
+  height: 50px;
+  padding: 15px;
+  flex: none;
+  width: 100%;
+  background-color: transparent;
 }
 
 .gnb {

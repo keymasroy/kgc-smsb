@@ -1,5 +1,15 @@
 <template>
   <div :class="{ 'sideMenu': true, 'open': !!showSide }">
+    <div class="sideMenu__header flex justify-between h-[50px] p-[15px]">
+      <router-link to="/">
+        <img src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
+      </router-link>
+
+      <!-- 닫기 -->
+      <button @click="onClickClose()">
+        <img src="@/assets/images/svg/ico_close.svg" alt="메뉴 닫기 아이콘">
+      </button>
+    </div>
     <div v-if="!isLogin" class="buttons">
       <Button label="로그인" severity="secondary" @click="onClickLogin()" />
       <Button label="회원가입" severity="secondary" />
@@ -99,9 +109,13 @@ const handleOpenBarcode = () => {
   emit('openBarcode', true);
 };
 
+const onClickClose = () => {
+  emit('update:showSide', false);
+};
+
 const onClickLogin = () => {
   emit('update:isLogin', true);
-}
+};
 
 </script>
 
@@ -117,14 +131,28 @@ const onClickLogin = () => {
 .sideMenu.open {
   width: 100%;
   position: fixed;
-  top: 50px;
+  top: 0;
   right: 0;
   z-index: 100;
   background-color: var(--j-white);
   transition: right 0.5s ease;
-
   overflow-y: auto;
-  height: calc(100% - 50px);
+  height: 100%;
+}
+
+.sideMenu__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: var(--j-white);
+
+  & + * {
+    margin-top: 50px;
+    padding-top: 50px;
+  }
 }
 
 .buttons {

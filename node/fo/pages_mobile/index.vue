@@ -53,7 +53,7 @@ import top3 from '@/assets/images/main/top3.png';
 import top4 from '@/assets/images/main/top4.png';
 
 import { useElementBounding, useScroll, watchThrottled } from '@vueuse/core';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 definePageMeta({
   layout: 'main',
@@ -64,10 +64,12 @@ const visual = ref(null);
 const { y: winScoll } = useScroll(document);
 const { height: visualHeight, y: visualY } = useElementBounding(visual);
 
+const org_visualY = ref(0);
+
 const visualImagesType = [top1, top2, top3, top4];
 const visualImageSrc = ref(visualImagesType[0]);
 const visualImageTop = ref(null);
-const max_top = 120;
+const max_top = 130;
 
 const cardList = ref([
   { title: '멤버십 혜택', desc: '회원에게만 드리는 큰 혜택', router: '/pubs/MI/ID/UI_FU_0044' },
@@ -76,20 +78,16 @@ const cardList = ref([
   { title: '포인트 선물', desc: '가족 또는 친구에게 건강한 선물', router: '/pubs/MP/PG/UI_FU_0055' },
 ])
 
+onMounted(() => {
+  org_visualY.value = visualY.value;
+})
+
 watchThrottled(
   () => winScoll.value,
   newValue => {
     // visualY 을 3등분 해서 포인트 잡아서 이미지 바꿔줄 거임
     // visualHeight - visualY 뺀 값을 100% 로 계산해서 이동시켜 줄거임
-    const offsetTop = visual.value.offsetTop;
-    
-    const _top = visualHeight.value - visualY.value - offsetTop;
-
-    console.log('visualHeight: ',visualHeight.value);
-    console.log('visualY: ',visualY.value);
-    console.log('offsetTop: ',offsetTop);
-    console.log('_top: ', _top);
-    console.log('=================================');
+    const _top = org_visualY.value - visualY.value;
 
     // 이미지 top pixel 변경
     visualImageTop.value = handleChangeTopImageTop(_top);
@@ -99,12 +97,6 @@ watchThrottled(
   },
   { throttle: 100 },
 );
-
-// useResizeObserver(main, (entries) => {
-//   const [entry] = entries;
-//   const { width, height } = entry.contentRect;
-//   visualScale.value = (width / 360) -1;
-// })
 
 const handleChangeTopImageTop = (value) => {
   if ( value < 0 ) {
@@ -190,7 +182,7 @@ const handleChangeImage = (value) => {
 .main__visual-text {
   font-family: 'Montserrat';
   position: relative;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 30px;
   > span {
     display: block;
