@@ -27,7 +27,7 @@
           <div class="desc">
             <p v-html="handleDesc"></p>
           </div>
-          <div class="byte"><strong>102</strong>/<span>3000</span>byte</div>
+          <!-- <div class="byte"><strong>102</strong>/<span>3000</span>byte</div> -->
         </div>
         <UItem class="preview-form">
           <span>수신번호</span>
@@ -222,7 +222,7 @@ const handleTitle = computed(() => {
 }
 
 .preview-text {
-  padding-top: 0;
+  // padding-top: 0;
 
   .desc {
     max-height: 530px;
