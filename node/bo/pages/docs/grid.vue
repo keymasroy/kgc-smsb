@@ -22,7 +22,7 @@
           <WjFlexGridColumn header="건별단가(원)" binding="col1" width="*" />
           <WjFlexGridColumn header="비고" binding="col1" width="*" />
           <WjFlexGridColumn header="이력보기" binding="col1" width="*" align="center">
-            <WjFlexGridCellTemplate cellType="Cell" >
+            <WjFlexGridCellTemplate cellType="Cell">
               <UButton text="이력보기" />
             </WjFlexGridCellTemplate>
           </WjFlexGridColumn>
@@ -45,7 +45,7 @@
           <WjFlexGridColumn binding="url" header="URL" />
           <WjFlexGridColumn binding="httpMethCd" header="Method" />
         </WjFlexGrid>
-      
+
         <UPaginationBar
           v-model="grid.pagination.currentPageNo.value"
           :pageSize="grid.pagination.pageSize.value"
@@ -54,13 +54,12 @@
         />
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup>
-import { WjFlexGrid, WjFlexGridColumn, WjFlexGridCellTemplate, WjInputDate } from '#ustra/nuxt-wijmo/components';
-
+import { WjFlexGrid, WjFlexGridColumn, WjFlexGridCellTemplate, WjInputDate } from '#ustra/nuxt-wijmo/components'
+import { wijmoGrid, wijmo } from '#ustra/nuxt-wijmo'
 import { WjComboBox } from '#ustra/nuxt-wijmo/components'
 
 definePageMeta({
@@ -68,7 +67,7 @@ definePageMeta({
   auth: {
     required: false,
   },
-});
+})
 
 const grid = useWijmoFlexGrid({
   pagination: {
@@ -98,19 +97,18 @@ const grid = useWijmoFlexGrid({
 
 const itemsSourceGrid = ref([
   { col1: '텍스트' },
-  { col1: '텍스트2'},
-  { col1: '텍스트3'},
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
   { col1: '텍스트' },
-  { col1: '텍스트2'},
-  { col1: '텍스트3'},
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
   { col1: '텍스트' },
-  { col1: '텍스트2'},
-  { col1: '텍스트3'},
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
   { col1: '텍스트' },
-  { col1: '텍스트2'},
-  { col1: '텍스트3'},
-]);
-
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
+])
 </script>
 
 <style lang="scss" scoped>

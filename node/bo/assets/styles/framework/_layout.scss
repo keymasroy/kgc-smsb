@@ -523,7 +523,8 @@
 
   & #lnb {
     width: 100%;
-    height: calc(100% - 180px);
+    //height: calc(100% - 180px);
+    height: calc(100% - 160px);
     overflow: hidden;
     transition-property: opacity;
 
@@ -537,10 +538,10 @@
 
         div:last-child {
           width: 100%;
-          height: calc(100% - 15px);
+          //height: calc(100% - 15px);
 
           .tabpanes {
-            height: calc(100% - 40px);
+            height: calc(100% - 10px);
           }
         }
       }
@@ -1612,7 +1613,9 @@ body {
 }
 
 .nav-list {
-  height: calc(100vh - 430px);
+  //height: calc(100vh - 430px);
+  height: calc(100vh - 420px);
+  margin-bottom: 20px;
   .nav {
     background-image: none !important;
 
