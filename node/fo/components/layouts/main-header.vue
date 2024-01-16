@@ -1,34 +1,51 @@
 <template>
-  <header :class="{ '!bg-[#FFF]': headerActive }" class="header flex-none w-full bg-transparent h-[100px] px-[120px]">
-    <div class="flex justify-between min-w-[1280px] h-full">
-      <router-link class="mt-[37px]" to="/">
-        <img v-if="!headerActive" src="@/assets/images/svg/logo-white.svg" alt="JUNG KWAN JANG Members" />
-        <img v-else src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
-      </router-link>
+  <header :class="['header', { '!bg-[#FFF] active': headerActive }]">
+    <router-link class="mt-[37px] z-[2] ml-[120px]" to="/">
+      <img class="whiteLogo" src="@/assets/images/svg/logo-white.svg" alt="JUNG KWAN JANG Members" />
+      <img class="defaultLogo" src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
+    </router-link>
 
-      <nav class="gnb">
-        <router-link class="gnb__link" to="/">소개</router-link>
-        <router-link class="gnb__link" to="/">마이페이지</router-link>
-        <router-link class="gnb__link" to="/">고객센터</router-link>
+    <nav class="gnb" aria-label="Gnb Menu List">
+      <ul v-for="(menu, idx) in menuList" :key="idx" class="gnb__link">
+        <span class="gnb__title">{{ menu.title }}</span>
 
-        <ul class="gnb__sub-list">
-          <li class="gnb__sub-item">
-            <router-link to="/">서브메뉴</router-link>
-          </li>
-        </ul>
-      </nav>
+        <li v-if="menu.children?.length > 0" className="gnb__subList">
+          <ul v-for="(child_menu, child_idx) in menu.children" :key="'child-' + child_idx">
+            <router-link class="gnb__subTitle" :to="child_menu.url">{{ child_menu.title }}</router-link>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
-      <nav class="sign-nav">
-        <router-link class="gnb__link" to="/">로그인</router-link>
-        <router-link class="gnb__link" to="/">회원가입</router-link>
-      </nav>
-    </div>
+    <nav class="sign-nav mr-[120px]">
+      <router-link class="gnb__link" to="/pubs/MS/LG/UI_FU_0001">로그인</router-link>
+      <router-link class="gnb__link" to="/pubs/MS/MJ/UI_FU_0007">회원가입</router-link>
+    </nav>
   </header>
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useScroll, watchThrottled } from '@vueuse/core';
+import { ref } from 'vue';
+
+const menuList = ref([
+  { url: '', title: '소개', children: [
+    { url: '/pubs/MI/ID/UI_FU_0012', title: '멤버스 소개' },
+    { url: '', title: '영수증 적립안내' }
+  ]},
+  { url: '', title: '마이페이지', children: [
+    { url: '/pubs/MP/PI/UI_FU_0019', title: '포인트 조회' },
+    { url: '/pubs/MP/CI/UI_FU_0018', title: '쿠폰 조회' },
+    { url: '/pubs/MP/PI_2/UI_FU_0021', title: '구매내역 조회' },
+    { url: '/pubs/MP/PG/UI_FU_0020', title: '포인트 선물' },
+    { url: '/pubs/MP/MI/UI_FU_0024', title: '기념일 관리' },
+    { url: '/pubs/MP/MI/UI_FU_0026', title: '단골매장 관리' }
+  ]},
+  { url: '', title: '고객센터', children: [
+    { url: '/pubs/CS/FQ/UI_FU_0015', title: '자주하는 질문' },
+    { url: '/pubs/CS/NT/UI_FU_0013', title: '공지사항' }
+  ]},
+]);
 
 const { y: winScoll } = useScroll(document);
 const headerActive = ref(false);
@@ -36,28 +53,52 @@ const headerActive = ref(false);
 watchThrottled(
   () => winScoll.value,
   newValue => {
-    if (winScoll.value > 0) {
-      headerActive.value = true;
-      document.querySelector('.header').classList.add('active');
-    } else {
-      headerActive.value = false;
-      document.querySelector('.header').classList.remove('active');
-    }
+    headerActive.value = winScoll.value > 0 ? true : false;
   },
   { throttle: 200 },
 );
 </script>
 
 <style lang="scss" scoped>
+/* 로고 변경 */
 .header {
-  z-index: 10;
-  position: fixed;
-  transition: 0.2s all;
+  &:not(.active) {
+    .defaultLogo {
+      display: none;
+    }
+  }
 
   &.active {
-    .gnb > a {
-      transition: 0.2s all;
-      color: #000;
+    .whiteLogo {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .whiteLogo {
+      display: none;
+    }
+
+    .defaultLogo {
+      display: unset;
+    }
+  }
+}
+
+.header {
+  z-index: 30;
+  position: fixed;
+  width: 100%;
+  min-width: 1280px;
+  background-color: transparent;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  &.active {
+    .gnb > .gnb__link {
+      transition: 0.1s all;
+      color: var(--j-black);
     }
 
     .sign-nav > a {
@@ -65,28 +106,103 @@ watchThrottled(
       color: #030303;
     }
   }
+
+  &:hover {
+    .gnb {
+      background-color: var(--j-white);
+      border-bottom: 1px solid var(--j-gray100);
+
+      &:before {
+        position: absolute;
+        width: calc(100% + 120px);
+        height: calc(100% - 100px);
+        top: 100px;
+        left: -120px;
+        background-color: var(--j-white);
+      }
+
+      .gnb__link {
+        color: var(--j-black);
+        
+        &:hover {
+          .gnb__title {
+            color: var(--j-primary01);
+          }
+        }
+      }
+
+      .gnb__subList {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .sign-nav > a {
+      color: #030303;
+    }
+  }
 }
 
 .gnb {
   display: flex;
-  margin-top: 37px;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
 
-  > a {
+  > .gnb__link {
     width: 160px;
     font-weight: 700;
     font-size: 17px;
     text-align: center;
-    color: white;
+    color: var(--j-white);;
+
+    .gnb__title {
+      line-height: 100px;
+      cursor: default;
+      transition: all 0.3s;
+    }
+  }
+
+  &:before {
+    content: '';
+    height: 0;
+  }
+
+  .gnb__subList {
+    display: none;
+
+    ul {
+      height: 41px;
+    }
+  }
+
+  .gnb__subTitle {
+    color: var(--j-black);
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+    height: 41px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--j-primary01);
+      border-radius: 360px;
+      color: var(--j-white);
+      font-weight: 500;
+      padding: 8px 20px 9px 20px;
+    }
   }
 }
 
 .sign-nav {
   display: flex;
   align-items: center;
-  height: 100%;
+
   > a {
     position: relative;
-    color: white;
+    color: var(--j-white);
 
     &:not(:first-child) {
       margin-left: 8px;
@@ -100,7 +216,7 @@ watchThrottled(
         transform: translateY(-50%);
         width: 1px;
         height: 10px;
-        background-color: #e7e7e7;
+        background-color: var(--j-gray200);
       }
     }
   }

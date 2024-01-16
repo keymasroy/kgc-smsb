@@ -20,10 +20,10 @@
       <div class="main__contents-inner h-full">
         <div class="flex flex-col items-center bg-white mt-[120px] py-[20px] z-10">
           <span class="text-[44px] font-[350]">
-            쓸수록 쌓이는 <strong>쇼핑 재테크</strong>
+            쓸수록 쌓이는 <strong>쇼핑의 즐거움!</strong>
           </span>
           <span class="mt-[4px] text-[#222222]">
-            회원이 되시면 쿠폰부터 포인트까지 다양한 혜택을 만나보세요.
+            회원이 되시면 쿠폰부터 포인트까지 다양한 혜택을 받을 수 있습니다.
           </span>
         </div>
 
@@ -53,7 +53,7 @@ import top3 from '@/assets/images/main/top3.png';
 import top4 from '@/assets/images/main/top4.png';
 
 import { useElementBounding, useScroll, watchThrottled } from '@vueuse/core';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 definePageMeta({
   layout: 'main',
@@ -62,6 +62,8 @@ definePageMeta({
 const visual = ref(null);
 const { y: winScoll } = useScroll(document);
 const { height: visualHeight, y: visualY } = useElementBounding(visual);
+
+const org_visualY = ref(0);
 
 const visualImagesType = [top1, top2, top3, top4];
 const visualImageSrc = ref(visualImagesType[0]);
@@ -75,13 +77,16 @@ const cardList = ref([
   { title: '생일쿠폰', desc: '기념일에 맞춰 정쿠폰 발급', router: '/pubs/MP/MI/UI_FU_0025' },
 ])
 
+onMounted(() => {
+  org_visualY.value = visualY.value;
+})
+
 watchThrottled(
   () => winScoll.value,
   newValue => {
     // visualY 을 3등분 해서 포인트 잡아서 이미지 바꿔줄 거임
     // visualHeight - visualY 뺀 값을 100% 로 계산해서 이동시켜 줄거임
-    const offsetTop = visual.value.offsetTop;
-    const _top = visualHeight.value - visualY.value - offsetTop;
+    const _top = org_visualY.value - visualY.value;
 
     // 이미지 top pixel 변경
     visualImageTop.value = handleChangeTopImageTop(_top);
@@ -257,7 +262,6 @@ const handleChangeImage = (value) => {
 
       .desc {
         font-size: 18px;
-        line-height: 48px;
         color: #8B8B8B;
         line-height: 28.8px;
       }
@@ -265,7 +269,6 @@ const handleChangeImage = (value) => {
       &:hover {
         transform: translateY(-10px);
         transition: 0.15s ease-in-out;
-        box-shadow: 0px 2px 12px 9px rgba(0, 0, 0, 0.1);
         .arrow {
           background-image: url("data:image/svg+xml,%3Csvg width='38' height='38' viewBox='0 0 38 38' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='19' cy='19' r='19' fill='%23F46144'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M23.0092 13.2188L28.7827 18.9719C29.0724 19.2636 29.0724 19.7364 28.7827 20.0281L23.0092 25.7812C22.7195 26.0729 22.2498 26.0729 21.9601 25.7812C21.6704 25.4896 21.6704 25.0167 21.9601 24.725L26.4674 20.2469H10.7418C10.3321 20.2469 10 19.9125 10 19.5C10 19.0875 10.3321 18.7531 10.7418 18.7531H26.4674L21.9601 14.275C21.6704 13.9833 21.6704 13.5104 21.9601 13.2188C22.2498 12.9271 22.7195 12.9271 23.0092 13.2188Z' fill='white'/%3E%3C/svg%3E%0A");
         }
@@ -287,7 +290,7 @@ const handleChangeImage = (value) => {
   content: '';
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -1px;
   background-position: right bottom;
 }
 .card1::after {
@@ -305,13 +308,13 @@ const handleChangeImage = (value) => {
 .card3::after {
   width: 326px;
   height: 307px;
-  background-image: url('@/assets/images/main/card2.png');
+  background-image: url('@/assets/images/main/card3.png');
 }
 
 .card4::after {
   width: 335px;
   height: 234px;
-  background-image: url('@/assets/images/main/card2.png');
+  background-image: url('@/assets/images/main/card4.png');
 }
 // =====================
 

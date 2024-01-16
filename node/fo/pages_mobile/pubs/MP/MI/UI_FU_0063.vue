@@ -124,6 +124,8 @@ import { ref } from 'vue';
 
 definePageMeta({
   layout: 'sub',
+  title: '회원 탈퇴',
+  footer: 'none'
 });
 
 // radio
