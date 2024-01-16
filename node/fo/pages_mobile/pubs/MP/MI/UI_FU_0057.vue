@@ -210,12 +210,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { onMounted } from '#ustra/nuxt';
 import { defaultOptions } from 'primevue/config';
+import { ref } from 'vue';
 
 definePageMeta({
   layout: 'sub',
+  title: '회원정보 변경',
+  footer: 'none'
 });
 
 // 캘린더
