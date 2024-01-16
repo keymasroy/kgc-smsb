@@ -234,7 +234,6 @@ const handleTitle = computed(() => {
 }
 
 .preview_title_wrap {
-  border-bottom: 1px solid #f1f1f1;
   padding: 15px 18px;
   min-height: 51px;
 
