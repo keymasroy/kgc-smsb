@@ -1,28 +1,26 @@
 <template>
-  <header :class="{ '!bg-[#FFF] active': headerActive }" class="header flex-none w-full bg-transparent h-[100px]">
-    <div class="flex justify-between min-w-[1280px] h-full">
-      <router-link class="mt-[37px] z-[2] ml-[120px]" to="/">
-        <img class="whiteLogo" src="@/assets/images/svg/logo-white.svg" alt="JUNG KWAN JANG Members" />
-        <img class="defaultLogo" src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
-      </router-link>
+  <header :class="['header', { '!bg-[#FFF] active': headerActive }]">
+    <router-link class="mt-[37px] z-[2] ml-[120px]" to="/">
+      <img class="whiteLogo" src="@/assets/images/svg/logo-white.svg" alt="JUNG KWAN JANG Members" />
+      <img class="defaultLogo" src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
+    </router-link>
 
-      <nav class="gnb" aria-label="menu list">
-        <ul v-for="(menu, idx) in menuList" :key="idx" class="gnb__link">
-          <span class="gnb__title">{{ menu.title }}</span>
+    <nav class="gnb" aria-label="Gnb Menu List">
+      <ul v-for="(menu, idx) in menuList" :key="idx" class="gnb__link">
+        <span class="gnb__title">{{ menu.title }}</span>
 
-          <li v-if="menu.children" className="gnb__subList">
-            <ul v-for="(child_menu, child_idx) in menu.children" :key="'child-' + child_idx">
-              <router-link class="gnb__subTitle" :to="child_menu.url">{{ child_menu.title }}</router-link>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+        <li v-if="menu.children?.length > 0" className="gnb__subList">
+          <ul v-for="(child_menu, child_idx) in menu.children" :key="'child-' + child_idx">
+            <router-link class="gnb__subTitle" :to="child_menu.url">{{ child_menu.title }}</router-link>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
-      <nav class="sign-nav mr-[120px]">
-        <router-link class="gnb__link" to="/pubs/MS/LG/UI_FU_0001">로그인</router-link>
-        <router-link class="gnb__link" to="/pubs/MS/MJ/UI_FU_0007">회원가입</router-link>
-      </nav>
-    </div>
+    <nav class="sign-nav mr-[120px]">
+      <router-link class="gnb__link" to="/pubs/MS/LG/UI_FU_0001">로그인</router-link>
+      <router-link class="gnb__link" to="/pubs/MS/MJ/UI_FU_0007">회원가입</router-link>
+    </nav>
   </header>
 </template>
 
@@ -55,13 +53,7 @@ const headerActive = ref(false);
 watchThrottled(
   () => winScoll.value,
   newValue => {
-    if (winScoll.value > 0) {
-      headerActive.value = true;
-      document.querySelector('.header').classList.add('active');
-    } else {
-      headerActive.value = false;
-      document.querySelector('.header').classList.remove('active');
-    }
+    headerActive.value = winScoll.value > 0 ? true : false;
   },
   { throttle: 200 },
 );
@@ -96,6 +88,12 @@ watchThrottled(
 .header {
   z-index: 30;
   position: fixed;
+  width: 100%;
+  min-width: 1280px;
+  background-color: transparent;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
 
   &.active {
     .gnb > .gnb__link {
@@ -176,7 +174,7 @@ watchThrottled(
     display: none;
 
     ul {
-      height: 41px
+      height: 41px;
     }
   }
 

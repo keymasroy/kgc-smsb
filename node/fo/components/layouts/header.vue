@@ -1,77 +1,144 @@
 <template>
-  <header class="header flex-none w-full h-[100px] px-[120px]">
-    <div class="flex justify-between min-w-[1280px] h-full">
-      <router-link class="mt-[37px]" to="/">
-        <img src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
-      </router-link>
+  <header class="header">
+    <router-link class="mt-[37px] z-[2] ml-[120px]" to="/">
+      <img src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
+    </router-link>
 
-      <nav class="gnb">
-        <router-link class="gnb__link" to="/">소개</router-link>
-        <router-link class="gnb__link" to="/">마이페이지</router-link>
-        <router-link class="gnb__link" to="/">고객센터</router-link>
-      </nav>
+    <nav class="gnb" aria-label="Gnb Menu List">
+      <ul v-for="(menu, idx) in menuList" :key="idx" class="gnb__link">
+        <span class="gnb__title">{{ menu.title }}</span>
 
-      <nav class="sign-nav">
-        <router-link class="gnb__link" to="/">로그인</router-link>
-        <router-link class="gnb__link" to="/">회원가입</router-link>
-      </nav>
-    </div>
-
-    <!-- <nav class="sub-gnb">
-      <ul class="gnb__sub-list">
-        <li class="gnb__sub-item">
-          <router-link to="/">서브메뉴</router-link>
+        <li v-if="menu.children?.length > 0" className="gnb__subList">
+          <ul v-for="(child_menu, child_idx) in menu.children" :key="'child-' + child_idx">
+            <router-link class="gnb__subTitle" :to="child_menu.url">{{ child_menu.title }}</router-link>
+          </ul>
         </li>
       </ul>
-      <ul class="gnb__sub-list">
-        <li class="gnb__sub-item">
-          <router-link to="/">서브메뉴</router-link>
-        </li>
-      </ul>
-      <ul class="gnb__sub-list">
-        <li class="gnb__sub-item">
-          <router-link to="/">서브메뉴</router-link>
-        </li>
-      </ul>
-    </nav> -->
+    </nav>
+
+    <nav class="sign-nav mr-[120px]">
+      <router-link class="gnb__link" to="/pubs/MS/LG/UI_FU_0001">로그인</router-link>
+      <router-link class="gnb__link" to="/pubs/MS/MJ/UI_FU_0007">회원가입</router-link>
+    </nav>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+
+const menuList = ref([
+  { url: '', title: '소개', children: [
+    { url: '/pubs/MI/ID/UI_FU_0012', title: '멤버스 소개' },
+    { url: '', title: '영수증 적립안내' }
+  ]},
+  { url: '', title: '마이페이지', children: [
+    { url: '/pubs/MP/PI/UI_FU_0019', title: '포인트 조회' },
+    { url: '/pubs/MP/CI/UI_FU_0018', title: '쿠폰 조회' },
+    { url: '/pubs/MP/PI_2/UI_FU_0021', title: '구매내역 조회' },
+    { url: '/pubs/MP/PG/UI_FU_0020', title: '포인트 선물' },
+    { url: '/pubs/MP/MI/UI_FU_0024', title: '기념일 관리' },
+    { url: '/pubs/MP/MI/UI_FU_0026', title: '단골매장 관리' }
+  ]},
+  { url: '', title: '고객센터', children: [
+    { url: '/pubs/CS/FQ/UI_FU_0015', title: '자주하는 질문' },
+    { url: '/pubs/CS/NT/UI_FU_0013', title: '공지사항' }
+  ]},
+]);
 </script>
 
 <style lang="scss" scoped>
 .header {
-  position: relative;
-  z-index: 10;
+  display: flex;
+  justify-content: space-between;
   position: fixed;
-  background-color: #fff;
-  transition: 0.2s all;
+  z-index: 30;
+  width: 100%;
+  min-width: 1280px;
+  height: 100px;
+  background-color: var(--j-white);
 
-  &.active {
-    .gnb > a {
-      transition: 0.2s all;
-      color: #000;
-    }
+  &:hover {
+    .gnb {
+      background-color: var(--j-white);
+      border-bottom: 1px solid var(--j-gray100);
 
-    .sign-nav > a {
-      transition: 0.2s all;
-      color: #030303;
+      &:before {
+        position: absolute;
+        width: calc(100% + 120px);
+        height: calc(100% - 100px);
+        top: 100px;
+        left: -120px;
+        background-color: var(--j-white);
+      }
+
+      .gnb__link {
+        color: var(--j-black);
+        
+        &:hover {
+          .gnb__title {
+            color: var(--j-primary01);
+          }
+        }
+      }
+
+      .gnb__subList {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
     }
   }
 }
 
 .gnb {
   display: flex;
-  margin-top: 37px;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
 
-  > a {
+  > .gnb__link {
     width: 160px;
     font-weight: 700;
     font-size: 17px;
     text-align: center;
-    color: #000;
+    color: var(--j-black);
+
+    .gnb__title {
+      line-height: 100px;
+      cursor: default;
+      transition: all 0.3s;
+    }
+  }
+
+  &:before {
+    content: '';
+    height: 0;
+  }
+
+  .gnb__subList {
+    display: none;
+
+    ul {
+      height: 41px;
+    }
+  }
+
+  .gnb__subTitle {
+    color: var(--j-black);
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+    height: 41px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--j-primary01);
+      border-radius: 360px;
+      color: var(--j-white);
+      font-weight: 500;
+      padding: 8px 20px 9px 20px;
+    }
   }
 }
 
@@ -79,33 +146,26 @@ import { ref } from 'vue';
   display: flex;
   align-items: center;
   height: 100%;
+  
   > a {
     position: relative;
-    color: #000;
+    color: #030303;
 
     &:not(:first-child) {
       margin-left: 8px;
       padding-left: 8px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 10px;
+        background-color: var(--j-gray200);
+      }
     }
-  }
-}
-
-.sub-gnb {
-  min-width: 1280px;
-  position: absolute;
-  width: 100%;
-  top: 100px;
-  left: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .gnb__sub-item {
-    width: 160px;
-    font-weight: 700;
-    font-size: 17px;
-    text-align: center;
-    color: #000;
   }
 }
 </style>

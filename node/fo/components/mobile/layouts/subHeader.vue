@@ -1,13 +1,13 @@
 <template>
   <header class="sub-header">
     <button @click="$router.go(-1)">
-      <img src="@/assets/images/svg/ico_back.svg">
+      <img src="@/assets/images/svg/ico_back.svg" alt="뒤로가기">
     </button>
     <div class="header-title">
       <h1>{{ title }}</h1>
     </div>
     <button @click="onOpenSideMenu()">
-      <img src="@/assets/images/svg/ico_menu.svg">
+      <img src="@/assets/images/svg/ico_menu.svg" alt="메뉴">
     </button>
   </header>
 </template>
@@ -38,11 +38,11 @@ const title = computed(() => {
   align-items: center;
   justify-items: center;
   position: fixed;
-  background-color: white;
+  background-color: var(--j-white);
   z-index: 3;
 
   .header-title{
-    color: #000000;
+    color: var(--j-black);
     font-size: 20px;
     font-weight: 700;
   }

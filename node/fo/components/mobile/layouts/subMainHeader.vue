@@ -1,15 +1,13 @@
 <template>
-  <header :class="{ '!bg-[#FFF]': headerActive || showSide , 'header': true }">
-    <div class="flex justify-between h-full">
-      <router-link to="/">
-        <img v-if="!headerActive && !showSide" src="@/assets/images/svg/logo-white-mobile.svg" alt="JUNG KWAN JANG Members" />
-        <img v-else src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
-      </router-link>
+  <header :class="['header', { '!bg-[#FFF]': headerActive }]">
+    <router-link to="/">
+      <img v-if="!headerActive" src="@/assets/images/svg/logo-white-mobile.svg" alt="JUNG KWAN JANG Members" />
+      <img v-else src="@/assets/images/svg/logo-mobile.svg" alt="JUNG KWAN JANG Members" />
+    </router-link>
 
-      <button @click="onOpenSideMenu(true)">
-        <img :style="{ filter: !headerActive ? 'invert(1)' : ''}" src="@/assets/images/svg/ico_menu.svg" alt="메뉴 아이콘">
-      </button>
-    </div>
+    <button @click="onOpenSideMenu()">
+      <img :style="{ filter: !headerActive ? 'invert(1)' : '' }" src="@/assets/images/svg/ico_menu.svg" alt="메뉴">
+    </button>
   </header>
 
   <header v-if="isLogin" class="userInfo">
@@ -63,71 +61,29 @@ const handleOpenBarcode = () => {
 watchThrottled(
   () => winScoll.value,
   newValue => {
-    if (winScoll.value > 0) {
-      headerActive.value = true;
-      // document.querySelector('.header').classList.add('active');
-    } else {
-      headerActive.value = false;
-      // document.querySelector('.header').classList.remove('active');
-    }
+    headerActive.value = winScoll.value > 0 ? true : false;
   },
   { throttle: 200 },
 );
 </script>
 
 <style lang="scss" scoped>
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .header {
   z-index: 30;
   position: fixed;
   transition: 0.2s all;
   height: 50px;
   padding: 15px;
-  flex: none;
-  width: 100%;
   background-color: transparent;
 }
 
-.gnb {
-  display: flex;
-  margin-top: 37px;
-
-  > a {
-    width: 160px;
-    font-weight: 700;
-    font-size: 17px;
-    text-align: center;
-    color: white;
-  }
-}
-
-.sign-nav {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  > a {
-    position: relative;
-    color: white;
-
-    &:not(:first-child) {
-      margin-left: 8px;
-      padding-left: 8px;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 1px;
-        height: 10px;
-        background-color: #e7e7e7;
-      }
-    }
-  }
-}
-
 header.userInfo {
-  width: 100%;
   height: 60px;
   position: absolute;
   top: 50px;
@@ -136,8 +92,6 @@ header.userInfo {
   font-size: 16px;
   z-index: 2;
   padding: 18px 20px;
-  display: flex;
-  justify-content: space-between;
 
   .userInfo__right {
     color: var(--j-primary02);
@@ -155,6 +109,7 @@ header.userInfo {
   .arrow {
     width: 20px;
     height: 20px;
+    cursor: pointer;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.67949 18.0448L5.49683 16.8621L12.359 9.99993L5.49683 3.13775L6.67949 1.95508L14.7243 9.99993L6.67949 18.0448Z' fill='%23F46144'/%3E%3C/svg%3E%0A");
   }
 }
