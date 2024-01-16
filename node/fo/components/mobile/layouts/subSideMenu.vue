@@ -12,7 +12,7 @@
 
     <div v-if="!isLogin" class="buttons">
       <Button label="로그인" severity="secondary" @click="onClickLogin()" />
-      <Button label="회원가입" severity="secondary" />
+      <Button label="회원가입" severity="secondary" @click="$router.push('/pubs/MS/MJ/UI_FU_0040')" />
     </div>
 
     <div v-if="isLogin" class="barcode">
@@ -22,8 +22,8 @@
         </span>
 
         <div class="settingButtons">
-          <i class="alarm" />
-          <i class="setting" />
+          <i class="alarm" @click="$router.push('/pubs/MI/alarms')" />
+          <i class="setting" @click="$router.push('/pubs/MI/settings')" />
         </div>
       </div>
 
@@ -220,6 +220,7 @@ const onChangeRouter = (url) => {
         height: 24px;
         display: inline-block;
         background-position: center;
+        cursor: pointer;
       }
       .alarm {
         background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 18.3846V16.8846H6.8077V10.423C6.8077 9.07818 7.22276 7.88908 8.05287 6.85575C8.88301 5.82242 9.94872 5.16153 11.25 4.87308V4.25C11.25 3.90278 11.3714 3.60765 11.6143 3.3646C11.8571 3.12153 12.1519 3 12.4988 3C12.8457 3 13.141 3.12153 13.3846 3.3646C13.6282 3.60765 13.75 3.90278 13.75 4.25V4.87308C15.0512 5.16153 16.1169 5.82242 16.9471 6.85575C17.7772 7.88908 18.1922 9.07818 18.1922 10.423V16.8846H20V18.3846H5ZM12.4983 21.1923C12.0007 21.1923 11.5753 21.0153 11.2221 20.6613C10.8689 20.3073 10.6923 19.8817 10.6923 19.3846H14.3077C14.3077 19.8833 14.1305 20.3093 13.7761 20.6625C13.4218 21.0157 12.9959 21.1923 12.4983 21.1923ZM8.30765 16.8846H16.6923V10.423C16.6923 9.26535 16.283 8.27721 15.4644 7.45863C14.6458 6.64003 13.6577 6.23073 12.5 6.23073C11.3423 6.23073 10.3541 6.64003 9.53555 7.45863C8.71695 8.27721 8.30765 9.26535 8.30765 10.423V16.8846Z' fill='white'/%3E%3C/svg%3E%0A");
