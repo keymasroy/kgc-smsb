@@ -207,6 +207,12 @@
         <InputSwitch v-model="checked" />
       </div>
     </div>
+
+    <div class="mt-[40px]">
+      <div>
+        <img src="@/assets/images/svg/ico_position.svg" />
+      </div>
+    </div>
   </div>
 </template>
 
