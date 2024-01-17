@@ -69,7 +69,7 @@ const org_visualY = ref(0);
 const visualImagesType = [top1, top2, top3, top4];
 const visualImageSrc = ref(visualImagesType[0]);
 const visualImageTop = ref(null);
-const max_top = 130;
+const max_top = 145;
 
 const cardList = ref([
   { title: '멤버십 혜택', desc: '회원에게만 드리는 큰 혜택', router: '/pubs/MI/ID/UI_FU_0044' },
@@ -88,6 +88,12 @@ watchThrottled(
     // visualY 을 3등분 해서 포인트 잡아서 이미지 바꿔줄 거임
     // visualHeight - visualY 뺀 값을 100% 로 계산해서 이동시켜 줄거임
     const _top = org_visualY.value - visualY.value;
+
+    console.log('winScoll: ', newValue);
+    console.log('visualHeight: ', visualHeight.value);
+    console.log('visualY: ', visualY.value);
+    console.log('_top: ', _top);
+    console.log('================================');
 
     // 이미지 top pixel 변경
     visualImageTop.value = handleChangeTopImageTop(_top);
@@ -199,6 +205,7 @@ const handleChangeImage = (value) => {
   height: 76.75px;
   margin-left: -140px;
   transition: all 0.1s;
+  margin-top: -20px;
 }
 
 .main__contents {
