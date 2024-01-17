@@ -1,6 +1,6 @@
 <template>
   <article class="main">
-    <section class="main__visual">
+    <section class="main__visual fade">
       <div class="main__visual-inner">
         <div ref="visual" class="main__visual-text">
           <span class="z-30 font-bold text-[100px] text-white">EARTH</span>
@@ -88,13 +88,6 @@ watchThrottled(
     // visualHeight - visualY 뺀 값을 100% 로 계산해서 이동시켜 줄거임
     const _top = org_visualY.value - visualY.value;
 
-    
-    console.log('winScoll: ', newValue);
-    console.log('visualHeight: ', visualHeight.value);
-    console.log('visualY: ', visualY.value);
-    console.log('_top: ', _top);
-    console.log('================================');
-
     // 이미지 top pixel 변경
     visualImageTop.value = handleChangeTopImageTop(_top);
 
@@ -122,7 +115,7 @@ const handleChangeImage = (value) => {
   } else {
     _index -= 1;
   }
-  
+
   return _index;
 }
 </script>
@@ -341,6 +334,21 @@ const handleChangeImage = (value) => {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 // ===============
