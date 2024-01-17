@@ -60,3 +60,34 @@
     font-weight: 400;
   }
 }
+
+.p-selectbutton.is-box {
+  display: flex;
+  gap: 8px;
+  border: none;
+
+  .p-button {
+    flex: 1;
+    border-radius: 4px;
+    background-color: var(--j-gray100);
+    color: var(--j-gray500);
+
+    .p-button-label {
+      font-weight: 500;
+      color: var(--j-gray500);
+    }
+
+    &:focus {
+      border: 1px solid #5F0000;
+    }
+  }
+
+  .p-button[aria-checked='true'] {
+    background-color: var(--j-bluegray700);
+    border: none;
+
+    .p-button-label {
+      color: var(--j-white);
+    }
+  }
+}
