@@ -6,7 +6,7 @@
         <div class="login-form">
           <UValidationGroup ref="validationGroup">
             <WjInputMask placeholder="아이디 (이메일)" class="is-login mb-3" />
-            <WjInputMask type="password" placeholder="비밀번호" class="is-login mb-8" />
+            <WjInputMask type="password" placeholder="비밀번호 (최초 주민등록번호 뒤 7자리)" class="is-login mb-8" />
 
             <div class="login__bottom">
               <UButton text="로그인" type="is-filled is-large is-full" class="is-login" />
@@ -17,15 +17,8 @@
             </div>
           </UValidationGroup>
         </div>
-        <div class="login__caution mt-10">
-          <div class="caution-inner">
-            <p class="caution-desc">
-              민감정보가 포함되어 있으니,<br />
-              <strong>사용 후 반드시 로그아웃</strong>해 주시기 바랍니다.
-            </p>
-          </div>
-        </div>
-        <p class="copyright">COPYRIGHT © 2023 GS ITM ALL RIGHT RESERVED.</p>
+
+        <p class="copyright">COPYRIGHT © 2024 by KOREA GINSENG CORP. ALL RIGHT RESERVED.</p>
       </div>
     </div>
   </div>
@@ -71,9 +64,9 @@ definePageMeta({
   }
 
   .logo {
-    width: 229px;
-    height: 48px;
-    margin-bottom: 47px;
+    width: 327px;
+    height: 36px;
+    margin-bottom: 53px;
     display: inline-block;
   }
 
