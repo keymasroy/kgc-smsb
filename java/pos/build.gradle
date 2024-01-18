@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.6.2'
+        springBootVersion = '2.6.15'
         set('springCloudVersion', "2021.0.8")
         set('log4j2.version', '2.18.0')
     }
@@ -31,7 +31,7 @@ group = 'kr.co.kgc.smsb'
 version = '0.0.1-SNAPSHOT'
 
 ext {
-	ustraVersion = '2.2.1.175-SNAPSHOT'
+	ustraVersion = '2.2.1.183-SNAPSHOT'
     set('springCloudVersion', "2021.0.8")
     set('log4j2.version', '2.18.0')
 }
@@ -41,6 +41,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
+apply plugin: 'war'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -96,7 +97,12 @@ dependencies {
     compile "com.gsitm.ustra.java.starter:ustra-starter-mybatis:${ustraVersion}"
     compile "com.gsitm.ustra.java:ustra-management-core:${ustraVersion}"
 
-
+    // Wildfly 처리용 provide 모듈 추가
+    providedCompile 'org.springframework.boot:spring-boot-starter-tomcat'
+    providedCompile 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    providedCompile 'javax.servlet:jstl:1.2'
+    providedCompile 'javax.servlet:javax.servlet-api'
+    implementation 'org.reactivestreams:reactive-streams:1.0.4'
 }
 
 

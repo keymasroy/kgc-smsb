@@ -31,7 +31,6 @@ public class SmsbSwaggerConfiguration {
     	};
     }
 
-    @Bean
     WebMvcConfigurer webMvcConfigurer() {
     	return new WebMvcConfigurer() {
     		@Override
