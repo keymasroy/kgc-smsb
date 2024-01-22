@@ -1,0 +1,11 @@
+.wj-control {
+  &.wj-flexchart {
+    // pichart
+    &.wj-flexpie {
+      .wj-data-label {
+        fill: #ffffff;
+        font-weight: 600;
+      }
+    }
+  }
+}
