@@ -80,6 +80,7 @@ const list = [
   { label: 'Popup', content: 'Popup, Alert', url: '/docs/popup' },
   { label: 'Calendar', content: 'Calendar / Date Picker', url: '/docs/calendar' },
   { label: 'Tab', content: 'Tab', url: '/docs/tab' },
+  { label: 'Loader', content: 'Loader', url: '/docs/loader' },
 ];
 
 const pages = [

@@ -213,6 +213,11 @@
         <img src="@/assets/images/svg/ico_position.svg" />
       </div>
     </div>
+
+    <div class="mt-[40px]">
+      <h2 class="text-lg font-bold">Emblem</h2>
+      <img src="@/assets/images/main/emblem.png" />
+    </div>
   </div>
 </template>
 
