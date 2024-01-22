@@ -152,9 +152,11 @@ const menuList = ref([
   display: flex;
   align-items: center;
   height: 100%;
+  z-index: 1;
   
   > a {
     color: #030303;
+    position: relative;
 
     &:not(:first-child) {
       margin-left: 8px;

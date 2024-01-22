@@ -145,6 +145,8 @@ const pages = [
   { label: '이용약관' },
   { label: '', subLabel: '이용약관', url: '/pubs/MI/ID/UI_FU_0033' },
   { label: '', subLabel: '개인정보처리방침', url: '/pubs/MI/ID/UI_FU_0033_1' },
+  { label: '기타' },
+  { label: '', subLabel: '404 페이지', url: '/pubs/MI/UI_FU_0088' },
 ];
 
 const searched_components = computed(() => {
