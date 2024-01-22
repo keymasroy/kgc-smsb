@@ -1,7 +1,7 @@
 <template>
 <div>
   
-  <UBox class="columns" direction="row" height="760">
+  <UBox class="columns" direction="row" height="795">
     <!-- 좌측 영역 -->
     <UItem class="card is-sub" ratio="4">
       <UBox class="table-title-wrap" direction="row">
