@@ -309,7 +309,7 @@ const items = ref([
   { col1: '회원', col2: '회원상태관리', col3: '회원정보 상태 상세 내역 조회', col4: 'UI_BM_2202', col5: '', col6: 'grid', col7: 'X' },
 
   { col1: '회원', col2: '등급관리', col3: '회원 등급 마스터 관리', col4: 'UI_BM_2301', col5: '', col6: 'grid-form', col7: 'X' },
-  { col1: '회원', col2: '등급관리', col3: '회원등급 기준관리', col4: 'UI_BM_2302', col5: '', col6: 'grid-form-grid-vertical', col7: 'X' },
+  { col1: '회원', col2: '등급관리', col3: '회원등급 기준관리', col4: 'UI_BM_2302', col5: '/pubs/BI/MC/UI_BM_2302_pubs', col6: 'grid-form-grid-vertical', col7: 'X' },
   { col1: '회원', col2: '등급관리', col3: '회원등급 기준 이력', col4: 'UI_BM_2303', col5: '', col6: 'popup-grid', col7: 'X' },
   { col1: '회원', col2: '등급관리', col3: '우수회원관리', col4: 'UI_BM_2304', col5: '', col6: 'grid', col7: 'X' },
   { col1: '회원', col2: '등급관리', col3: '우수회원 엑셀업로드', col4: 'UI_BM_2305', col5: '', col6: 'popup-form', col7: 'X' },
