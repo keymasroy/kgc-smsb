@@ -1,19 +1,29 @@
 <template>
   <UBox class="main" direction="row">
-    <UBox class="columns">
+    <UBox class="columns" style="margin-top: 0px">
       <UItem class="card is-sub" ratio="1" style="min-height: 370px">
         <UBox class="table-title-wrap">
           <h2 class="table-title">
             <span>회원가입 현황</span>
           </h2>
         </UBox>
-          
-        <div class="breadcrumbs">
-          <span>기준</span> > <span>현재</span>
+
+        <div class="breadcrumbs" style="margin-bottom: 10px"><span>기준</span> > <span>현재</span></div>
+
+        <div class="totalMember-titleWrap">
+          <span>총 회원가입 수 {{ curDate }} 기준</span>
+          <h3>7,159</h3>
+          <strong>명</strong>
         </div>
 
         <UBox>
-          차트영역
+          <WjFlexChart style="height: 210px" :itemsSource="lineData" bindingX="month" chartType="LineSymbols" :palette="linePalette1">
+            <WjFlexChartLegend position="Bottom" />
+            <WjFlexChartAxis wjProperty="axisY" />
+            <WjFlexChartSeries binding="curYear" name="당해년" :symbolStyle="lineSymbolStyle" />
+            <WjFlexChartSeries binding="preYear" name="전년도" :symbolStyle="lineSymbolStyle" />
+            <WjFlexChartAnimation animationMode="Point"></WjFlexChartAnimation>
+          </WjFlexChart>
         </UBox>
       </UItem>
       <UItem class="card is-sub bg-transparent" ratio="1">
@@ -21,33 +31,33 @@
           <h2 class="table-title">
             <span>승인요청</span>
           </h2>
-          <UButton class="ico_plus"/>
+          <UButton class="ico_plus" />
         </UBox>
-        
+
         <UBox>
           <ul class="box-list request">
             <li class="box-content">
-              <img src="@/assets/images/svg/ico_request1.svg" alt="">
-              <p class="title">가입 요청</p>
+              <img src="@/assets/images/svg/ico_request1.svg" alt="" />
+              <p class="title" style="color: #000">가입 요청</p>
               <p class="data">902</p>
             </li>
             <li class="box-content">
-              <img src="@/assets/images/svg/ico_request2.svg" alt="">
-              <p class="title">변경 요청</p>
+              <img src="@/assets/images/svg/ico_request2.svg" alt="" />
+              <p class="title" style="color: #000">변경 요청</p>
               <p class="data">902</p>
             </li>
             <li class="box-content">
-              <img src="@/assets/images/svg/ico_request3.svg" alt="">
-              <p class="title">적립 요청</p>
+              <img src="@/assets/images/svg/ico_request3.svg" alt="" />
+              <p class="title" style="color: #000">적립 요청</p>
               <p class="data">1,202</p>
             </li>
             <li class="box-content">
-              <img src="@/assets/images/svg/ico_request4.svg" alt="">
+              <img src="@/assets/images/svg/ico_request4.svg" alt="" />
               <p class="title">부정적립 회원 요청</p>
               <p class="data">902</p>
             </li>
             <li class="box-content">
-              <img src="@/assets/images/svg/ico_request5.svg" alt="">
+              <img src="@/assets/images/svg/ico_request5.svg" alt="" />
               <p class="title">러셀러 회원 요청</p>
               <p class="data">902</p>
             </li>
@@ -56,31 +66,52 @@
       </UItem>
 
       <UBox class="item-half" direction="row">
-        <UItem class="card is-sub" ratio="1" style="min-height: 310px">
+        <UItem class="card is-sub" ratio="1" style="min-height: 310px; padding-bottom: 0">
           <UBox class="table-title-wrap">
             <h2 class="table-title">
               <span>마케팅 동의 현황</span>
             </h2>
-            <UButton class="ico_plus"/>
+            <UButton class="ico_plus" />
           </UBox>
 
-          <div class="breadcrumbs">
-            <span>기준</span> > <span>현재</span>
-          </div>
-          <UBox>
-            차트영역
+          <div class="breadcrumbs"><span>기준</span> > <span>전체회원</span></div>
+          <UBox class="pieChart-box">
+            <!-- 마케팅 동의 pie chart -->
+            <WjFlexPie
+              class="main-pieChart"
+              bindingName="title"
+              binding="value"
+              :innerRadius="pieInnerRadius"
+              :itemsSource="pieData1"
+              :palette="piechartPalette1"
+            >
+              <WjFlexPieDataLabel position="Inside" :offset="6" :content="getPieLabelContent" />
+              <WjFlexChartLegend position="Right" />
+            </WjFlexPie>
           </UBox>
         </UItem>
-        <UItem class="card is-sub" ratio="1" style="min-height: 310px">
+        <UItem class="card is-sub" ratio="1" style="min-height: 310px; padding-bottom: 0">
           <UBox class="table-title-wrap">
             <h2 class="table-title">
               <span>약관 동의 현황</span>
             </h2>
-            <UButton class="ico_plus"/>
+            <UButton class="ico_plus" />
           </UBox>
+          <div class="breadcrumbs"><span>기준</span> > <span>전체회원</span></div>
 
-          <UBox>
-            차트영역
+          <UBox class="pieChart-box">
+            <!-- 마케팅 동의 pie chart -->
+            <WjFlexPie
+              class="main-pieChart"
+              bindingName="service"
+              binding="value"
+              :innerRadius="pieInnerRadius"
+              :itemsSource="pieData2"
+              :palette="piechartPalette2"
+            >
+              <WjFlexPieDataLabel position="Inside" :offset="10" :content="getPieLabelContent" />
+              <WjFlexChartLegend position="Right" />
+            </WjFlexPie>
           </UBox>
         </UItem>
       </UBox>
@@ -91,13 +122,11 @@
             <span>발송 현황</span>
           </h2>
 
-          <UButton class="ico_plus"/>
+          <UButton class="ico_plus" />
         </UBox>
 
-        <div class="breadcrumbs">
-          <span>기준</span> > <span>현재</span>
-        </div>
-        
+        <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
+
         <UBox>
           <ul class="box-list">
             <li class="box-content">
@@ -124,19 +153,16 @@
           차트영역
         </UBox>
       </UItem>
-
     </UBox>
-    <UBox class="columns">
+    <UBox class="columns" style="margin-top: 0px">
       <UItem class="card is-sub" ratio="1" style="min-height: 479px">
         <UBox class="table-title-wrap">
           <h2 class="table-title">
             <span>회원가입 현황</span>
           </h2>
         </UBox>
-        
-        <div class="breadcrumbs">
-            <span>기준</span> > <span>현재</span>
-          </div>
+
+        <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
 
         <UBox direction="row" class="item-half">
           <UItem ratio="1">
@@ -149,11 +175,11 @@
                 <span class="data"><strong>184,300</strong>명</span>
               </div>
             </UItem>
-            
+
             <ul class="ranking-list">
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_royal.svg" alt="">
+                  <img src="@/assets/images/svg/img_royal.svg" alt="" />
                   <span>로얄 회원 수</span>
                 </div>
                 <div class="data">
@@ -162,7 +188,7 @@
               </li>
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_gold.svg" alt="">
+                  <img src="@/assets/images/svg/img_gold.svg" alt="" />
                   <span>골드 회원 수</span>
                 </div>
                 <div class="data">
@@ -171,7 +197,7 @@
               </li>
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_silver.svg" alt="">
+                  <img src="@/assets/images/svg/img_silver.svg" alt="" />
                   <span>실버 회원 수</span>
                 </div>
                 <div class="data">
@@ -180,14 +206,14 @@
               </li>
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_family.svg" alt="">
+                  <img src="@/assets/images/svg/img_family.svg" alt="" />
                   <span>패밀리 회원 수</span>
                 </div>
                 <div class="data">
                   <strong>33,001</strong>명 <span class="">(<strong class="down">-43</strong>)</span>
                 </div>
               </li>
-            </ul>            
+            </ul>
           </UItem>
           <UItem ratio="1">
             <UItem class="box-content is-large">
@@ -199,11 +225,11 @@
                 <span class="data"><strong>184,300</strong>명</span>
               </div>
             </UItem>
-            
+
             <ul class="ranking-list">
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_royal.svg" alt="">
+                  <img src="@/assets/images/svg/img_royal.svg" alt="" />
                   <span>로얄 회원 수</span>
                 </div>
                 <div class="data">
@@ -212,7 +238,7 @@
               </li>
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_gold.svg" alt="">
+                  <img src="@/assets/images/svg/img_gold.svg" alt="" />
                   <span>골드 회원 수</span>
                 </div>
                 <div class="data">
@@ -221,7 +247,7 @@
               </li>
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_silver.svg" alt="">
+                  <img src="@/assets/images/svg/img_silver.svg" alt="" />
                   <span>실버 회원 수</span>
                 </div>
                 <div class="data">
@@ -230,7 +256,7 @@
               </li>
               <li>
                 <div class="title">
-                  <img src="@/assets/images/svg/img_family.svg" alt="">
+                  <img src="@/assets/images/svg/img_family.svg" alt="" />
                   <span>패밀리 회원 수</span>
                 </div>
                 <div class="data">
@@ -247,14 +273,10 @@
             <span>회원상태 현황</span>
           </h2>
         </UBox>
-        
-        <div class="breadcrumbs">
-          <span>기준</span> > <span>이번달</span>
-        </div>
 
-        <UBox>
-          차트영역
-        </UBox>
+        <div class="breadcrumbs"><span>기준</span> > <span>이번달</span></div>
+
+        <UBox> 차트영역 </UBox>
       </UItem>
       <UItem class="card is-sub" ratio="1" style="min-height: 478px">
         <UBox class="table-title-wrap">
@@ -262,20 +284,31 @@
             <span>포인트 현황</span>
           </h2>
         </UBox>
-      
-        <div class="breadcrumbs">
-          <span>기준</span> > <span>현재</span>
-        </div>
 
-        <UBox>
-          차트영역
-        </UBox>
+        <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
+
+        <UBox> 차트영역 </UBox>
       </UItem>
     </UBox>
   </UBox>
 </template>
 
 <script setup lang="ts">
+import {
+  WjFlexChart,
+  WjFlexChartLegend,
+  WjFlexChartAxis,
+  WjFlexChartSeries,
+  WjFlexChartAnimation,
+  WjFlexPie,
+  WjFlexPieDataLabel,
+} from '#ustra/nuxt-wijmo/components'
+import { useWijmo } from '#ustra/nuxt-wijmo/composables'
+import * as wjCore from '@grapecity/wijmo'
+import { useDateFormat, useNow } from '@vueuse/core'
+
+const wijmo = useWijmo()
+
 definePageMeta({
   layout: 'ustra-pub',
   name: 'main',
@@ -283,6 +316,100 @@ definePageMeta({
     required: false,
   },
 })
+
+const lineData = reactive([
+  { month: '1월', curYear: 180, preYear: 170 },
+  { month: '2월', curYear: 800, preYear: 750 },
+  { month: '3월', curYear: -200, preYear: 0 },
+  { month: '4월', curYear: -200, preYear: -180 },
+  { month: '5월', curYear: -120, preYear: -150 },
+  { month: '6월', curYear: 0, preYear: 0 },
+  { month: '7월', curYear: 200, preYear: -180 },
+  { month: '8월', curYear: 150, preYear: -150 },
+  { month: '9월', curYear: 700, preYear: 550 },
+  { month: '10월', curYear: 400, preYear: 540 },
+  { month: '11월', curYear: -150, preYear: 300 },
+  { month: '12월', curYear: 0, preYear: 200 },
+])
+
+const linePalette1 = reactive(['rgba(255, 82, 92, 1)', 'rgba(21, 81, 131, 1)'])
+const lineSymbolStyle = { symbolWidth: 1, rx: 2, ry: 2 }
+
+const formatter = ref('YYYY-MM-DD')
+const curDate = useDateFormat(useNow(), formatter)
+
+const pieData1 = reactive([
+  { title: 'SMS(문자)', value: 600 },
+  { title: 'TN(전화)', value: 300 },
+  { title: 'DM(우편물)', value: 400 },
+  { title: 'EM(이메일)', value: 1000 },
+])
+
+const pieData2 = reactive([
+  { service: '정관장몰', value: 1500 },
+  { service: '케어나우', value: 800 },
+  { service: '통합멤버스', value: 2400 },
+])
+
+function getPieLabelContent(ht) {
+  return wijmo.format('{value}', { value: ht.value })
+}
+
+const piechartPalette1 = reactive(['rgba(21, 81, 131, 1)', 'rgba(134, 196, 255, 1)', 'rgba(158, 95, 255, 1)', 'rgba(244, 122, 53, 1)'])
+const piechartPalette2 = reactive(['rgba(63, 117, 241, 1)', 'rgba(251, 208, 135, 1)', 'rgba(21, 81, 131, 1)'])
+const pieInnerRadius = ref(0.45)
 </script>
 
-<style scoped></style>
+<style scoped>
+.main {
+  .breadcrumbs {
+    span {
+      display: block;
+
+      &:first-child {
+        margin-right: 2px;
+      }
+
+      &:last-child {
+        margin-left: 2px;
+      }
+    }
+  }
+
+  .totalMember-titleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+
+    span {
+      font-size: 13px;
+      font-weight: 500;
+      color: #9a9a9a;
+      line-height: 18px;
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #000;
+      line-height: 30px;
+      margin-left: 12px;
+      margin-right: 5px;
+    }
+
+    strong {
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 20px;
+    }
+  }
+}
+
+.pieChart-box {
+  height: 184px !important;
+}
+.main-pieChart {
+  height: 100%;
+}
+</style>
