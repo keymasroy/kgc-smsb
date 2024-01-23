@@ -17,7 +17,14 @@
         </div>
 
         <UBox>
-          <WjFlexChart style="height: 210px" :itemsSource="lineData" bindingX="month" chartType="LineSymbols" :palette="linePalette1">
+          <WjFlexChart
+            class="totalMemberChart"
+            style="height: 210px"
+            :itemsSource="lineData"
+            bindingX="month"
+            chartType="LineSymbols"
+            :palette="linePalette1"
+          >
             <WjFlexChartLegend position="Bottom" />
             <WjFlexChartAxis wjProperty="axisY" />
             <WjFlexChartSeries binding="curYear" name="당해년" :symbolStyle="lineSymbolStyle" />
@@ -411,5 +418,20 @@ const pieInnerRadius = ref(0.45)
 }
 .main-pieChart {
   height: 100%;
+}
+</style>
+
+<style>
+.totalMemberChart {
+  svg {
+    .wj-legend {
+      fill: #000;
+      g {
+        line {
+          stroke-width: 0;
+        }
+      }
+    }
+  }
 }
 </style>
