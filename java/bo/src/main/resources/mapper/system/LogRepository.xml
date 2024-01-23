@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.kgc.smsb.bo.system.repository.LogRepository">
+
+    <select id="select" parameterType="java.util.Map" resultType="kr.co.kgc.smsb.bo.system.model.LogModel">
+        SELECT DBMS_QRY_HIST_ID
+             , PROC_ID
+             , REQ_ID
+             , ORG_QRY_CONT
+             , EXEC_QRY_CONT
+             , PROC_MS
+             , REG_DTTM
+             , REG_USR_ID
+             , REG_USR_IP
+             , UPD_DTTM
+             , UPD_USR_ID
+             , UPD_USR_IP
+        FROM USTRA_DBMS_QRY_HIST
+        WHERE PROC_ID = #{procId}
+          AND REQ_ID = #{reqId}
+    </select>
+
+    <select id="selectWithVo" parameterType="java.util.Map" resultType="kr.co.kgc.smsb.bo.system.model.LogModel">
+        SELECT DBMS_QRY_HIST_ID
+             , PROC_ID
+             , REQ_ID
+             , ORG_QRY_CONT
+             , EXEC_QRY_CONT
+             , PROC_MS
+             , REG_DTTM
+             , REG_USR_ID
+             , REG_USR_IP
+             , UPD_DTTM
+             , UPD_USR_ID
+             , UPD_USR_IP
+        FROM USTRA_DBMS_QRY_HIST
+        WHERE PROC_ID = #{procId}
+          AND REQ_ID = #{reqId}
+    </select>
+
+</mapper>
