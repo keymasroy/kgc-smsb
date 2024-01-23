@@ -1,7 +1,7 @@
 <template>
   <UButton text="팝업 열기" @click="() => (showPopup = true)"></UButton>
  
-  <UPopup v-model="showPopup" :width="800" :height="600" title="팝업제목">
+  <UPopup v-model="showPopup" :width="354" :height="206" title="팝업제목" class="alert-confirm">
     <div>내용</div>
     <template #buttons>
       <UButton
