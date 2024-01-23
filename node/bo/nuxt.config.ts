@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   modules: ['@ustra/nuxt', '@kgc/smsb-common'],
   css: ['~/assets/styles/framework/index.scss', '~/assets/styles/management/index.scss'],
   experimental: {
-    emitRouteChunkError: 'reload',
+    emitRouteChunkError: 'automatic',
   },
   routeRules: {
     '/api/**': { proxy: 'http://localhost:11051/api/**' },
