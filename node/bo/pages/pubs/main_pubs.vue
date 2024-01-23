@@ -294,7 +294,63 @@
 
         <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
 
-        <UBox> 차트영역 </UBox>
+        <UBox>
+          <WjTabPanel :initialized="tabPanel.initialize" class="mt-5 main-chart-tab">
+            <WjTab>
+              <a>
+                <span>적립 포인트</span>
+                <strong>10,000</strong>
+              </a>
+              <div class="chart-tab-inner">
+                <WjFlexChart
+                  stacking="Stacked"
+                  bindingX="date"
+                  :itemsSource="rowBarChartData"
+                  :palette="['rgba(244, 122, 53, 1)', 'rgba(255, 212, 61, 1)', 'rgba(0, 115, 122, 1)', 'rgba(21, 81, 131, 1)']"
+                >
+                  <WjFlexChartLegend position="Top" />
+                  <WjFlexChartSeries binding="정관장몰" />
+                  <WjFlexChartSeries binding="pos" />
+                  <WjFlexChartSeries binding="케어나우" />
+                  <WjFlexChartSeries binding="사푼사푼" />
+                  <WjFlexChartAnimation />
+                </WjFlexChart>
+              </div>
+            </WjTab>
+
+            <WjTab>
+              <a>
+                <span>회원변경</span>
+                <strong>34,000</strong>
+              </a>
+              <div>회원변경</div>
+            </WjTab>
+
+            <WjTab>
+              <a>
+                <span>소멸 포인트</span>
+                <strong>232</strong>
+              </a>
+              <div>소멸 포인트</div>
+            </WjTab>
+
+            <WjTab>
+              <a>
+                <span>추가 적립 포인트</span>
+                <strong>800</strong>
+              </a>
+              <div>추가 적립 포인트</div>
+            </WjTab>
+
+            <WjTab>
+              <a>
+                <span>선 포인트</span>
+                <strong>5,500</strong>
+              </a>
+              <div>선 포인트</div>
+            </WjTab>
+          </WjTabPanel>
+        </UBox>
       </UItem>
     </UBox>
   </UBox>
@@ -309,6 +365,8 @@ import {
   WjFlexChartAnimation,
   WjFlexPie,
   WjFlexPieDataLabel,
+  WjTabPanel,
+  WjTab,
 } from '#ustra/nuxt-wijmo/components'
 import { useWijmo } from '#ustra/nuxt-wijmo/composables'
 import * as wjCore from '@grapecity/wijmo'
@@ -365,6 +423,17 @@ function getPieLabelContent(ht) {
 const piechartPalette1 = reactive(['rgba(21, 81, 131, 1)', 'rgba(134, 196, 255, 1)', 'rgba(158, 95, 255, 1)', 'rgba(244, 122, 53, 1)'])
 const piechartPalette2 = reactive(['rgba(63, 117, 241, 1)', 'rgba(251, 208, 135, 1)', 'rgba(21, 81, 131, 1)'])
 const pieInnerRadius = ref(0.45)
+
+const tabPanel = useWijmoTabPanel()
+
+const rowBarChartData = reactive([
+  { date: '1월', 정관장몰: 300, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+  { date: '2월', 정관장몰: 500, pos: 100, 케어나우: 200, 사푼사푼: 50 },
+  { date: '3월', 정관장몰: 200, pos: 100, 케어나우: 150, 사푼사푼: 50 },
+  { date: '4월', 정관장몰: 100, pos: 50, 케어나우: 50, 사푼사푼: 30 },
+  { date: '5월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+])
+const testStyle = { symbolWidth: 1 }
 </script>
 
 <style scoped>
@@ -418,6 +487,10 @@ const pieInnerRadius = ref(0.45)
 }
 .main-pieChart {
   height: 100%;
+}
+
+.chart-tab-inner {
+  height: 300px !important;
 }
 </style>
 
