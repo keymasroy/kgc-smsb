@@ -48,15 +48,15 @@
               </UBox>
             </UField>
             <UField label="">
-              <UTextBox></UTextBox>
+              <UTextBox disabled></UTextBox>
             </UField>
           </UFieldRow>
           <UFieldRow :ratio="[1, 1]">
-            <UField label="">
-              <UBox> </UBox>
-            </UField>
             <UField label="WjInputNumber">
               <WjInputNumber />
+            </UField>
+            <UField label="Number Disable">
+              <WjInputNumber class="wj-state-disabled" disabled />
             </UField>
           </UFieldRow>
         </UFieldSet>
@@ -72,7 +72,7 @@
           <UFieldRow>
             <UField direction="col" required label="소속 조직장 의견"><UTextBox type="textarea" placeholder="입력하세요" /></UField>
             <UField direction="col" required label="퇴직에 따른 충원여부"><UTextBox type="textarea" placeholder="입력하세요" /></UField>
-            <UField direction="col" required label="퇴직사유"><UTextBox type="textarea" placeholder="입력하세요" /></UField>
+            <UField direction="col" required label="퇴직사유"><UTextBox type="textarea" placeholder="입력하세요" disabled /></UField>
           </UFieldRow>
         </UFieldSet>
       </div>
