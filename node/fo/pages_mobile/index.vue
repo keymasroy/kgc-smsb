@@ -1,6 +1,6 @@
 <template>
   <article ref="main" class="main">
-    <section class="main__visual">
+    <section class="main__visual fade">
       <div class="main__visual-inner w-full">
         <div ref="visual" class="main__visual-text">
           <span class="z-30 font-bold text-[52px] text-white">EARTH</span>
@@ -78,7 +78,7 @@ const cardList = ref([
   { title: '포인트 선물', desc: '가족 또는 친구에게 건강한 선물', router: '/pubs/MP/PG/UI_FU_0055' },
 ])
 
-onMounted(() => {
+onMounted(async () => {
   org_visualY.value = visualY.value;
 })
 
@@ -88,12 +88,6 @@ watchThrottled(
     // visualY 을 3등분 해서 포인트 잡아서 이미지 바꿔줄 거임
     // visualHeight - visualY 뺀 값을 100% 로 계산해서 이동시켜 줄거임
     const _top = org_visualY.value - visualY.value;
-
-    console.log('winScoll: ', newValue);
-    console.log('visualHeight: ', visualHeight.value);
-    console.log('visualY: ', visualY.value);
-    console.log('_top: ', _top);
-    console.log('================================');
 
     // 이미지 top pixel 변경
     visualImageTop.value = handleChangeTopImageTop(_top);
@@ -348,6 +342,21 @@ const handleChangeImage = (value) => {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 // ===============

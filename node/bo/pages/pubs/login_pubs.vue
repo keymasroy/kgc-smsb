@@ -2,38 +2,31 @@
   <div class="login__wrap">
     <div class="login">
       <div class="login__main">
-          <img src="@/assets/images/svg/logo.svg" alt="U.STRA HR" class="logo"/>
-          <div class="login-form">
-            <UValidationGroup ref="validationGroup">
-              <WjInputMask placeholder="아이디 (이메일)" class="is-login mb-3"/>
-              <WjInputMask type="password" placeholder="비밀번호" class="is-login mb-8"/>
+        <img src="@/assets/images/svg/logo.svg" alt="U.STRA HR" class="logo" />
+        <div class="login-form">
+          <UValidationGroup ref="validationGroup">
+            <WjInputMask placeholder="아이디 (이메일)" class="is-login mb-3" />
+            <WjInputMask type="password" placeholder="비밀번호 (최초 주민등록번호 뒤 7자리)" class="is-login mb-8" />
 
-              <div class="login__bottom">
-                <UButton text="로그인" type="is-filled is-large is-full" class="is-login"/>
-                <div class="columns is-between">
-                  <UCheckGroupBox :items-source="[{ text: '아이디저장' }]" v-model="checked" class="is-login"> </UCheckGroupBox>
-                  <NuxtLink to="/about" class="is-login">
-                    비밀번호찾기
-                  </NuxtLink>
-                </div>
+            <div class="login__bottom">
+              <UButton text="로그인" type="is-filled is-large is-full" class="is-login" />
+              <div class="columns is-between">
+                <UCheckGroupBox :items-source="[{ text: '아이디저장' }]" v-model="checked" class="is-login"> </UCheckGroupBox>
+                <NuxtLink to="/about" class="is-login"> 비밀번호찾기 </NuxtLink>
               </div>
-            </UValidationGroup>
-          </div>
-          <div class="login__caution mt-10">
-              <div class="caution-inner">   
-                  <p class="caution-desc">민감정보가 포함되어 있으니,<br>
-                  <strong>사용 후 반드시 로그아웃</strong>해 주시기 바랍니다.</p>
-              </div>
-          </div>
-          <p class="copyright">COPYRIGHT © 2023 GS ITM ALL RIGHT RESERVED.</p>
+            </div>
+          </UValidationGroup>
+        </div>
+
+        <p class="copyright">COPYRIGHT © 2024 by KOREA GINSENG CORP. ALL RIGHT RESERVED.</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { UValidationGroup } from '#ustra/nuxt-wijmo/components';
-import { WjInputMask, UCheckGroupBox } from '#ustra/nuxt-wijmo/components';
+import { UValidationGroup } from '#ustra/nuxt-wijmo/components'
+import { WjInputMask, UCheckGroupBox } from '#ustra/nuxt-wijmo/components'
 
 definePageMeta({
   layout: false,
@@ -41,11 +34,10 @@ definePageMeta({
     required: false,
   },
 })
-
 </script>
 
 <style lang="scss" scoped>
-.login__wrap{
+.login__wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,20 +53,20 @@ definePageMeta({
     overflow: hidden;
   }
   .login__main {
-      position: relative;
-      border-radius: 13px;
-      padding: 112px 220px 224px;
-      width: 800px;
-      height: 800px;
-      text-align: center;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-      background-color: #fff;
+    position: relative;
+    border-radius: 13px;
+    padding: 112px 220px 224px;
+    width: 800px;
+    height: 800px;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
   }
 
-  .logo{
-    width: 229px;
-    height: 48px;
-    margin-bottom: 47px;
+  .logo {
+    width: 327px;
+    height: 36px;
+    margin-bottom: 53px;
     display: inline-block;
   }
 
@@ -92,15 +84,14 @@ definePageMeta({
     margin: 0 0 12px;
     padding: 15px 0;
     border-radius: 4px;
-    background-color: #F2F5F6;
-    
+    background-color: #f2f5f6;
 
-    .caution-inner{
+    .caution-inner {
       flex: 1;
-      .caution-desc{
+      .caution-desc {
         width: 100%;
         position: inherit;
-        color: #476C97;
+        color: #476c97;
         font-size: 13px;
         line-height: 18px;
         padding-left: 19px;
@@ -108,7 +99,7 @@ definePageMeta({
     }
   }
 
-  .copyright{
+  .copyright {
     position: absolute;
     bottom: 21px;
     background: none;

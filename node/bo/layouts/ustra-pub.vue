@@ -48,7 +48,7 @@
 
     <VMain id="page_wrapper" class="t_zero">
       <div class="content">
-        <div class="columns has-gap">
+        <div class="columns has-gap" v-if="pageName !== 'main'">
           <UBox class="card is-title">
             <h1 class="page-title">
               <span>메뉴명</span>
@@ -91,6 +91,9 @@ import UstraConfigMenu from '#ustra/nuxt-wijmo/management/layouts/config-menu.vu
 
 // 2023-11-29
 import Mdi from '@/components/layouts/mdi.vue'
+
+const route = useRoute()
+const pageName = route.name
 
 // == Header ==
 const emits = defineEmits(['changeNavState'])
@@ -458,8 +461,8 @@ export default {
     &.is-hover {
       .v-btn {
         &::before {
-          background-color: $gray160;
-          // background-color: #d20f27;
+          // background-color: $gray160;
+          background-color: #d20f27;
           transition: 0.2s ease-out;
         }
       }
@@ -468,8 +471,8 @@ export default {
     &.is-active {
       .v-btn {
         &::before {
-          background-color: $is-primary;
-          // background-color: #5f0000;
+          // background-color: $is-primary;
+          background-color: #5f0000;
           border-radius: 0px 0px 20px 20px;
         }
       }

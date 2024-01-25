@@ -346,6 +346,59 @@
       }
     }
   }
+
+  &.main-chart-tab {
+    .wj-tabheaders {
+      display: flex;
+      border-bottom: 4px solid #f4f7f9 !important;
+    }
+
+    .wj-tabheader {
+      flex: 1;
+      max-width: 136px;
+      padding-top: 18px !important;
+      padding-bottom: 18px !important;
+      border: 0 !important;
+
+      span {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 1.38;
+        color: #99a8b5;
+      }
+
+      strong {
+        display: block;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1.2;
+        color: #99a8b5;
+      }
+
+      &.wj-state-active {
+        strong {
+          color: black;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 16px;
+          height: 8px;
+          background-image: url("data:image/svg+xml,%3Csvg width='16' height='8' viewBox='0 0 16 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.93066 7.93328C7.96938 7.97054 8.03062 7.97054 8.06934 7.93328L15.6154 0.672058C15.6803 0.60964 15.6361 0.5 15.5461 0.5H0.453916C0.363895 0.5 0.319712 0.609639 0.384579 0.672058L7.93066 7.93328Z' fill='black'/%3E%3C/svg%3E%0A");
+        }
+
+        &::after {
+          bottom: -4px !important;
+          height: 4px !important;
+          background-color: black !important;
+        }
+      }
+    }
+  }
 }
 
 // 중요텍스트 옆 빨간 별표
@@ -1042,6 +1095,20 @@
     &:after {
       display: none !important;
     }
+  }
+
+  &.ico_plus {
+    padding: 0;
+    border: none;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' rx='2' fill='%23CDD9E3'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 6C11 5.44772 10.5523 5 10 5C9.44772 5 9 5.44772 9 6V9H6C5.44772 9 5 9.44772 5 10C5 10.5523 5.44772 11 6 11H9V14C9 14.5523 9.44771 15 10 15C10.5523 15 11 14.5523 11 14V11H14C14.5523 11 15 10.5523 15 10C15 9.44772 14.5523 9 14 9H11V6Z' fill='white'/%3E%3C/svg%3E%0A")
+      no-repeat center transparent;
+  }
+
+  &.ico_plus {
+    padding: 0;
+    border: none;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' rx='2' fill='%23CDD9E3'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 6C11 5.44772 10.5523 5 10 5C9.44772 5 9 5.44772 9 6V9H6C5.44772 9 5 9.44772 5 10C5 10.5523 5.44772 11 6 11H9V14C9 14.5523 9.44771 15 10 15C10.5523 15 11 14.5523 11 14V11H14C14.5523 11 15 10.5523 15 10C15 9.44772 14.5523 9 14 9H11V6Z' fill='white'/%3E%3C/svg%3E%0A")
+      no-repeat center transparent;
   }
 }
 

@@ -1,0 +1,47 @@
+.wj-control {
+  &.wj-flexchart {
+    // 공통
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    .wj-axis-y,
+    .wj-axis-x {
+      .wj-label {
+        fill: #9a9a9a;
+        font-size: 13px;
+        font-weight: 500;
+      }
+    }
+
+    // x 라인 컬러
+    .wj-axis-x {
+      .wj-line,
+      .wj-tick {
+        stroke: #f1f1f1;
+      }
+    }
+
+    .wj-axis-y {
+      .wj-gridline {
+        stroke: #f1f1f1;
+        opacity: 1;
+      }
+    }
+
+    // pichart
+    &.wj-flexpie {
+      .wj-label {
+        fill: #666666;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .wj-data-label {
+        fill: #ffffff;
+        font-weight: 600;
+        font-size: 12px;
+      }
+    }
+  }
+}

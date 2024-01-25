@@ -61,19 +61,12 @@ const menuList = ref([
     .gnb {
       background-color: var(--j-white);
       border-bottom: 1px solid var(--j-gray100);
-
-      &:before {
-        position: absolute;
-        width: calc(100% + 120px);
-        height: calc(100% - 100px);
-        top: 100px;
-        left: -120px;
-        background-color: var(--j-white);
-      }
-
       .gnb__link {
         color: var(--j-black);
-        
+        height: auto;
+        max-height: 1000px;
+        transition: max-height 0.3s ease-in;
+
         &:hover {
           .gnb__title {
             color: var(--j-primary01);
@@ -103,6 +96,9 @@ const menuList = ref([
     font-size: 17px;
     text-align: center;
     color: var(--j-black);
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 
     .gnb__title {
       line-height: 100px;
@@ -113,11 +109,21 @@ const menuList = ref([
 
   &:before {
     content: '';
-    height: 0;
+    top: 100px;
+    left: -120px;
+    position: absolute;
+    overflow: hidden;
+    width: calc(100% + 120px);
+    height: calc(100% - 100px);
+    max-height: calc(100% - 100px);
+    background-color: var(--j-white);
   }
 
   .gnb__subList {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
 
     ul {
       height: 41px;
@@ -146,10 +152,11 @@ const menuList = ref([
   display: flex;
   align-items: center;
   height: 100%;
+  z-index: 1;
   
   > a {
-    position: relative;
     color: #030303;
+    position: relative;
 
     &:not(:first-child) {
       margin-left: 8px;

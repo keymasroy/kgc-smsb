@@ -50,21 +50,27 @@
               </div>
             </div>
           </li>
+
+          <li class="flex flex-col mb-[20px]">
+            <label class="py-[9px] text-sm" for="phone">통신사</label>
+            <Dropdown disabled class="w-full" inputClass="p-inputtext-lg" v-model="agency" :options="agencyList" optionLabel="label" placeholder="통신사 선택" />
+          </li>
+
           <li class="flex flex-col mb-[20px]">
             <label class="py-[9px] text-sm" for="phone">휴대폰 번호</label>
             <InputText disabled v-model="phone" id="phone" class="w-full" type="text" size="large" />
           </li>
           <li class="flex flex-col mb-[20px]">
             <label class="py-[9px] text-sm">내/외국인 <span class="text-[#F46144]">*</span></label>
-            <div class="flex">
-              <div class="flex items-center">
-                <RadioButton class="p-radiobutton-box-lg" v-model="native" inputId="native1" name="native" value="양력" />
-                <label for="native1">내국인</label>
-              </div>
-              <div class="flex items-center ml-[20px]">
-                <RadioButton class="p-radiobutton-box-lg" v-model="native" inputId="native2" name="native" value="음력" />
-                <label for="native2">외국인</label>
-              </div>
+            <div class="flex gap-[8px] w-full">
+              <SelectButton
+                v-model="selectedValue"
+                :options="selectOptions"
+                optionLabel="label"
+                optionValue="value"
+                class="flex-[2] is-box"
+              />
+              <Dropdown :disabled="selectedValue === '내국인'" placeholder="국적 선택" inputClass="p-inputtext-lg" v-model="country" :options="countryList" optionLabel="label" class="flex-[1]" />
             </div>
           </li>
           <li class="flex flex-col mb-[20px]">
@@ -285,6 +291,32 @@ const modalVisible = ref(false);
 const onClickCancel = () => {
   modalVisible.value = true;
 };
+
+
+const selectedValue = ref('내국인');
+const selectOptions = ref([
+  { label: '내국인' , value: '내국인' },
+  { label: '외국인' , value: '외국인' }
+]);
+
+const country = ref(null);
+const countryList = ref([
+  { label: '미국' , value: '미국' },
+  { label: '일본' , value: '일본' },
+  { label: '중국' , value: '중국' },
+  { label: '기타' , value: '기타' }
+]);
+
+const agency = ref(null);
+const agencyList = ref([
+  { label: 'SKT' , value: 'skt' },
+  { label: 'KT' , value: 'kt' },
+  { label: 'LGU+' , value: 'lg' },
+  { label: 'SK 알뜰폰' , value: 'sk_virtual' },
+  { label: 'KT 알뜰폰' , value: 'kt_virtual' },
+  { label: 'LG U+ 알뜰폰' , value: 'lg_virtual' },
+]);
+
 </script>
 
 <style lang="scss" scoped></style>

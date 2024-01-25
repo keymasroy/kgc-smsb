@@ -117,6 +117,12 @@
     .pop-alert {
       justify-content: center !important;
     }
+    .v-card-text {
+      min-height: 60px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .pop-contents {
       padding: 0 !important;
       justify-content: center !important;
@@ -132,6 +138,9 @@
         width: 100%;
         justify-content: center;
       }
+    }
+    .btn_wrap {
+      justify-content: center !important;
     }
   }
 }

@@ -11,7 +11,7 @@
         <TabPanel header="사용가능 쿠폰">
           <div class="flex justify-between mb-[20px]">
             <span className="text-[15px] font-medium"> {{ `총 ${availableList.length}건` }}</span>
-            <div class="coupon__search">
+            <div class="search__tab">
               <span
                 v-for="(type, i) in selectType"
                 :key="i"
@@ -63,7 +63,7 @@
         <TabPanel header="사용완료/기간만료 쿠폰">
           <div class="flex justify-between mb-[20px]">
             <span className="text-[15px] font-medium"> {{ `총 ${unavailableList.length}건` }}</span>
-            <div class="coupon__search">
+            <div class="search__tab">
               <span
                 v-for="(type, i) in selectType"
                 :key="i"
@@ -260,26 +260,6 @@ const onClickSearchType = (tabType, searchType) => {
 </script>
 
 <style lang="scss" scoped>
-.coupon__search {
-  span {
-    cursor: pointer;
-    font-size: 15px;
-    &.selected {
-      font-weight: 700;
-    }
-
-    & + span::before {
-      content: '';
-      background-image: url("data:image/svg+xml,%3Csvg width='1' height='15' viewBox='0 0 1 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='0.5' width='1' height='14' fill='%23D9D9D9'/%3E%3C/svg%3E%0A");
-      background-repeat: no-repeat;
-      width: 1px;
-      height: 14px;
-      display: inline-block;
-      margin: 0 12px;
-    }
-  }
-}
-
 ::v-deep(.p-tabview-nav-container) {
   margin-left: -20px;
   margin-right: -20px;
