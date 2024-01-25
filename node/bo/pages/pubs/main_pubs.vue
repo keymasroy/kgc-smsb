@@ -303,6 +303,7 @@
               </a>
               <div class="chart-tab-inner">
                 <WjFlexChart
+                  class="tab-chart"
                   stacking="Stacked"
                   bindingX="date"
                   :itemsSource="rowBarChartData"
@@ -490,7 +491,10 @@ const testStyle = { symbolWidth: 1 }
 }
 
 .chart-tab-inner {
-  height: 300px !important;
+  height: 240px !important;
+  .tab-chart {
+    height: 230px;
+  }
 }
 </style>
 
@@ -502,6 +506,10 @@ const testStyle = { symbolWidth: 1 }
       g {
         line {
           stroke-width: 0;
+        }
+        ellipse {
+          rx: 3.5;
+          ry: 3.5;
         }
       }
     }

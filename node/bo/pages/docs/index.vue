@@ -157,6 +157,15 @@ const items3 = ref([
 // BO 페이지 목록 그리드 데이터
 const items = ref([
   {
+    col1: '메인',
+    col2: '로그인',
+    col3: '로그인',
+    col4: '로그인',
+    col5: '/pubs/login_pubs',
+    col6: '*',
+    col7: 'O',
+  },
+  {
     col1: '회원',
     col2: '회원관리',
     col3: '회원 조회',
@@ -309,7 +318,15 @@ const items = ref([
   { col1: '회원', col2: '회원상태관리', col3: '회원정보 상태 상세 내역 조회', col4: 'UI_BM_2202', col5: '', col6: 'grid', col7: 'X' },
 
   { col1: '회원', col2: '등급관리', col3: '회원 등급 마스터 관리', col4: 'UI_BM_2301', col5: '', col6: 'grid-form', col7: 'X' },
-  { col1: '회원', col2: '등급관리', col3: '회원등급 기준관리', col4: 'UI_BM_2302', col5: '/pubs/BI/MC/UI_BM_2302_pubs', col6: 'grid-form-grid-vertical', col7: 'X' },
+  {
+    col1: '회원',
+    col2: '등급관리',
+    col3: '회원등급 기준관리',
+    col4: 'UI_BM_2302',
+    col5: '/pubs/BI/MC/UI_BM_2302_pubs',
+    col6: 'grid-form-grid-vertical',
+    col7: 'X',
+  },
   { col1: '회원', col2: '등급관리', col3: '회원등급 기준 이력', col4: 'UI_BM_2303', col5: '', col6: 'popup-grid', col7: 'X' },
   { col1: '회원', col2: '등급관리', col3: '우수회원관리', col4: 'UI_BM_2304', col5: '', col6: 'grid', col7: 'X' },
   { col1: '회원', col2: '등급관리', col3: '우수회원 엑셀업로드', col4: 'UI_BM_2305', col5: '', col6: 'popup-form', col7: 'X' },
@@ -444,7 +461,15 @@ const items = ref([
 
   { col1: '회원', col2: '업무관리', col3: '업무담당자관리', col4: 'UI_BM_5101', col5: '', col6: 'grid-form', col7: 'X' },
   { col1: '회원', col2: '업무관리', col3: '업무담당자', col4: 'UI_BM_5102', col5: '', col6: 'board-vertical', col7: 'X' },
-  { col1: '회원', col2: '업무관리', col3: '업무도움말 미리보기', col4: 'UI_BM_5103', col5: '/pubs/SY/WM/UI_BM_5103_pubs', col6: 'popup-form', col7: 'X' },
+  {
+    col1: '회원',
+    col2: '업무관리',
+    col3: '업무도움말 미리보기',
+    col4: 'UI_BM_5103',
+    col5: '/pubs/SY/WM/UI_BM_5103_pubs',
+    col6: 'popup-form',
+    col7: 'X',
+  },
 
   { col1: '회원', col2: 'APP관리', col3: '앱버전관리', col4: 'UI_BM_5201', col5: '', col6: 'grid-form', col7: 'X' },
 
