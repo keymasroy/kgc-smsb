@@ -166,4 +166,18 @@ const { collectionView, loadPageData, pageSize, totalRecords, currentPageNo } = 
 
 const itemsSourceGrid = ref([{ col1: '텍스트' }, { col1: '텍스트2' }, { col1: '텍스트3' }])
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.columns {
+    margin: 10px 0;
+  }
+  .card.is-sub {
+    padding: 10px 20px 15px;
+    &.is-search {
+    padding: 10px 20px;
+      .u-field-set {
+        margin-bottom :0
+      }
+    }
+  }
+</style>
