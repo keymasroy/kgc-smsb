@@ -336,10 +336,10 @@
                   :palette="['rgba(244, 122, 53, 1)', 'rgba(255, 212, 61, 1)', 'rgba(0, 115, 122, 1)', 'rgba(21, 81, 131, 1)']"
                 >
                   <WjFlexChartLegend position="Top" />
-                  <WjFlexChartSeries binding="정관장몰" />
-                  <WjFlexChartSeries binding="pos" />
-                  <WjFlexChartSeries binding="케어나우" />
-                  <WjFlexChartSeries binding="사푼사푼" />
+                  <WjFlexChartSeries binding="jungMall" name="정관장몰" />
+                  <WjFlexChartSeries binding="pos" name="POS" />
+                  <WjFlexChartSeries binding="carenow" name="케어나우" />
+                  <WjFlexChartSeries binding="sapun" name="사푼사푼" />
                 </WjFlexChart>
               </div>
             </WjTab>
@@ -455,18 +455,18 @@ const pieInnerRadius = ref(0.45)
 const tabPanel = useWijmoTabPanel()
 
 const rowBarChartData = reactive([
-  { date: '1월', 정관장몰: 300, pos: 150, 케어나우: 150, 사푼사푼: 50 },
-  { date: '2월', 정관장몰: 500, pos: 100, 케어나우: 200, 사푼사푼: 50 },
-  { date: '3월', 정관장몰: 200, pos: 100, 케어나우: 150, 사푼사푼: 50 },
-  { date: '4월', 정관장몰: 100, pos: 50, 케어나우: 50, 사푼사푼: 30 },
-  { date: '5월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
-  { date: '6월', 정관장몰: 300, pos: 150, 케어나우: 150, 사푼사푼: 50 },
-  { date: '7월', 정관장몰: 500, pos: 100, 케어나우: 200, 사푼사푼: 50 },
-  { date: '8월', 정관장몰: 200, pos: 100, 케어나우: 150, 사푼사푼: 50 },
-  { date: '9월', 정관장몰: 100, pos: 50, 케어나우: 50, 사푼사푼: 30 },
-  { date: '10월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
-  { date: '11월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
-  { date: '12월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+  { date: '1월', jungMall: 300, pos: 150, carenow: 150, sapun: 50 },
+  { date: '2월', jungMall: 500, pos: 100, carenow: 200, sapun: 50 },
+  { date: '3월', jungMall: 200, pos: 100, carenow: 150, sapun: 50 },
+  { date: '4월', jungMall: 100, pos: 50, carenow: 50, sapun: 30 },
+  { date: '5월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
+  { date: '6월', jungMall: 300, pos: 150, carenow: 150, sapun: 50 },
+  { date: '7월', jungMall: 500, pos: 100, 케어나우: 200, sapun: 50 },
+  { date: '8월', jungMall: 200, pos: 100, carenow: 150, sapun: 50 },
+  { date: '9월', jungMall: 100, pos: 50, carenow: 50, sapun: 30 },
+  { date: '10월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
+  { date: '11월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
+  { date: '12월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
 ])
 
 const memberStateChartData = reactive([

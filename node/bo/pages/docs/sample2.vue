@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UBox class="columns" direction="row" height="795">
+    <UBox class="columns" direction="row" height="735">
       <!-- 좌측 영역 -->
       <UItem class="card is-sub" ratio="4">
         <UBox class="table-title-wrap" direction="row">
@@ -167,17 +167,32 @@ const { collectionView, loadPageData, pageSize, totalRecords, currentPageNo } = 
 const itemsSourceGrid = ref([{ col1: '텍스트' }, { col1: '텍스트2' }, { col1: '텍스트3' }])
 </script>
 <style lang="scss" scoped>
-
 .columns {
-    margin: 10px 0;
+  margin: 10px 0;
+  > .card {
+    margin: 0 5px;
   }
-  .card.is-sub {
-    padding: 10px 20px 15px;
-    &.is-search {
+}
+
+.card.is-sub {
+  padding: 10px 20px 15px;
+  &.is-search {
     padding: 10px 20px;
-      .u-field-set {
-        margin-bottom :0
+    .u-field-set {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.u-item {
+  &.cards {
+    margin: 0 5px;
+
+    .card {
+      &:not(:first-child) {
+        margin-top: 10px;
       }
     }
   }
+}
 </style>

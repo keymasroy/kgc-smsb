@@ -523,16 +523,20 @@ const itemsSourceGrid = ref([{ col1: '텍스트' }, { col1: '텍스트2' }, { co
 </script>
 
 <style lang="scss" scoped>
-  .columns {
-    margin: 10px 0;
+.columns {
+  margin: 10px 0;
+
+  > .card {
+    margin: 0 5px;
   }
-  .card.is-sub {
-    padding: 10px 20px 15px;
-    &.is-search {
+}
+.card.is-sub {
+  padding: 10px 20px 15px;
+  &.is-search {
     padding: 10px 20px;
-      .u-field-set {
-        margin-bottom :0
-      }
+    .u-field-set {
+      margin-bottom: 0;
     }
   }
+}
 </style>
