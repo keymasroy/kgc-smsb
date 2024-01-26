@@ -157,7 +157,18 @@
               <p class="data">23,411</p>
             </li>
           </ul>
-          차트영역
+        </UBox>
+        <UBox>
+          <WjFlexGrid :itemsSource="itemsSourceGrid" :isReadOnly="true" style="width: 692px; height: 235px; margin-top: 25px">
+            <WjFlexGridColumn header="발송유형" binding="col1" width="*" />
+            <WjFlexGridColumn header="발송년월" binding="col1" width="*" />
+            <WjFlexGridColumn header="등급별" binding="col1" width="*" />
+            <WjFlexGridColumn header="발송명" binding="col1" width="*" />
+            <WjFlexGridColumn header="대상건수" binding="col1" width="*" />
+            <WjFlexGridColumn header="성공건수" binding="col1" width="*" />
+            <WjFlexGridColumn header="실패건수" binding="col1" width="*" />
+            <WjFlexGridColumn header="대기건수" binding="col1" width="*" />
+          </WjFlexGrid>
         </UBox>
       </UItem>
     </UBox>
@@ -283,7 +294,22 @@
 
         <div class="breadcrumbs"><span>기준</span> > <span>이번달</span></div>
 
-        <UBox> 차트영역 </UBox>
+        <UBox>
+          <WjFlexChart
+            style="height: 270px"
+            chartType="Bar"
+            bindingX="title"
+            stacking="Stacked"
+            :itemsSource="memberStateChartData"
+            :palette="['rgba(95, 0, 0, 1)']"
+          >
+            <WjFlexChartAxis wjProperty="axisY" :reversed="true" />
+            <WjFlexChartLegend position="None" />
+            <WjFlexChartSeries binding="value" />
+            <WjFlexChartDataLabel content="{value}" position="Top" :offset="13" :border="true" />
+            <WjFlexChartAnimation />
+          </WjFlexChart>
+        </UBox>
       </UItem>
       <UItem class="card is-sub" ratio="1" style="min-height: 478px">
         <UBox class="table-title-wrap">
@@ -314,11 +340,9 @@
                   <WjFlexChartSeries binding="pos" />
                   <WjFlexChartSeries binding="케어나우" />
                   <WjFlexChartSeries binding="사푼사푼" />
-                  <WjFlexChartAnimation />
                 </WjFlexChart>
               </div>
             </WjTab>
-
             <WjTab>
               <a>
                 <span>회원변경</span>
@@ -368,6 +392,9 @@ import {
   WjFlexPieDataLabel,
   WjTabPanel,
   WjTab,
+  WjFlexChartDataLabel,
+  WjFlexGrid,
+  WjFlexGridColumn,
 } from '#ustra/nuxt-wijmo/components'
 import { useWijmo } from '#ustra/nuxt-wijmo/composables'
 import * as wjCore from '@grapecity/wijmo'
@@ -433,8 +460,39 @@ const rowBarChartData = reactive([
   { date: '3월', 정관장몰: 200, pos: 100, 케어나우: 150, 사푼사푼: 50 },
   { date: '4월', 정관장몰: 100, pos: 50, 케어나우: 50, 사푼사푼: 30 },
   { date: '5월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+  { date: '6월', 정관장몰: 300, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+  { date: '7월', 정관장몰: 500, pos: 100, 케어나우: 200, 사푼사푼: 50 },
+  { date: '8월', 정관장몰: 200, pos: 100, 케어나우: 150, 사푼사푼: 50 },
+  { date: '9월', 정관장몰: 100, pos: 50, 케어나우: 50, 사푼사푼: 30 },
+  { date: '10월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+  { date: '11월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
+  { date: '12월', 정관장몰: 200, pos: 150, 케어나우: 150, 사푼사푼: 50 },
 ])
-const testStyle = { symbolWidth: 1 }
+
+const memberStateChartData = reactive([
+  { title: '가망', value: 18 },
+  { title: '입문', value: 5.0 },
+  { title: '활성화', value: 24.3 },
+  { title: '휴먼', value: 3.7 },
+  { title: '이탈1', value: 1.0 },
+  { title: '이탈2', value: 4.2 },
+  { title: '이탈3', value: 0.9 },
+])
+
+const itemsSourceGrid = ref([
+  { col1: '텍스트' },
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
+  { col1: '텍스트' },
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
+  { col1: '텍스트' },
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
+  { col1: '텍스트' },
+  { col1: '텍스트2' },
+  { col1: '텍스트3' },
+])
 </script>
 
 <style scoped>
