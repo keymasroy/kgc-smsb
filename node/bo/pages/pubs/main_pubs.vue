@@ -334,8 +334,9 @@
                   bindingX="date"
                   :itemsSource="rowBarChartData"
                   :palette="['rgba(244, 122, 53, 1)', 'rgba(255, 212, 61, 1)', 'rgba(0, 115, 122, 1)', 'rgba(21, 81, 131, 1)']"
+                  :itemFormatter="rowChartItemFormatter"
                 >
-                  <WjFlexChartLegend position="Top" />
+                  <WjFlexChartLegend position="Top" titleAlign="right" />
                   <WjFlexChartSeries binding="jungMall" name="정관장몰" />
                   <WjFlexChartSeries binding="pos" name="POS" />
                   <WjFlexChartSeries binding="carenow" name="케어나우" />
@@ -469,6 +470,10 @@ const rowBarChartData = reactive([
   { date: '12월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
 ])
 
+const rowChartItemFormatter = function (engine) {
+  //console.log(engine)
+}
+
 const memberStateChartData = reactive([
   { title: '가망', value: 18 },
   { title: '입문', value: 5.0 },
@@ -568,6 +573,23 @@ const itemsSourceGrid = ref([
         ellipse {
           rx: 3.5;
           ry: 3.5;
+        }
+      }
+    }
+  }
+}
+
+.tab-chart {
+  svg {
+    .wj-legend {
+      fill: #000;
+      g {
+        rect {
+          rx: 10;
+          ry: 10;
+        }
+        .wj-label {
+          fill: #9a9a9a;
         }
       }
     }
