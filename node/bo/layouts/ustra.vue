@@ -109,7 +109,7 @@
       <VMain id="page_wrapper" :class="{ t_zero: openedTabNavigations.length < 1 }" v-if="useTabMenu && selectedTabIndex > -1">
         <div class="content">
           <div class="columns has-gap">
-            <UBox class="card is-title">
+            <!-- <UBox class="card is-title">
               <h1 class="page-title">
                 <span>{{ openedTabNavigations[selectedTabIndex] ? openedTabNavigations[selectedTabIndex].text + '('+openedTabNavigations[selectedTabIndex].id+')' : null }}</span>
                 <span class="favoriteWrap">
@@ -122,6 +122,23 @@
                   <span v-html="currentMenu?.mnuDesc"></span>
                 </h2>
               </UBox>
+            </UBox> -->
+
+            <!-- 간격 샘플 -->
+            <UBox class="card is-title">
+              <h1 class="page-title">
+                <div class="page-titleWrap">
+                  <span>{{ openedTabNavigations[selectedTabIndex] ? openedTabNavigations[selectedTabIndex].text : null }}</span>
+                  <h2 class="table-title">
+                    <span v-html="currentMenu?.mnuDesc"></span>
+                  </h2>
+                </div>
+
+                <span class="favoriteWrap">
+                  <UstraLayoutFavoritesButton />
+                  <LayoutInfoButton />
+                </span>
+              </h1>
             </UBox>
           </div>
 
@@ -696,6 +713,30 @@ export default {
     position: absolute;
     right: 0;
     height: 30px;
+  }
+}
+
+// 간격 샘플
+.page-titleWrap {
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 10px;
+    max-width: 650px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  h2 {
+    max-width: 650px;
+    span {
+      margin-right: 0;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
 </style>
