@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  spaLoadingTemplate: true,
   ssr: false,
   vite: {
     optimizeDeps: {
