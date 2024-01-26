@@ -140,14 +140,9 @@ function getPieLabelContent(ht) {
 const colBarChartData = reactive([
   { title: '가망', value: 18 },
   { title: '입문', value: 5.0 },
-  { title: '활성화', value: 24.3 },
+  { title: '활성화', value: 24.3 },
   { title: '휴먼', value: 3.7 },
 ])
-;[
-  ({ year: '2014', US: 17348075, China: 10356508, Japan: 4602367, Germany: 3874437, UK: 2950039, France: 2833687, India: 2051228, Italy: 2147744 },
-  { year: '2015', US: 18036650, China: 11181556, Japan: 4124211, Germany: 3365293, UK: 2858482, France: 2420163, India: 2073002, Italy: 1815759 },
-  { year: '2016', US: 18624450, China: 11232110, Japan: 4936540, Germany: 3479230, UK: 2629190, France: 2466470, India: 2263790, Italy: 1850740 }),
-]
 
 const rowBarChartData = reactive([
   { date: '1월', 정관장몰: 300, pos: 150, 케어나우: 150, 사푼사푼: 50 },

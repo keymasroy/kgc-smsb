@@ -1431,12 +1431,18 @@ body {
 
 .page-title {
   display: flex;
+  // display: inline-flex !important;
   justify-content: space-between;
   font-size: pxToRem(28);
   font-weight: 600;
   line-height: pxToRem(34);
   color: black;
   text-align: inherit;
+
+  // +.table-title-wrap {
+  //   display: inline-flex !important;
+  //   margin-left: 5px;
+  // }
 
   .favoriteWrap {
     display: flex;

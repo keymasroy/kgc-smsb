@@ -583,4 +583,10 @@ export default {
     height: 30px;
   }
 }
+
+.columns {
+  > .card {
+    margin: 0 5px;
+  }
+}
 </style>

@@ -166,6 +166,15 @@ const items = ref([
     col7: 'O',
   },
   {
+    col1: '메인',
+    col2: '대시보드',
+    col3: '대시보드',
+    col4: '대시보드',
+    col5: '/pubs/main_pubs',
+    col6: '*',
+    col7: '작업중',
+  },
+  {
     col1: '회원',
     col2: '회원관리',
     col3: '회원 조회',
