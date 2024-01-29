@@ -296,6 +296,7 @@
 
         <UBox>
           <WjFlexChart
+            class="rowBar-chart"
             style="height: 270px"
             chartType="Bar"
             bindingX="title"
@@ -306,7 +307,7 @@
             <WjFlexChartAxis wjProperty="axisY" :reversed="true" />
             <WjFlexChartLegend position="None" />
             <WjFlexChartSeries binding="value" />
-            <WjFlexChartDataLabel content="{value}" position="Top" :offset="13" :border="true" />
+            <WjFlexChartDataLabel content="{value}" position="Top" :offset="11" />
             <WjFlexChartAnimation />
           </WjFlexChart>
         </UBox>
@@ -334,7 +335,6 @@
                   bindingX="date"
                   :itemsSource="rowBarChartData"
                   :palette="['rgba(244, 122, 53, 1)', 'rgba(255, 212, 61, 1)', 'rgba(0, 115, 122, 1)', 'rgba(21, 81, 131, 1)']"
-                  :itemFormatter="rowChartItemFormatter"
                 >
                   <WjFlexChartLegend position="Top" titleAlign="right" />
                   <WjFlexChartSeries binding="jungMall" name="정관장몰" />
@@ -470,8 +470,11 @@ const rowBarChartData = reactive([
   { date: '12월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
 ])
 
-const rowChartItemFormatter = function (engine) {
+const rowChartItemFormatter = function (engine, info) {
   //console.log(engine)
+  // console.log(info)
+  // console.log(info._pt)
+  // console.log('========================')
 }
 
 const memberStateChartData = reactive([
@@ -591,6 +594,23 @@ const itemsSourceGrid = ref([
         .wj-label {
           fill: #9a9a9a;
         }
+      }
+    }
+  }
+}
+
+.rowBar-chart {
+  svg {
+    .wj-data-labels {
+      .wj-data-label {
+        fill: #5f0000;
+        font-weight: 500;
+      }
+
+      rect {
+        fill: #f4f7f9;
+        stroke-width: 0;
+        opacity: 0.3;
       }
     }
   }
