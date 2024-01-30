@@ -26,7 +26,7 @@
 
               <div class="flex justify-between items-center mt-[25px]">
                 <span class="text-[14px] text-[#666666]">
-                  검색결과 <strong class="text-[#222222]">12</strong>개
+                  검색결과 <strong class="text-[#222222]">{{ storeList?.length || 0 }}</strong>개
                 </span>
 
                 <div class="location_btn">
@@ -34,17 +34,29 @@
                 </div>
               </div>
 
-              <div class="store-list">
-                <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
-                  <h4 class="name">{{ store.name }}</h4>
-                  <span class="tel">{{ store.tel }}</span>
-                  <span class="address">{{ store.address }}</span>
-                  <span class="time">{{ store.time }}</span>
-                  <Button label="매장선택" size="small" severity="secondary" />
+              <!-- 전체 매장 리스트 or 검색된 매장 있을 경우 -->
+              <template v-if="storeList?.length > 0">
+                <div class="store-list">
+                  <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
+                    <h4 class="name">{{ store.name }}</h4>
+                    <span class="tel">{{ store.tel }}</span>
+                    <span class="address">{{ store.address }}</span>
+                    <span class="time">{{ store.time }}</span>
+                    <Button label="매장선택" size="small" severity="secondary" />
+                  </div>
                 </div>
-              </div>
 
-              <Paginator class="mt-[20px]" :pageLinkSize="5" :rows="5" :totalRecords="30"></Paginator>
+                <Paginator class="mt-[20px]" :pageLinkSize="5" :rows="5" :totalRecords="30"></Paginator>
+              </template>
+
+              <!-- 전체 매장 리스트 or 검색 매장 없을 경우 -->
+              <div v-else class="empty">
+                <i></i>
+                <span>
+                  검색 결과가 없습니다. <br />
+                  다른 검색어를 입력해주세요.
+                </span>
+              </div>
 
             </TabPanel>
 
@@ -68,8 +80,8 @@ const activeBottomTab = ref(0);
 const value = ref();
 
 const storeList = ref([
-  { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
-  { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
+  // { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
+  // { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
 ])
 </script>
 
@@ -81,7 +93,7 @@ const storeList = ref([
   flex-direction: column;
 
   &.border-b {
-    border-color: #ECF0F8;
+    border-color: var(--j-bluegray400);
     padding: 0 16.5px 40px;
     margin: auto;
   }
@@ -116,6 +128,7 @@ const storeList = ref([
   justify-content: center;
   color: var(--j-bluegray700);
   font-size: 13px;
+  cursor: pointer;
 
   &::before {
     content: '';
@@ -145,7 +158,7 @@ const storeList = ref([
     }
 
     &.selected {
-      background-color: #F4F6FA;
+      background-color: var(--j-bluegray300);
 
       &:first-child {
         border-radius: 8px 8px 0 0;

@@ -36,21 +36,31 @@
                 </div>
               </div>
 
-              <div class="store-list">
-                <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
-                  <h4 class="name">{{ store.name }}</h4>
-                  <span class="tel">{{ store.tel }}</span>
-                  <span class="address">{{ store.address }}</span>
-                  <span class="time">{{ store.time }}</span>
-                  <Button label="매장선택" size="small" severity="secondary" />
+              <template v-if="storeList?.length > 0">
+                <div class="store-list">
+                  <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
+                    <h4 class="name">{{ store.name }}</h4>
+                    <span class="tel">{{ store.tel }}</span>
+                    <span class="address">{{ store.address }}</span>
+                    <span class="time">{{ store.time }}</span>
+                    <Button label="매장선택" size="small" severity="secondary" />
+                  </div>
                 </div>
+              </template>
+
+              <div v-else class="empty">
+                <i></i>
+                <span>
+                  검색 결과가 없습니다. <br />
+                  다른 검색어를 입력해주세요.
+                </span>
               </div>
+
             </TabPanel>
 
             <TabPanel header="지역별 매장" />
           </TabView>
 
-          
         </div>
       </TabPanel>
 
@@ -67,8 +77,8 @@ const activeBottomTab = ref(0);
 const value = ref();
 
 const storeList = ref([
-  { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
-  { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
+  // { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
+  // { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
 ])
 
 definePageMeta({
@@ -86,7 +96,7 @@ definePageMeta({
   align-items: center;
 
   &.border-b {
-    border-color: #ECF0F8;
+    border-color: var(--j-bluegray400);
     padding-bottom: 24px;
     margin: 0 20px;
   }
@@ -150,7 +160,7 @@ definePageMeta({
     }
 
     &.selected {
-      background-color: #F4F6FA;
+      background-color: var(--j-bluegray300);
 
       &:first-child {
         border-radius: 8px 8px 0 0;
