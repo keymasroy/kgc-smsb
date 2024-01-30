@@ -4,8 +4,13 @@
       <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
-    <UDialog />
-    <ULoadingBar />
+    <!-- <UDialog />
+    <ULoadingBar /> -->
+    <UstraManagementApp>
+      <template v-slot:config-popup>
+        <CustomConfigPopup v-model="showConfigPopup" />
+      </template>
+    </UstraManagementApp>
   </div>
 </template>
 
@@ -13,6 +18,8 @@
 const stringState = useStringState()
 const UDialog = defineAsyncComponent(() => import('#ustra/nuxt-vuetify/components').then(c => c.UDialog))
 const ULoadingBar = defineAsyncComponent(() => import('#ustra/nuxt-vuetify/components').then(c => c.ULoadingBar))
+const CustomConfigPopup = defineAsyncComponent(() => import('~/layouts/config/custom-config-popup.vue').then(c => c.default))
+const { showConfigPopup, showPasswordPopup, passwordPopup } = useUstraManagementApp()
 const layout = computed(() => {
   const useTabUi = $ustra.env.appProps.nuxt?.management?.ui?.tabMenu?.enabled
   const mainPagePath = $ustra.env.appProps.nuxt?.management?.ui?.defaultPage?.main?.path
