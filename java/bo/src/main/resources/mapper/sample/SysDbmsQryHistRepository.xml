@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.kgc.smsb.bo.sample.repository.SysDbmsQryHistRepository">
+
+	<insert id="insert" parameterType="java.util.Map">
+		<selectKey keyProperty="dbmsQryHistId" resultType="integer" order="BEFORE">
+			SELECT SQ_USTRA_DBMS_QRY_HIST_01.NEXTVAL FROM DUAL
+		</selectKey>
+
+		INSERT INTO USTRA_DBMS_QRY_HIST (
+			DBMS_QRY_HIST_ID,
+			PROC_ID,
+			REQ_ID,
+			ORG_QRY_CONT ,
+			EXEC_QRY_CONT,
+			PROC_MS,
+			REG_DTTM,
+			REG_USR_ID,
+			REG_USR_IP,
+			UPD_DTTM,
+			UPD_USR_ID,
+			UPD_USR_IP
+		)
+		VALUES(
+			#{dbmsQryHistId},
+			#{procId},
+			#{reqId},
+			#{orgQryCont},
+			#{execQryCont},
+			#{procMs},
+			CURRENT_TIMESTAMP,
+			#{regUsrId},
+			#{regUsrIp},
+			CURRENT_TIMESTAMP,
+			#{updUsrId},
+			#{updUsrIp}
+		)
+	</insert>
+
+</mapper>

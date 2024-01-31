@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  spaLoadingTemplate: true,
   ssr: false,
   vite: {
     optimizeDeps: {
@@ -8,11 +9,11 @@ export default defineNuxtConfig({
   modules: ['@ustra/nuxt', '@kgc/smsb-common'],
   css: ['~/assets/styles/framework/index.scss', '~/assets/styles/management/index.scss'],
   experimental: {
-    emitRouteChunkError: 'reload',
+    emitRouteChunkError: 'automatic',
   },
   routeRules: {
-    //'/api/**': { proxy: 'http://localhost:11051/api/**' }
-    '/api/**': { proxy: 'http://192.168.41.221:11051/api/**' },
+    '/api/**': { proxy: 'http://localhost:11051/api/**' },
+    //'/api/**': { proxy: 'http://192.168.41.221:11051/api/**' },
   },
   ustra: {
     i18n: {
@@ -66,6 +67,7 @@ export default defineNuxtConfig({
                 { title: '[Grid]수정가능한 열 설정', componentPath: '~/components/samples/grid-header/index.vue' },
                 { title: 'File', componentPath: '~/components/samples/file/index.vue' },
                 { title: '프로시져', componentPath: '~/components/samples/procedure/index.vue' },
+                { title: '상태관리', componentPath: '~/components/samples/state/index.vue' },
               ],
             },
           ],

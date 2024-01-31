@@ -37,4 +37,6 @@ public class SmsbFoUser extends SmsbUser {
 	 * 사용자 프로퍼티
 	 */
 	private String sample;
+
+	private String smbrNo;
 }

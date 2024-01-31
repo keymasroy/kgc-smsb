@@ -5,4 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SmsbFoAuthenticationRepository {
 	SmsbFoAuthenticationModel selectUser(String webId);
+
+	SmsbFoAuthenticationModel selectSsoUser(String webId);
 }

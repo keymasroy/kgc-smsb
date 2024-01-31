@@ -12,4 +12,14 @@
 		FROM TB_MEMB_WEB_ID_INFO
 		WHERE WEB_ID = #{arg0}
 	</select>
+
+	<select id="selectSsoUser" resultType="kr.co.kgc.smsb.common.biz.authentication.SmsbFoAuthenticationModel">
+		SELECT WEB_ID
+			 , LGN_PWD
+			 , UMBRNO
+			 , LGN_FAIL_CNT
+			 , MEMB_NM
+		FROM TB_MEMB_WEB_ID_INFO
+		WHERE UMBRNO = #{arg0}
+	</select>
 </mapper>

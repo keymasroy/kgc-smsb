@@ -28,13 +28,14 @@
     "postinstall": "yarn link \"@kgc/smsb-common\""
   },
   "resolutions": {
-    "highlight.js": "11.7.0"
+    "highlight.js": "11.7.0",
+    "uuid": "3.4.0"
   },
   "devDependencies": {
-    "@ustra/core": "3.0.1-stable",
-    "@ustra/nuxt": "3.0.1-stable",
-    "@ustra/nuxt-vuetify": "3.0.1-stable",
-    "@ustra/nuxt-ckeditor5": "3.0.1-stable",
-    "@ustra/nuxt-wijmo": "3.0.1-stable"
+    "@ustra/core": "3.0.3-stable",
+    "@ustra/nuxt": "3.0.3-stable",
+    "@ustra/nuxt-vuetify": "3.0.3-stable",
+    "@ustra/nuxt-ckeditor5": "3.0.3-stable",
+    "@ustra/nuxt-wijmo": "3.0.3-stable"
   }
 }

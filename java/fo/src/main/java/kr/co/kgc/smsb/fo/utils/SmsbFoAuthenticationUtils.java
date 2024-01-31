@@ -13,7 +13,7 @@ import lombok.experimental.UtilityClass;
 public class SmsbFoAuthenticationUtils {
 
 	/**
-	 * ÇöÀç ·Î±×ÀÎ µÈ FO »ç¿ëÀÚ Á¤º¸¸¦ Á¶È¸
+	 * í˜„ì¬ ë¡œê·¸ì¸ ëœ FO ì‚¬ìš©ì ì •ë³´ë¥¼ ì¡°íšŒ
 	 * @return
 	 */
 	@Nullable

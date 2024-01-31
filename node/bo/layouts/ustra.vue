@@ -111,7 +111,7 @@
           <div class="columns has-gap">
             <!-- <UBox class="card is-title">
               <h1 class="page-title">
-                <span>{{ openedTabNavigations[selectedTabIndex] ? openedTabNavigations[selectedTabIndex].text : null }}</span>
+                <span>{{ openedTabNavigations[selectedTabIndex] ? openedTabNavigations[selectedTabIndex].text + '('+openedTabNavigations[selectedTabIndex].id+')' : null }}</span>
                 <span class="favoriteWrap">
                   <UstraLayoutFavoritesButton />
                   <LayoutInfoButton />
