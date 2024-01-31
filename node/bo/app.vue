@@ -6,11 +6,11 @@
     </NuxtLayout>
     <!-- <UDialog />
     <ULoadingBar /> -->
-    <UstraManagementApp>
+    <!-- <UstraManagementApp>
       <template v-slot:config-popup>
         <CustomConfigPopup v-model="showConfigPopup" />
       </template>
-    </UstraManagementApp>
+    </UstraManagementApp> -->
   </div>
 </template>
 

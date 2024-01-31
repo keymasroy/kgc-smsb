@@ -715,28 +715,4 @@ export default {
     height: 30px;
   }
 }
-
-// 간격 샘플
-.page-titleWrap {
-  display: flex;
-  align-items: center;
-  span {
-    margin-right: 10px;
-    max-width: 650px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  h2 {
-    max-width: 650px;
-    span {
-      margin-right: 0;
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-}
 </style>

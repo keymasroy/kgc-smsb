@@ -8,6 +8,11 @@
           <WjFlexGridColumn header="지급일자" binding="col1" width="*" />
           <WjFlexGridColumn header="지급방법" binding="col1" width="*" />
           <WjFlexGridColumn header="지급사유" binding="col1" width="*" />
+          <WjFlexGridColumn header="Select" binding="col1" width="*">
+            <WjFlexGridCellTemplate cellType="Cell">
+              <UWjComboBox :itemsSource="items" displayMemberPath="text" />
+            </WjFlexGridCellTemplate>
+          </WjFlexGridColumn>
         </WjFlexGrid>
       </div>
 
@@ -109,6 +114,11 @@ const itemsSourceGrid = ref([
   { col1: '텍스트2' },
   { col1: '텍스트3' },
 ])
+
+const items = [
+  { value: '01', text: '항목1' },
+  { value: '02', text: '항목2' },
+]
 </script>
 
 <style lang="scss" scoped>

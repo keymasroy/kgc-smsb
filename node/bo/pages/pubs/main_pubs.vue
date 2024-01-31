@@ -403,7 +403,7 @@ const wijmo = useWijmo()
 
 definePageMeta({
   layout: 'ustra-pub',
-  name: 'main_pubs',
+  name: 'main',
   auth: {
     required: false,
   },
