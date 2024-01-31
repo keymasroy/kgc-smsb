@@ -303,24 +303,22 @@
             stacking="Stacked"
             :itemsSource="memberStateChartData"
             :palette="['rgba(95, 0, 0, 1)']"
+            :initialized="memberBarChartInit"
           >
             <WjFlexChartAxis wjProperty="axisY" :reversed="true" />
-            <WjFlexChartLegend position="None" />
             <WjFlexChartSeries binding="value" />
-            <WjFlexChartDataLabel content="{value}" position="Top" :offset="11" />
+            <WjFlexChartDataLabel content="{value:n0}" position="Center" />
             <WjFlexChartAnimation />
           </WjFlexChart>
         </UBox>
       </UItem>
-      <UItem class="card is-sub" ratio="1" style="min-height: 478px">
+      <UItem class="card is-sub point-tab" ratio="1" style="min-height: 478px">
         <UBox class="table-title-wrap">
           <h2 class="table-title">
             <span>포인트 현황</span>
           </h2>
         </UBox>
-
         <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
-
         <UBox>
           <WjTabPanel :initialized="tabPanel.initialize" class="mt-5 main-chart-tab">
             <WjTab>
@@ -455,6 +453,22 @@ const pieInnerRadius = ref(0.45)
 
 const tabPanel = useWijmoTabPanel()
 
+const memberBarChartInit = flex => {
+  flex.dataLabel.rendering.addHandler(function (_, e) {
+    e._pt.x -= 12
+  }, this)
+}
+
+const memberStateChartData = reactive([
+  { title: '가망', value: 18 },
+  { title: '입문', value: 5.0 },
+  { title: '활성화', value: 24.3 },
+  { title: '휴먼', value: 3.7 },
+  { title: '이탈1', value: 1.0 },
+  { title: '이탈2', value: 4.2 },
+  { title: '이탈3', value: 0.9 },
+])
+
 const rowBarChartData = reactive([
   { date: '1월', jungMall: 300, pos: 150, carenow: 150, sapun: 50 },
   { date: '2월', jungMall: 500, pos: 100, carenow: 200, sapun: 50 },
@@ -468,23 +482,6 @@ const rowBarChartData = reactive([
   { date: '10월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
   { date: '11월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
   { date: '12월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
-])
-
-const rowChartItemFormatter = function (engine, info) {
-  //console.log(engine)
-  // console.log(info)
-  // console.log(info._pt)
-  // console.log('========================')
-}
-
-const memberStateChartData = reactive([
-  { title: '가망', value: 18 },
-  { title: '입문', value: 5.0 },
-  { title: '활성화', value: 24.3 },
-  { title: '휴먼', value: 3.7 },
-  { title: '이탈1', value: 1.0 },
-  { title: '이탈2', value: 4.2 },
-  { title: '이탈3', value: 0.9 },
 ])
 
 const itemsSourceGrid = ref([
@@ -556,10 +553,20 @@ const itemsSourceGrid = ref([
   height: 100%;
 }
 
+.point-tab {
+  .breadcrumbs {
+    margin-bottom: 0 !important;
+  }
+
+  .main-chart-tab {
+    margin-top: 0 !important;
+  }
+}
+
 .chart-tab-inner {
-  height: 240px !important;
+  height: 280px !important;
   .tab-chart {
-    height: 230px;
+    height: 270px;
   }
 }
 </style>
@@ -603,14 +610,9 @@ const itemsSourceGrid = ref([
   svg {
     .wj-data-labels {
       .wj-data-label {
-        fill: #5f0000;
+        fill: #fff;
         font-weight: 500;
-      }
-
-      rect {
-        fill: #f4f7f9;
-        stroke-width: 0;
-        opacity: 0.3;
+        font-size: 12px;
       }
     }
   }
