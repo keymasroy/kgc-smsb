@@ -296,30 +296,29 @@
 
         <UBox>
           <WjFlexChart
+            class="rowBar-chart"
             style="height: 270px"
             chartType="Bar"
             bindingX="title"
             stacking="Stacked"
             :itemsSource="memberStateChartData"
             :palette="['rgba(95, 0, 0, 1)']"
+            :initialized="memberBarChartInit"
           >
             <WjFlexChartAxis wjProperty="axisY" :reversed="true" />
-            <WjFlexChartLegend position="None" />
             <WjFlexChartSeries binding="value" />
-            <WjFlexChartDataLabel content="{value}" position="Top" :offset="13" :border="true" />
+            <WjFlexChartDataLabel content="{value:n0}" position="Center" />
             <WjFlexChartAnimation />
           </WjFlexChart>
         </UBox>
       </UItem>
-      <UItem class="card is-sub" ratio="1" style="min-height: 478px">
+      <UItem class="card is-sub point-tab" ratio="1" style="min-height: 478px">
         <UBox class="table-title-wrap">
           <h2 class="table-title">
             <span>포인트 현황</span>
           </h2>
         </UBox>
-
         <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
-
         <UBox>
           <WjTabPanel :initialized="tabPanel.initialize" class="mt-5 main-chart-tab">
             <WjTab>
@@ -334,7 +333,6 @@
                   bindingX="date"
                   :itemsSource="rowBarChartData"
                   :palette="['rgba(244, 122, 53, 1)', 'rgba(255, 212, 61, 1)', 'rgba(0, 115, 122, 1)', 'rgba(21, 81, 131, 1)']"
-                  :itemFormatter="rowChartItemFormatter"
                 >
                   <WjFlexChartLegend position="Top" titleAlign="right" />
                   <WjFlexChartSeries binding="jungMall" name="정관장몰" />
@@ -405,7 +403,7 @@ const wijmo = useWijmo()
 
 definePageMeta({
   layout: 'ustra-pub',
-  name: 'main_pubs',
+  name: 'main',
   auth: {
     required: false,
   },
@@ -455,6 +453,22 @@ const pieInnerRadius = ref(0.45)
 
 const tabPanel = useWijmoTabPanel()
 
+const memberBarChartInit = flex => {
+  flex.dataLabel.rendering.addHandler(function (_, e) {
+    e._pt.x -= 12
+  }, this)
+}
+
+const memberStateChartData = reactive([
+  { title: '가망', value: 18 },
+  { title: '입문', value: 5.0 },
+  { title: '활성화', value: 24.3 },
+  { title: '휴먼', value: 3.7 },
+  { title: '이탈1', value: 1.0 },
+  { title: '이탈2', value: 4.2 },
+  { title: '이탈3', value: 0.9 },
+])
+
 const rowBarChartData = reactive([
   { date: '1월', jungMall: 300, pos: 150, carenow: 150, sapun: 50 },
   { date: '2월', jungMall: 500, pos: 100, carenow: 200, sapun: 50 },
@@ -468,20 +482,6 @@ const rowBarChartData = reactive([
   { date: '10월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
   { date: '11월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
   { date: '12월', jungMall: 200, pos: 150, carenow: 150, sapun: 50 },
-])
-
-const rowChartItemFormatter = function (engine) {
-  //console.log(engine)
-}
-
-const memberStateChartData = reactive([
-  { title: '가망', value: 18 },
-  { title: '입문', value: 5.0 },
-  { title: '활성화', value: 24.3 },
-  { title: '휴먼', value: 3.7 },
-  { title: '이탈1', value: 1.0 },
-  { title: '이탈2', value: 4.2 },
-  { title: '이탈3', value: 0.9 },
 ])
 
 const itemsSourceGrid = ref([
@@ -553,10 +553,20 @@ const itemsSourceGrid = ref([
   height: 100%;
 }
 
+.point-tab {
+  .breadcrumbs {
+    margin-bottom: 0 !important;
+  }
+
+  .main-chart-tab {
+    margin-top: 0 !important;
+  }
+}
+
 .chart-tab-inner {
-  height: 240px !important;
+  height: 280px !important;
   .tab-chart {
-    height: 230px;
+    height: 270px;
   }
 }
 </style>
@@ -591,6 +601,18 @@ const itemsSourceGrid = ref([
         .wj-label {
           fill: #9a9a9a;
         }
+      }
+    }
+  }
+}
+
+.rowBar-chart {
+  svg {
+    .wj-data-labels {
+      .wj-data-label {
+        fill: #fff;
+        font-weight: 500;
+        font-size: 12px;
       }
     }
   }

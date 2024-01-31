@@ -11,4 +11,9 @@ logs/
 .ustra
 .env
 
+# UI TEAM
+.output-mo
+.output-pc
+.DS_Store
+
 package-lock.json

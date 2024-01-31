@@ -1574,6 +1574,49 @@
       }
     }
   }
+
+  .wj-dropdown {
+    &.wj-combobox {
+      .wj-input {
+        .wj-input-group-btn {
+          .wj-btn {
+            position: relative;
+            background-color: $is-white;
+            height: 100% !important;
+            min-height: 100% !important;
+            border-left: 0 !important;
+
+            .wj-glyph-down {
+              border-top: unset;
+              border-right: unset;
+              border-left: unset;
+            }
+
+            &:after {
+              width: 18px;
+              height: 18px;
+              content: '';
+              position: absolute;
+              right: 8px;
+              background: url(/assets/images/svg/ico_combo_arr_open.svg) no-repeat center center;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+              background-color: unset;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &:not(.wj-state-collapsed) {
+    border-color: $gray260;
+  }
 }
 
 .wj-calendar {

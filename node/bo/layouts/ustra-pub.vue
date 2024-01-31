@@ -49,7 +49,7 @@
     <VMain id="page_wrapper" class="t_zero">
       <div class="content">
         <div class="columns has-gap" v-if="pageName !== 'main'">
-          <UBox class="card is-title">
+          <!-- <UBox class="card is-title">
             <h1 class="page-title">
               <span>메뉴명</span>
               <span class="favoriteWrap">
@@ -62,6 +62,22 @@
                 <span>메뉴 설명</span>
               </h2>
             </UBox>
+          </UBox> -->
+
+          <UBox class="card is-title">
+            <h1 class="page-title">
+              <div class="page-titleWrap">
+                <span>메뉴명</span>
+                <h2 class="table-title">
+                  <span>메뉴설명</span>
+                </h2>
+              </div>
+
+              <span class="favoriteWrap">
+                <UstraLayoutFavoritesButton />
+                <LayoutInfoButton />
+              </span>
+            </h1>
           </UBox>
         </div>
         <slot></slot>
