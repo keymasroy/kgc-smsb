@@ -57,7 +57,7 @@
       <div
         v-for="(p, idx) in searched_pages"
         :key="idx"
-        :class="[{'main': !p.url}]"
+        :class="[{'main': !p.subLabel}]"
         class="item"
       >
         <span  class="label">{{ p.label || '' }}</span>
@@ -89,14 +89,17 @@ const pages = [
   { label: '', subLabel: '환경설정', url: '/pubs/MI/settings' },
   { label: '', subLabel: '알림', url: '/pubs/MI/alarms' },
   // 회원가입
-  { label: '회원가입' },
-  { label: '일반회원', subLabel: '카카오 간편가입', url: '/pubs/MS/MJ/UI_FU_0040'  },
-  { label: '', subLabel: '카카오 간편가입 > 본인인증 (약관동의)', url: '/pubs/MS/MJ/UI_FU_0039'  },
-  { label: '', subLabel: '카카오 간편가입 > 본인인증 (약관동의 팝업)', url: '/pubs/MS/MJ/UI_FU_0039', content: '통합회원약관 내용보기 클릭' },
-  { label: '', subLabel: '카카오 간편가입 > 본인인증 (정보입력)', url: '/pubs/MS/MJ/UI_FU_0041'  },
-  { label: '', subLabel: '카카오 간편가입 > 본인인증 (가입완료)', url: '/pubs/MS/MJ/UI_FU_0042'  },
+  { label: '회원가입', url: '/pubs/MS/MJ/UI_FU_0040' },
+  { label: '일반회원', subLabel: '일반회원 > 본인인증 (약관동의)', url: '/pubs/MS/MJ/UI_FU_0039'  },
+  { label: '', subLabel: '일반회원 > 본인인증 (약관동의 팝업)', url: '/pubs/MS/MJ/UI_FU_0039', content: '통합회원약관 내용보기 클릭' },
+  { label: '', subLabel: '일반회원 > 본인인증 (정보입력)', url: '/pubs/MS/MJ/UI_FU_0041'  },
+  { label: '', subLabel: '일반회원 > 본인인증 (가입완료)', url: '/pubs/MS/MJ/UI_FU_0042'  },
   { label: '', subLabel: '이미 가입된 회원', url: '/pubs/MS/MJ/UI_FU_0000'  },
-  { label: '', subLabel: '탈퇴 회원', url: '/pubs/MS/MJ/UI_FU_0000_1'  },
+{ label: '', subLabel: '탈퇴 회원', url: '/pubs/MS/MJ/UI_FU_0000_1'  },
+  { label: '카카오 간편가입', subLabel: '카카오 간편가입 > 본인인증 (약관동의)', url: '/pubs/MS/MJ/UI_FU_0039_2'  },
+  { label: '', subLabel: '카카오 간편가입 > 본인인증 (약관동의 팝업)', url: '/pubs/MS/MJ/UI_FU_0039_2', content: '통합회원약관 내용보기 클릭' },
+  { label: '', subLabel: '카카오 간편가입 > 본인인증 (정보입력)', url: '/pubs/MS/MJ/UI_FU_0041_2'  },
+  { label: '', subLabel: '카카오 간편가입 > 본인인증 (가입완료)', url: '/pubs/MS/MJ/UI_FU_0042_2'  },
   { label: '통합 ONE-ID 전환', subLabel: '온라인 기존회원 > 로그인 > 안내페이지', url: '/pubs/MS/MJ/UI_FU_0038'  },
   { label: '', subLabel: '온라인 기존회원 > 본인인증 (약관동의)', url: '/pubs/MS/MJ/UI_FU_0039_1'  },
   { label: '', subLabel: '온라인 기존회원 > 본인인증 (약관동의 팝업)', url: '/pubs/MS/MJ/UI_FU_0039_1', content: '통합회원약관 내용보기 클릭'  },

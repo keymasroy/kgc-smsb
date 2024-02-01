@@ -82,7 +82,7 @@
         <form class="flex flex-col w-[320px] mx-auto text-left">
           <div class="flex items-center">
             <!-- <RadioButton v-model="ingredient" inputId="ingredient11" name="rice" value="Radio1" /> -->
-            <label for="ingredient11">{{ handleMasking(ingredient_id) }}</label>
+            <span for="ingredient11">{{ handleMasking(ingredient_id) }}</span>
           </div>
           <Password
             class="w-full mt-[20px]"

@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-bold mb-[12px]">정관장 멤버스 회원 가입</h1>
         <p class="text-sm mb-[30px]"><strong>회원가입</strong>을 위해 인증을 선택해주세요.</p>
 
-        <Button class="is-certify" label="본인인증" outlined>
+        <Button class="is-certify" label="본인인증" outlined  @click="$router.push('/pubs/MS/MJ/UI_FU_0039')">
           <template #icon>
             <svg class="mr-[16px]" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="26" cy="26" r="26" fill="#ECF0F8" />
@@ -23,7 +23,7 @@
 
       <div class="flex flex-col items-center justify-between border-t border-[#ECF0F8] p-[20px] bg-[#F9FAFC]">
         <p class="text-sm"><strong>카카오 계정</strong>으로 간편하게 회원가입 <br />하실 수 있습니다.</p>
-        <Button class="is-kakao flex-none mt-[12px]" label="카카오 간편가입">
+        <Button class="is-kakao flex-none mt-[12px]" label="카카오 간편가입" @click="$router.push('/pubs/MS/MJ/UI_FU_0041_2')">
           <template #icon>
             <svg class="mr-[4px]" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
