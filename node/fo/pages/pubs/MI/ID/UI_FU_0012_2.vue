@@ -12,57 +12,53 @@
         </div>
 
         <div class="flex justify-center w-[1180px] mx-auto mt-[60px] mb-[40px]">
-          <TabView class="default_tab w-[350px]" v-model:activeIndex="activeBottomTab">
-            <TabPanel header="가까운 매장">
-              <div class="w-full flex gap-[5px]">
-                <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="시/도 선택" />
-                <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="구/군 선택" />
-              </div>
 
-              <span class="p-input-icon-right w-full mt-[12px]">
-                <button class="pi pi-search text-[24px] indent-[-999em] mr-[12px]" style="font-size: 24px;">검색</button>
-                <InputText v-model="value" size="large" placeholder="강남" class="w-full completed" />
+          <div class="w-[350px]">
+            <div class="w-full flex gap-[5px]">
+              <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="시/도 선택" />
+              <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="구/군 선택" />
+            </div>
+
+            <span class="p-input-icon-right w-full mt-[12px]">
+              <button class="pi pi-search text-[24px] indent-[-999em] mr-[12px]" style="font-size: 24px;">검색</button>
+              <InputText v-model="value" size="large" placeholder="강남" class="w-full completed" />
+            </span>
+
+            <div class="flex justify-between items-center mt-[25px]">
+              <span class="text-[14px] text-[#666666]">
+                검색결과 <strong class="text-[#222222]">{{ storeList?.length || 0 }}</strong>개
               </span>
 
-              <div class="flex justify-between items-center mt-[25px]">
-                <span class="text-[14px] text-[#666666]">
-                  검색결과 <strong class="text-[#222222]">{{ storeList?.length || 0 }}</strong>개
-                </span>
+              <div class="location_btn">
+                <span>현위치</span>
+              </div>
+            </div>
 
-                <div class="location_btn">
-                  <span>현위치</span>
+            <!-- 전체 매장 리스트 or 검색된 매장 있을 경우 -->
+            <template v-if="storeList?.length > 0">
+              <div class="store-list">
+                <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
+                  <h4 class="name">{{ store.name }}</h4>
+                  <span class="tel">{{ store.tel }}</span>
+                  <span class="address">{{ store.address }}</span>
+                  <span class="time">{{ store.time }}</span>
+                  <Button label="매장선택" size="small" severity="secondary" />
                 </div>
               </div>
 
-              <!-- 전체 매장 리스트 or 검색된 매장 있을 경우 -->
-              <template v-if="storeList?.length > 0">
-                <div class="store-list">
-                  <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
-                    <h4 class="name">{{ store.name }}</h4>
-                    <span class="tel">{{ store.tel }}</span>
-                    <span class="address">{{ store.address }}</span>
-                    <span class="time">{{ store.time }}</span>
-                    <Button label="매장선택" size="small" severity="secondary" />
-                  </div>
-                </div>
+              <Paginator class="mt-[20px]" :pageLinkSize="5" :rows="5" :totalRecords="30"></Paginator>
+            </template>
 
-                <Paginator class="mt-[20px]" :pageLinkSize="5" :rows="5" :totalRecords="30"></Paginator>
-              </template>
-
-              <!-- 전체 매장 리스트 or 검색 매장 없을 경우 -->
-              <div v-else class="empty">
-                <i></i>
-                <span>
-                  검색 결과가 없습니다. <br />
-                  다른 검색어를 입력해주세요.
-                </span>
-              </div>
-
-            </TabPanel>
-
-            <TabPanel header="지역별 매장" />
-          </TabView>
-
+            <!-- 전체 매장 리스트 or 검색 매장 없을 경우 -->
+            <div v-else class="empty">
+              <i></i>
+              <span>
+                검색 결과가 없습니다. <br />
+                다른 검색어를 입력해주세요.
+              </span>
+            </div>
+          </div>
+          
           <div class="mapArea w-[800px] ml-[30px]"></div>
         </div>
       </TabPanel>

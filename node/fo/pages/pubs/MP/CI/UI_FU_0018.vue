@@ -11,7 +11,22 @@
 
         <!-- 사용가능 쿠폰 -->
         <TabPanel header="사용가능 쿠폰">
-          <div class="flex justify-between mb-[20px]">
+          <div class="w-full flex">
+            <SelectButton
+              v-model="selectedValue"
+              :options="selectOptions"
+              optionLabel="label"
+              optionValue="value"
+              class=" w-[310px]"
+            />
+            <div class="p-calendar-group ml-[8px]">
+              <Calendar v-model="startDate" placeholder="2023-01-01" />
+              <span class="range">~</span>
+              <Calendar v-model="endDate" placeholder="2023-01-01" />
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-[40px] mb-[20px]">
             <span className="text-[15px] font-medium"> {{ `총 ${availableList.length}건` }}</span>
             <div class="search__tab">
               <span
@@ -61,7 +76,22 @@
 
         <!-- 사용완료/기간만료 쿠폰 -->
         <TabPanel header="사용완료/기간만료 쿠폰">
-          <div class="flex justify-between mb-[20px]">
+          <div class="w-full flex">
+            <SelectButton
+              v-model="selectedValue"
+              :options="selectOptions"
+              optionLabel="label"
+              optionValue="value"
+              class=" w-[310px]"
+            />
+            <div class="p-calendar-group ml-[8px]">
+              <Calendar v-model="startDate" placeholder="2023-01-01" />
+              <span class="range">~</span>
+              <Calendar v-model="endDate" placeholder="2023-01-01" />
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-[40px] mb-[20px]">
             <span className="text-[15px] font-medium"> {{ `총 ${unavailableList.length}건` }}</span>
             <div class="search__tab">
               <span
@@ -115,7 +145,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const activeTab = ref(0)
+const activeTab = ref(0);
+const selectOptions = ref([
+  { label: '3개월' , value: 3 },
+  { label: '6개월' , value: 6 },
+  { label: '9개월' , value: 9 },
+  { label: '직접입력' , value: 0 }
+]);
+const selectedValue = ref(3);
+
+const startDate = ref('');
+const endDate = ref('');
 
 const availableList = [
   {

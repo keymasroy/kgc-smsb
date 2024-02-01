@@ -25,8 +25,8 @@
         <!-- contents -->
         <ul class="pt-[20px] mb-[60px]">
           <li class="flex items-center mb-[8px]">
-            <label class="flex-none w-[80px] text-[14px] text-[#222]" for="carenowId">케어나우</label>
-            <div class="flex flex-1">
+            <label class="flex-none self-start w-[80px] leading-[50px] text-[14px] text-[#222]" for="carenowId">케어나우</label>
+            <div class="flex flex-1 flex-wrap">
               <RadioButton
                 class="p-radiobutton-box-lg flex-none mr-[12px]"
                 v-model="integrationId"
@@ -35,19 +35,30 @@
                 value="케어나우 아이디"
               />
               <InputText disabled v-model="integration1" id="integration1" class="flex-1" type="text" size="large" placeholder="케어나우 아이디" />
+
+              <!-- 특수기호 있을 경우 -->
+              <!-- <p class="mt-[8px] text-[13px] text-[#F43131] leading-[1.2] w-full ml-[40px]">
+                기존 아이디에 특수문자가 포함된 경우에는 아이디 사용이 불가하여 선택하실 수 없습니다.
+              </p> -->
             </div>
           </li>
           <li class="flex items-center">
-            <label class="flex-none w-[80px] text-[14px] text-[#222]" for="carenowId">정관장몰</label>
-            <div class="flex flex-1">
+            <label class="flex-none self-start w-[80px] leading-[50px] text-[14px] text-[#222]" for="carenowId">정관장몰</label>
+            <div class="flex flex-1 flex-wrap">
               <RadioButton
                 class="p-radiobutton-box-lg flex-none mr-[12px]"
                 v-model="integrationId"
                 inputId="integration2"
                 name="integration"
                 value="정관장몰 아이디"
+                disabled
               />
               <InputText disabled v-model="integration2" id="integration2" class="flex-1" type="text" size="large" placeholder="정관장몰 아이디" />
+
+              <!-- 특수기호 있을 경우 -->
+              <p class="mt-[8px] text-[13px] text-[#F43131] leading-[1.2] w-full ml-[40px]">
+                기존 아이디에 특수문자가 포함된 경우에는 아이디 사용이 불가하여 선택하실 수 없습니다.
+              </p>
             </div>
           </li>
         </ul>
@@ -79,7 +90,7 @@
             </div>
           </li>
           <li class="flex flex-col mb-[20px]">
-            <label class="py-[9px] text-sm" for="userPassword1">비밀번호</label>
+            <label class="py-[9px] text-sm" for="userPassword1">새 비밀번호</label>
             <div class="flex flex-col w-full">
               <Password
                 inputId="userPassword1"
@@ -96,7 +107,7 @@
             </div>
           </li>
           <li class="flex flex-col">
-            <label class="py-[9px] text-sm" for="userPassword2">비밀번호 확인</label>
+            <label class="py-[9px] text-sm" for="userPassword2">새 비밀번호 확인</label>
             <div class="flex flex-col w-full">
               <Password
                 class="w-full"
@@ -141,7 +152,7 @@ const items = ref([
 
 // input
 const integration1 = ref('test1234');
-const integration2 = ref('test007');
+const integration2 = ref('test007!');
 const userId = ref('');
 const userPassword1 = ref('');
 const userPassword2 = ref('');

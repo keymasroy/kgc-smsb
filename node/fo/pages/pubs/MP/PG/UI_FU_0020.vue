@@ -70,12 +70,16 @@
           <span class="dot"></span>
           선물 받은 포인트는 연장이 불가하며, 재선물이 되지 않습니다.
         </li>
+        <li>
+          <span class="dot"></span>
+          특별 포인트는 선물하기에서 제외 됩니다.
+        </li>
       </ul>
     </div>
   </div>
 
   <!-- 선물 완료 팝업 -->
-  <Dialog v-model:visible="isShowPopup" modal :style="{ width: '500px' }">
+  <Dialog class="alert" v-model:visible="isShowPopup" modal :style="{ width: '500px' }">
     <div class="dialog-content-inner max-h-[456px]">
       <p class="text-center text-[18px] text-black">
         {{ `${name}님에게 ${point || 0}P 선물 완료` }}

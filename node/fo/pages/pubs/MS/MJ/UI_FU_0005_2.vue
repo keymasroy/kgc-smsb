@@ -25,10 +25,8 @@
             </defs>
           </svg>
         </i>
-        <p class="mt-[24px] text-[38px]"><strong>통합회원 전환이 완료</strong>되었습니다.</p>
+        <p class="mt-[24px] text-[38px]"><strong>ONE ID 통합이 완료</strong>되었습니다.</p>
         <p class="mt-[16px] text-center text-lg">
-          기본정보 외에 기존에 입력되어 있던 추가정보는 기존정보를 기준으로 입력됩니다. <br />
-          이미 입력되어 있는 정보가 있을 경우에는 기 입력되어 있는 정보를 유지됩니다. <br /><br />
           정관장 멤버스에서 제공하는 다양한 정보와 서비스를 이용하실 수 있습니다.
         </p>
         <router-link to="/">
@@ -50,10 +48,10 @@ const items = ref([
     label: '약관동의',
   },
   {
-    label: 'ID선택',
+    label: 'ONE ID선택',
   },
   {
-    label: '전환완료',
+    label: '통합완료',
   },
 ]);
 </script>

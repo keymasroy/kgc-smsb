@@ -1,5 +1,6 @@
 <template>
   <div class="my-auto mx-[20px] pt-[40px] pb-[20px] px-[20px] rounded-[16px] border border-[#ECF0F8]">
+    <h2 class="mb-[12px] text-center text-2xl font-bold">비밀번호 확인</h2>
     <p class="mb-[24px] text-center text-sm">회원님의 개인정보 보호를 위해 <br />비밀번호를 입력해주시기 바랍니다.</p>
     <form class="flex flex-col">
       <Password inputClass="w-full p-inputtext-lg" v-model="usePassword" :feedback="false" toggleMask placeholder="비밀번호 입력" />

@@ -70,12 +70,32 @@
           <span class="dot"></span>
           선물 받은 포인트는 연장이 불가하며, 재선물이 되지 않습니다.
         </li>
+        <li>
+          <span class="dot"></span>
+          특별 포인트는 선물하기에서 제외 됩니다.
+        </li>
       </ul>
     </div>
   </div>
 
+  <!-- 사용자 중복 팝업 -->
+  <Dialog class="alert" v-model:visible="isShowDuplicate" modal :style="{ width: '500px' }">
+    <div class="dialog-content-inner max-h-[456px] text-center">
+      동일한 사용자가 있어 확인이 필요합니다. <br />
+      고객센터에 문의해주시기 바랍니다. <br />
+      <br />
+      <strong>고객센터 02) 2189-3900</strong>  <br />
+      <strong>상담시간 월-금 09:00-18:00</strong> <br />
+    </div>
+    <template #footer>
+      <div class="flex justify-center pt-[24px] pb-[30px] px-[30px]">
+        <Button label="확인" @click="isShowDuplicate = false" />
+      </div>
+    </template>
+  </Dialog>
+
   <!-- 선물 완료 팝업 -->
-  <Dialog v-model:visible="isShowPopup" modal :style="{ width: '500px' }">
+  <Dialog class="alert" v-model:visible="isShowPopup" modal :style="{ width: '500px' }">
     <div class="dialog-content-inner max-h-[456px]">
       <p class="text-center text-[14px] text-black">
         {{ `${name}님에게 ${point || 0}P 선물 완료` }}
@@ -97,14 +117,19 @@ definePageMeta({
 
 const isShowBottom = ref(false);
 const isShowPopup = ref(false);
+const isShowDuplicate = ref(false);
 
 const name = ref('');
 const phoneNumber = ref('');
 const point = ref('');
 
 const onClickSearch = () => {
-  if (name.value) isShowBottom.value = true;
-  else isShowBottom.value = false;
+  if (name.value) {
+    isShowBottom.value = true;
+  } else {
+    isShowDuplicate.value = true;
+    isShowBottom.value = false;
+  }
 };
 
 const onClickGift = () => {

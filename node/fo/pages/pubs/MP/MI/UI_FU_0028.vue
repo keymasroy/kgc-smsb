@@ -60,7 +60,7 @@
 
     <!-- 데이터 있을 경우 -->
     <!-- 데이터 없는 경우 보려면 v-if="false" 로 변경 -->
-    <div v-if= "false" class="w-full mt-[40px]">
+    <div v-if= "true" class="w-full mt-[40px]">
       <h3 class="text-black text-[15px] font-medium">총 <span class="text-[#D20F27]">4</span>개 매장</h3>
 
       <div class="mt-[20px] p-[32px] border-[1px] border-[#E7E7E7] rounded-[12px]">
@@ -68,7 +68,7 @@
         <div class="market-card" v-for="id in 5" :key="id">
           <div class="flex justify-between items-center mb-[20px]">
             <span class="text-[16px] font-bold">정관장몰</span>
-            <Button label="매장 선택" severity="secondary" style="font-size: 14px" />
+            <Button label="매장 선택" severity="secondary" @click="isShowPopup = true" class="text-[14px]" />
           </div>
           <ul class="market_list is-card">
             <li class="mb-[12px]">
@@ -98,9 +98,28 @@
       </span>
     </div>
   </div>
+
+  <!-- 매장 변경 재확인 팝업 -->
+  <Dialog class="alert" v-model:visible="isShowPopup" modal :style="{ width: '500px' }">
+    <div class="dialog-content-inner max-h-[456px]">
+      <p class="text-center text-[18px] text-black">
+        단골매장 변경을 하시면 해당 매장의 <br />
+        혜택을 더 이상 받을 수 없습니다. <br />
+        그래도 변경 하시겠습니까?
+      </p>
+    </div>
+    <template #footer>
+      <div class="flex justify-center pt-[24px] pb-[30px] px-[30px] gap-[10px]">
+        <Button label="취소" @click="isShowPopup = false" outlined />
+        <Button label="확인" @click="isShowPopup = false" />
+      </div>
+    </template>
+  </Dialog>
 </template>
 
 <script setup lang="ts">
+const isShowPopup = ref(false);
+
 definePageMeta({
   layout: 'side',
 });
