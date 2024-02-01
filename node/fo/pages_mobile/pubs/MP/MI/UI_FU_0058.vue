@@ -26,7 +26,7 @@
             </span>
 
             <!-- 삭제 확인 팝업 -->
-            <Dialog v-model:visible="isShowDelete" modal :style="{ width: '500px' }">
+            <Dialog class="alert" v-model:visible="isShowDelete" modal :style="{ width: '500px' }">
               <div class="dialog-content-inner max-h-[456px]">
                 <p class="mb-1 text-[18px] text-center text-black">기념일을 삭제하시겠습니까?</p>
               </div>

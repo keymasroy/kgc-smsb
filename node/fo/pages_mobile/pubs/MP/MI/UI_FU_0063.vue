@@ -75,17 +75,21 @@
 
     <!-- title -->
     <div class="flex items-end pb-[6px] border-b-2 border-[#666]">
-      <h2 class="text-xl font-bold">통합 ID 탈퇴</h2>
+      <h2 class="text-xl font-bold">통합 탈퇴</h2>
     </div>
     <!-- //title -->
 
     <!-- contents -->
     <ul class="pt-[20px] mb-[40px]">
       <li>
-        <div class="flex items-center">
+        <div class="flex items-center mb-[20px]">
           <Checkbox class="p-checkbox-box-lg" v-model="member" inputId="member" name="member" value="정관장 멤버스 탈퇴" />
           <label for="member"> 정관장 멤버스 탈퇴 </label>
         </div>
+        <p class="flex text-[13px] text-[#5361E7] ml-[8px]">
+          <span class="font-bold mr-[4px]">&middot;</span>
+          통합 탈퇴를 하시면 채널(정관장몰/케어나우)까지 모두 탈퇴 처리되며 멤버십 서비스를 이용하실 수 없습니다.
+        </p>
       </li>
     </ul>
 
@@ -98,7 +102,7 @@
     <!-- contents -->
     <ul>
       <li class="pt-[20px]">
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-6 mb-[20px]">
           <div class="flex items-center">
             <Checkbox class="p-checkbox-box-lg" v-model="service1" inputId="service1" name="service1" value="정관장몰 서비스 탈퇴" />
             <label for="service1"> 정관장몰 서비스 탈퇴 </label>
@@ -108,13 +112,17 @@
             <label for="service2"> 케어나우 서비스 탈퇴 </label>
           </div>
         </div>
+        <p class="flex text-[13px] text-[#5361E7] ml-[8px]">
+          <span class="font-bold mr-[4px]">&middot;</span>
+          채널 탈퇴는 정관장몰, 케어나우를 각각 하실 수 있으며, 해당 채널의 서비스만 탈퇴 되며 멤버스 통합 서비스는 이용하실 수 있습니다.
+        </p>
       </li>
     </ul>
     <!-- //contents -->
 
     <div class="flex mt-[48px] gap-2">
-      <Button class="flex-1" label="취소" size="large" outlined />
       <Button class="flex-1" label="탈퇴하기" size="large" />
+      <Button class="flex-1" label="취소" size="large" outlined />
     </div>
   </form>
 </template>
