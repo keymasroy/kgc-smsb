@@ -822,18 +822,18 @@
     }
   }
   &.is-filled {
-    border-color: $is-primary;
-    background-color: $is-primary;
-    // border-color: #5f0000;
-    // background-color: #5f0000;
+    // border-color: $is-primary;
+    // background-color: $is-primary;
+    border-color: #5f0000;
+    background-color: #5f0000;
     color: $is-white;
 
     &:hover,
     &:active,
     &:hover {
-      background: $gray280;
-      // background-color: #d20f27;
-      // border-color: #d20f27;
+      //background: $gray280;
+      background-color: #d20f27;
+      border-color: #d20f27;
     }
 
     &:disabled {
@@ -856,9 +856,9 @@
   }
   &.is-search {
     padding: 0 15px;
-    background-color: $is-primary;
-    // background-color: #5f0000;
-    // border: 1px solid #5f0000;
+    //background-color: $is-primary;
+    background-color: #5f0000;
+    border: 1px solid #5f0000;
     color: $is-white;
 
     &:before {
@@ -884,9 +884,9 @@
     }
 
     &:hover {
-      background: $gray280;
-      // background-color: #d20f27;
-      // border-color: #d20f27;
+      // background: $gray280;
+      background-color: #d20f27;
+      border-color: #d20f27;
     }
   }
   &.is-question {
@@ -930,18 +930,18 @@
   }
 
   &.primary {
-    border-color: $is-primary;
-    background-color: $is-primary;
-    // border-color: #5f0000;
-    // background-color: #5f0000;
+    // border-color: $is-primary;
+    // background-color: $is-primary;
+    border-color: #5f0000;
+    background-color: #5f0000;
     color: $is-white;
 
     &:hover,
     &:active,
     &:hover {
-      background: $gray280;
-      // background-color: #d20f27;
-      // border-color: #d20f27;
+      //background: $gray280;
+      background-color: #d20f27;
+      border-color: #d20f27;
     }
 
     &:disabled {
