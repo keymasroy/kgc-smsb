@@ -9,7 +9,18 @@
       <TabView class="default_tab" v-model:activeIndex="activeTab">
         <!-- 사용가능 쿠폰 -->
         <TabPanel header="사용가능 쿠폰">
-          <div class="flex justify-between mb-[20px]">
+          <div class="w-full flex flex-col mt-[40px] gap-[16px]">
+            <SelectButton v-model="selectedValue" :options="selectOptions" optionLabel="label" optionValue="value" class="flex" />
+            <div class="p-calendar-group w-full">
+              <Calendar v-model="startDate" placeholder="2023-01-01" />
+              <span class="range">~</span>
+              <Calendar v-model="endDate" placeholder="2023-01-01" />
+            </div>
+
+            <Button label="조회" />
+          </div>
+          
+          <div class="flex justify-between mt-[40px] mb-[20px]">
             <span className="text-[15px] font-medium"> {{ `총 ${availableList.length}건` }}</span>
             <div class="search__tab">
               <span
@@ -61,7 +72,17 @@
 
         <!-- 사용완료/기간만료 쿠폰 -->
         <TabPanel header="사용완료/기간만료 쿠폰">
-          <div class="flex justify-between mb-[20px]">
+          <div class="w-full flex flex-col mt-[40px] gap-[16px]">
+            <SelectButton v-model="selectedValue" :options="selectOptions" optionLabel="label" optionValue="value" class="flex" />
+            <div class="p-calendar-group w-full">
+              <Calendar v-model="startDate" placeholder="2023-01-01" />
+              <span class="range">~</span>
+              <Calendar v-model="endDate" placeholder="2023-01-01" />
+            </div>
+
+            <Button label="조회" />
+          </div>
+          <div class="flex justify-between mt-[40px] mb-[20px]">
             <span className="text-[15px] font-medium"> {{ `총 ${unavailableList.length}건` }}</span>
             <div class="search__tab">
               <span
@@ -125,6 +146,17 @@ definePageMeta({
 });
 
 const activeTab = ref(0);
+
+const selectOptions = ref([
+  { label: '3개월', value: 3 },
+  { label: '6개월', value: 6 },
+  { label: '9개월', value: 9 },
+  { label: '직접입력', value: 0 },
+]);
+const selectedValue = ref(3);
+
+const startDate = ref('');
+const endDate = ref('');
 
 const availableList = [
   {

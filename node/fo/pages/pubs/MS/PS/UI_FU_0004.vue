@@ -19,7 +19,7 @@
           </defs>
         </svg>
       </i>
-      <p class="mt-[24px] text-[38px]">회원님, <strong>비밀번호를 변경</strong>해주세요.</p>
+      <p class="mt-[24px] text-[38px]"><strong>비밀번호를 변경</strong>해주세요.</p>
       <p class="mt-[16px] text-center text-lg">
         회원님은 <em class="text-[#D20F27]">90일</em> 이상 같은 비밀번호를 사용하고 계십니다. <br />
         개인정보 보호를 위해 비밀번호를 주기적으로 변경해 주세요.

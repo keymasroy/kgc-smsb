@@ -61,6 +61,19 @@
             <InputText disabled v-model="phone" id="phone" class="w-full" type="text" size="large" />
           </li>
           <li class="flex items-center mb-[24px]">
+            <label class="flex-none w-[150px] text-[14px] text-[#222]" for="phone">성별 <span class="text-[#F46144]">*</span></label>
+            <div class="flex gap-[8px] w-full">
+              <SelectButton
+                v-model="selectedGenderValue"
+                :options="selectGenderOptions"
+                optionLabel="label"
+                optionValue="value"
+                class="flex-[2] is-box"
+              />
+            </div>
+          </li>
+
+          <li class="flex items-center mb-[24px]">
             <label class="flex-none w-[150px] text-[14px] text-[#222]" for="phone">내/외국인 <span class="text-[#F46144]">*</span></label>
             <div class="flex gap-[8px] w-full">
               <SelectButton
@@ -304,6 +317,12 @@ const selectedValue = ref('내국인');
 const selectOptions = ref([
   { label: '내국인' , value: '내국인' },
   { label: '외국인' , value: '외국인' }
+]);
+
+const selectedGenderValue = ref('남성');
+const selectGenderOptions = ref([
+  { label: '남성' , value: '남성' },
+  { label: '여성' , value: '여성' }
 ]);
 
 const country = ref(null);

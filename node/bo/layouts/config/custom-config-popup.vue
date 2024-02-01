@@ -1,5 +1,5 @@
 <template>
-  <UPopup :width="800" :height="600" title="커스텀 설정111" v-model="modelValue" theme="light" @shown="init">
+  <UPopup :width="800" :height="600" class="setting-popup" title="커스텀 설정111" v-model="modelValue" theme="light" @shown="init">
     <VApp>
       <VNavigationDrawer v-model="drawer" app :width="200" density="compact" theme="dark">
         <VList

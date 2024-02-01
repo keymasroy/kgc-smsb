@@ -3,7 +3,8 @@
     v-model:visible="props.modelValue"
     @update:visible="handleChangeValue"
     modal
-    header="회원 등급 산정 기간 및 혜택 안내"
+    class="alert"
+    header="회원 등급 혜택 안내"
     :style="{ width: '500px' }"
   >
     <div class="dialog-content-inner max-h-[600px] pb-0">
@@ -51,12 +52,6 @@
           </div>
         </TabPanel>
       </TabView>
-
-      <div class="rank_date">
-        <span class="title">산정기간</span>
-        <span>2022.01.01 ~ 2022.12.31</span>
-      </div>
-
 
       <!-- 등급 산정 안내 -->
       <div class="warning__box">
@@ -185,27 +180,8 @@ const handleChangeValue = (e) => {
   }
 }
 
-.rank_date {
-  margin: 20px 0 30px 0;
-  position: relative;
-  font-size: 16px;
-
-  .title {
-    font-weight: 700;
-
-    &::after {
-      content: '';
-      width: 1px;
-      height: 12px;
-      display: inline-block;
-      margin: 0 12px;
-      background-image: url("data:image/svg+xml,%3Csvg width='1' height='12' viewBox='0 0 1 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='12' fill='%23C4C4C4'/%3E%3C/svg%3E%0A");
-    }
-  }
-}
-
 .warning__box {
-  margin: 0 -30px;
+  margin: 30px -30px 0;
   width: calc(100% + 60px);
   border-radius: 12px;
   background-color: #F9FAFC;
