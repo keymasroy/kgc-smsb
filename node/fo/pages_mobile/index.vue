@@ -72,10 +72,10 @@ const visualImageTop = ref(null);
 const max_top = 145;
 
 const cardList = ref([
-  { title: '멤버십 혜택', desc: '회원에게만 드리는 큰 혜택', router: '/pubs/MI/ID/UI_FU_0044' },
-  { title: '통합 포인트', desc: '쇼핑할수록 더 해지는 즐거움', router: '/pubs/MP/PI/UI_FU_0051' },
-  { title: '생일쿠폰', desc: '기념일에 맞춰 정쿠폰 발급', router: '/pubs/MP/MI/UI_FU_0059' },
-  { title: '포인트 선물', desc: '가족 또는 친구에게 건강한 선물', router: '/pubs/MP/PG/UI_FU_0055' },
+  { title: '멤버스', desc: '하나의 ID로 주요 서비스를 \n 편리하게 이용', router: '/pubs/MI/ID/UI_FU_0044' },
+  { title: '혜택', desc: '회원만을 위한 특별한 서비스와 혜택', router: '/pubs/MP/PI/UI_FU_0051' },
+  { title: '매장찾기', desc: '가까운 정관장 매장 찾기', router: '/pubs/MP/MI/UI_FU_0059' },
+  { title: '쓰기', desc: '나누는 행복, 쇼핑하는 즐거움', router: '/pubs/MP/PG/UI_FU_0055' },
 ])
 
 onMounted(async () => {
@@ -270,6 +270,7 @@ const handleChangeImage = (value) => {
         font-size: 13px;
         line-height: 20.8px;
         color: #8B8B8B;
+        white-space: pre-line;
       }
 
       &:hover {

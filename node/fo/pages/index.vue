@@ -71,10 +71,10 @@ const visualImageTop = ref(null);
 const max_top = 260;
 
 const cardList = ref([
-  { title: '멤버십 혜택', desc: '회원에게만 드리는 큰 혜택', router: '/pubs/MI/ID/UI_FU_0012' },
-  { title: '통합 포인트', desc: '쇼핑할수록 더 해지는 즐거움', router: '/pubs/MP/PI/UI_FU_0019' },
-  { title: '포인트 선물', desc: '가족 또는 친구에게 건강한 선물', router: '/pubs/MP/PG/UI_FU_0020' },
-  { title: '생일쿠폰', desc: '기념일에 맞춰 정쿠폰 발급', router: '/pubs/MP/MI/UI_FU_0025' },
+  { title: '멤버스', desc: '하나의 ID로 주요 서비스를 \n 편리하게 이용', router: '/pubs/MI/ID/UI_FU_0012' },
+  { title: '혜택', desc: '회원만을 위한 특별한 서비스와 혜택', router: '/pubs/MI/ID/UI_FU_0012_1' },
+  { title: '매장찾기', desc: '가까운 정관장 매장 찾기', router: '/pubs/MI/ID/UI_FU_0012_2' },
+  { title: '쓰기', desc: '나누는 행복, 쇼핑하는 즐거움', router: '/pubs/MI/ID/UI_FU_0012_3' },
 ])
 
 onMounted(() => {
@@ -223,19 +223,22 @@ const handleChangeImage = (value) => {
   .cardList {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     position: relative;
     left: -1px;
 
     .card {
       position: relative;
       padding: 50px;
-      border: 1px solid #F0F0F0;
+      border: 1px solid var(--j-gray200);
       display: flex;
       flex-direction: column;
       flex-basis: 50%;
       height: 280px;
       cursor: pointer;
       transition: all 0.25s;
+      max-width: 590px;
+      font-family: 'Pretendard';
 
       &:nth-child(n+3) {
         margin-top: 60px;
@@ -263,8 +266,9 @@ const handleChangeImage = (value) => {
 
       .desc {
         font-size: 18px;
-        color: #8B8B8B;
+        color: var(--j-gray400);
         line-height: 28.8px;
+        white-space: pre-line;
       }
 
       &:hover {
@@ -291,30 +295,36 @@ const handleChangeImage = (value) => {
   content: '';
   position: absolute;
   right: 0;
-  bottom: -1px;
-  background-position: right bottom;
 }
 .card1::after {
-  width: 403px;
-  height: 260px;
+  width: 186.9px;
+  height: 171.19px;
+  top: 66px;
+  right: 48.1px;
   background-image: url('@/assets/images/main/card1.png');
 }
 
 .card2::after {
-  width: 261px;
-  height: 254px;
+  width: 166.4px;
+  height: 172.81px;
+  right: 54.6px;
+  top: 60px;
   background-image: url('@/assets/images/main/card2.png');
 }
 
 .card3::after {
-  width: 326px;
-  height: 307px;
+  width: 144px;
+  height: 188px;
+  right: 70px;
+  top: 46px;
   background-image: url('@/assets/images/main/card3.png');
 }
 
 .card4::after {
-  width: 335px;
-  height: 234px;
+  width: 174px;
+  height: 153px;
+  right: 57px;
+  top: 77px;
   background-image: url('@/assets/images/main/card4.png');
 }
 // =====================
