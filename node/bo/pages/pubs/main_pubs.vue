@@ -1,19 +1,25 @@
 <template>
   <UBox class="main" direction="row">
     <UBox class="columns" style="margin-top: 0px">
-      <UItem class="card is-sub" ratio="1" style="min-height: 370px">
+      <UItem class="card is-sub" ratio="1" style="min-height: 390px">
         <UBox class="table-title-wrap">
           <h2 class="table-title">
             <span>회원가입 현황</span>
           </h2>
         </UBox>
 
-        <div class="breadcrumbs" style="margin-bottom: 10px"><span>기준</span> > <span>현재</span></div>
+        <div class="breadcrumbs" style="margin-bottom: 10px">
+          <span>기준</span> > <span>전일</span> <span style="margin-left: 5px">({{ curDate }})</span>
+        </div>
 
         <div class="totalMember-titleWrap">
-          <span>총 회원가입 수 {{ curDate }} 기준</span>
+          <span>총 회원가입 수 기준</span>
           <h3>7,159</h3>
           <strong>명</strong>
+        </div>
+
+        <div class="totalMember-titleWrap" style="margin-top: 7px">
+          <span>전년도 총 회원가입수 6,000명 (전년비 <span class="number">+10%</span>)</span>
         </div>
 
         <UBox>
@@ -35,7 +41,7 @@
       </UItem>
       <UItem class="card is-sub bg-transparent" ratio="1">
         <UBox class="table-title-wrap">
-          <h2 class="table-title">
+          <h2 class="table-title" style="margin-bottom: 0">
             <span>승인요청</span>
           </h2>
           <UButton class="ico_plus" />
@@ -81,7 +87,7 @@
             <UButton class="ico_plus" />
           </UBox>
 
-          <div class="breadcrumbs"><span>기준</span> > <span>전체회원</span></div>
+          <div class="breadcrumbs"><span>기준</span> > <span>전일</span></div>
           <UBox class="pieChart-box">
             <!-- 마케팅 동의 pie chart -->
             <WjFlexPie
@@ -104,7 +110,7 @@
             </h2>
             <UButton class="ico_plus" />
           </UBox>
-          <div class="breadcrumbs"><span>기준</span> > <span>전체회원</span></div>
+          <div class="breadcrumbs"><span>기준</span> > <span>전일</span></div>
 
           <UBox class="pieChart-box">
             <!-- 마케팅 동의 pie chart -->
@@ -161,7 +167,7 @@
         <UBox>
           <WjFlexGrid :itemsSource="itemsSourceGrid" :isReadOnly="true" style="width: 692px; height: 235px; margin-top: 25px">
             <WjFlexGridColumn header="발송유형" binding="col1" width="*" />
-            <WjFlexGridColumn header="발송년월" binding="col1" width="*" />
+            <WjFlexGridColumn header="발송일" binding="col1" width="*" />
             <WjFlexGridColumn header="등급별" binding="col1" width="*" />
             <WjFlexGridColumn header="발송명" binding="col1" width="*" />
             <WjFlexGridColumn header="대상건수" binding="col1" width="*" />
@@ -178,9 +184,10 @@
           <h2 class="table-title">
             <span>회원가입 현황</span>
           </h2>
+          <UButton class="ico_plus" />
         </UBox>
 
-        <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
+        <div class="breadcrumbs" style="margin-bottom: 15px"><span>기준</span> > <span>현재</span></div>
 
         <UBox direction="row" class="item-half">
           <UItem ratio="1">
@@ -232,11 +239,13 @@
                 </div>
               </li>
             </ul>
+
+            <span style="font-size: 12px; color: #666666">-회원등급별 회원수 (전년비 증감수)를 확인하실 수 있습니다.</span>
           </UItem>
           <UItem ratio="1">
             <UItem class="box-content is-large">
               <div class="box-left">
-                <span class="title">신규가입 회원 수</span>
+                <span class="title">회원가입수</span>
               </div>
               <div class="box-right">
                 <span class="date">2024년 1월 기준</span>
@@ -285,11 +294,12 @@
           </UItem>
         </UBox>
       </UItem>
-      <UItem class="card is-sub" ratio="1" style="min-height: 395px">
+      <UItem class="card is-sub" ratio="1" style="min-height: 413px">
         <UBox class="table-title-wrap">
           <h2 class="table-title">
             <span>회원상태 현황</span>
           </h2>
+          <UButton class="ico_plus" />
         </UBox>
 
         <div class="breadcrumbs"><span>기준</span> > <span>이번달</span></div>
@@ -307,7 +317,7 @@
           >
             <WjFlexChartAxis wjProperty="axisY" :reversed="true" />
             <WjFlexChartSeries binding="value" />
-            <WjFlexChartDataLabel content="{value:n0}" position="Center" />
+            <WjFlexChartDataLabel content="{value:n0}명" position="Center" />
             <WjFlexChartAnimation />
           </WjFlexChart>
         </UBox>
@@ -318,7 +328,7 @@
             <span>포인트 현황</span>
           </h2>
         </UBox>
-        <div class="breadcrumbs"><span>기준</span> > <span>현재</span></div>
+        <div class="breadcrumbs"><span>기준</span> > <span>전월</span></div>
         <UBox>
           <WjTabPanel :initialized="tabPanel.initialize" class="mt-5 main-chart-tab">
             <WjTab>
@@ -339,6 +349,7 @@
                   <WjFlexChartSeries binding="pos" name="POS" />
                   <WjFlexChartSeries binding="carenow" name="케어나우" />
                   <WjFlexChartSeries binding="sapun" name="사푼사푼" />
+                  <WjFlexChartDataLabel content="{value:n0}" position="Bottom" />
                 </WjFlexChart>
               </div>
             </WjTab>
@@ -427,7 +438,7 @@ const lineData = reactive([
 const linePalette1 = reactive(['rgba(255, 82, 92, 1)', 'rgba(21, 81, 131, 1)'])
 const lineSymbolStyle = { symbolWidth: 1, rx: 2, ry: 2 }
 
-const formatter = ref('YYYY-MM-DD')
+const formatter = ref('YYYY.MM.DD')
 const curDate = useDateFormat(useNow(), formatter)
 
 const pieData1 = reactive([
@@ -507,11 +518,11 @@ const itemsSourceGrid = ref([
       display: block;
 
       &:first-child {
-        margin-right: 2px;
+        margin-right: 3px;
       }
 
       &:last-child {
-        margin-left: 2px;
+        margin-left: 3px;
       }
     }
   }
@@ -527,6 +538,10 @@ const itemsSourceGrid = ref([
       font-weight: 500;
       color: #9a9a9a;
       line-height: 18px;
+
+      &.number {
+        color: #ef0000;
+      }
     }
 
     h3 {
@@ -613,6 +628,18 @@ const itemsSourceGrid = ref([
         fill: #fff;
         font-weight: 500;
         font-size: 12px;
+      }
+    }
+  }
+}
+
+.tab-chart {
+  svg {
+    .wj-data-labels {
+      .wj-data-label {
+        fill: #fff;
+        font-weight: 500;
+        font-size: 11px;
       }
     }
   }

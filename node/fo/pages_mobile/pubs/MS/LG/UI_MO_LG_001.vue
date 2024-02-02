@@ -86,9 +86,9 @@
 
           <form class="flex flex-col mx-auto text-left">
             <div class="flex items-center">
-              <RadioButton v-model="ingredient" inputId="ingredient11" name="rice" value="Radio1" />
-              <label for="ingredient11">Radio1</label>
-            </div>
+            <!-- <RadioButton v-model="ingredient" inputId="ingredient11" name="rice" value="Radio1" /> -->
+            <span for="ingredient11">{{ handleMasking(ingredient_id) }}</span>
+          </div>
             <Password
               class="w-full mt-[20px]"
               inputClass="p-inputtext-lg w-full"
@@ -127,6 +127,26 @@ const save = ref('');
 
 // radio
 const ingredient = ref('');
+const ingredient_id = ref('abcd1');
+
+const handleMasking = ( value ) => {
+  const masked = '*';
+  const length = value.length;
+  let maskingStr = '';
+
+  if (length <= 0) {
+    return value;
+  }
+  
+  if (length <= 5){
+    maskingStr = value.at(0) + masked.repeat(length - 2) + value.at(-1);
+  } else {
+    maskingStr = value.substr(0,2) + masked.repeat(length - 2) + value.at(-1);
+  }
+  
+  return maskingStr;
+}
+
 </script>
 
 <style lang="scss" scoped></style>
