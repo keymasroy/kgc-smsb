@@ -1,84 +1,75 @@
 <template>
-  <div class="flex flex-col items-center my-[80px]">
-    <TabView class="fill_tab industry_custom_tab" v-model:activeIndex="activeTab">
-      <TabPanel header="멤버스 소개" />
-      <TabPanel header="멤버스 혜택" />
+  <div class="flex flex-col items-center my-[100px]">
+    <div class="tabInner__title">
+      <h2>매장찾기</h2>
+      <p>우리집 근처, 우리 회사, 약속 장소 가까운 매장을 쉽게 찾아보세요.</p>
+    </div>
 
-      <!-- 매장찾기 -->
-      <TabPanel header="매장찾기" >
-        <div class="tabInner__title">
-          <h2>매장찾기</h2>
-          <p>우리집 근처, 우리 회사, 약속 장소 가까운 매장을 쉽게 찾아보세요.</p>
+    <div class="flex justify-center w-[1180px] mx-auto mt-[60px] mb-[40px]">
+
+      <div class="w-[350px]">
+        <div class="w-full flex gap-[5px]">
+          <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="시/도 선택" />
+          <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="구/군 선택" />
         </div>
 
-        <div class="flex justify-center w-[1180px] mx-auto mt-[60px] mb-[40px]">
+        <span class="p-input-icon-right w-full mt-[12px]">
+          <button class="pi pi-search text-[24px] indent-[-999em] mr-[12px]" style="font-size: 24px;">검색</button>
+          <InputText v-model="value" size="large" placeholder="강남" class="w-full completed" />
+        </span>
 
-          <div class="w-[350px]">
-            <div class="w-full flex gap-[5px]">
-              <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="시/도 선택" />
-              <Dropdown inputClass="p-inputtext-md" class="flex-1" placeholder="구/군 선택" />
-            </div>
+        <div class="flex justify-between items-center mt-[25px]">
+          <span class="text-[14px] text-[#666666]">
+            검색결과 <strong class="text-[#222222]">{{ storeList?.length || 0 }}</strong>개
+          </span>
 
-            <span class="p-input-icon-right w-full mt-[12px]">
-              <button class="pi pi-search text-[24px] indent-[-999em] mr-[12px]" style="font-size: 24px;">검색</button>
-              <InputText v-model="value" size="large" placeholder="강남" class="w-full completed" />
-            </span>
+          <div class="location_btn">
+            <span>현위치</span>
+          </div>
+        </div>
 
-            <div class="flex justify-between items-center mt-[25px]">
-              <span class="text-[14px] text-[#666666]">
-                검색결과 <strong class="text-[#222222]">{{ storeList?.length || 0 }}</strong>개
-              </span>
-
-              <div class="location_btn">
-                <span>현위치</span>
-              </div>
-            </div>
-
-            <!-- 전체 매장 리스트 or 검색된 매장 있을 경우 -->
-            <template v-if="storeList?.length > 0">
-              <div class="store-list">
-                <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
-                  <h4 class="name">{{ store.name }}</h4>
-                  <span class="tel">{{ store.tel }}</span>
-                  <span class="address">{{ store.address }}</span>
-                  <span class="time">{{ store.time }}</span>
-                  <Button label="매장선택" size="small" severity="secondary" />
-                </div>
-              </div>
-
-              <Paginator class="mt-[20px]" :pageLinkSize="5" :rows="5" :totalRecords="30"></Paginator>
-            </template>
-
-            <!-- 전체 매장 리스트 or 검색 매장 없을 경우 -->
-            <div v-else class="empty">
-              <i></i>
-              <span>
-                검색 결과가 없습니다. <br />
-                다른 검색어를 입력해주세요.
-              </span>
+        <!-- 전체 매장 리스트 or 검색된 매장 있을 경우 -->
+        <template v-if="storeList?.length > 0">
+          <div class="store-list">
+            <div :class="[i===0 ? 'selected': '', 'store']" v-for="(store, i) in storeList" :key="i">
+              <h4 class="name">{{ store.name }}</h4>
+              <span class="tel">{{ store.tel }}</span>
+              <span class="address">{{ store.address }}</span>
+              <span class="time">{{ store.time }}</span>
+              <Button label="매장선택" size="small" />
             </div>
           </div>
-          
-          <div class="mapArea w-[800px] ml-[30px]"></div>
-        </div>
-      </TabPanel>
 
-      <TabPanel header="포인트 쓰기" />
-    </TabView>
+          <Paginator class="mt-[20px]" :pageLinkSize="5" :rows="5" :totalRecords="30"></Paginator>
+        </template>
+
+        <!-- 전체 매장 리스트 or 검색 매장 없을 경우 -->
+        <div v-else class="empty">
+          <i></i>
+          <span>
+            검색 결과가 없습니다. <br />
+            다른 검색어를 입력해주세요.
+          </span>
+        </div>
+      </div>
+      
+      <div class="mapArea w-[800px]"></div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-
-const activeTab = ref(2);
-const activeBottomTab = ref(0);
-
-const value = ref();
 
 const storeList = ref([
-  // { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
-  // { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
+  { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
+  { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' },
+  { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
 ])
+
+definePageMeta({
+  layout: 'side'
+});
+
+
 </script>
 
 <style scoped>
@@ -122,7 +113,7 @@ const storeList = ref([
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--j-bluegray700);
+  color: var(--j-gray400);
   font-size: 13px;
   cursor: pointer;
 
@@ -130,16 +121,16 @@ const storeList = ref([
     content: '';
     width: 16px;
     height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_2061_28986)'%3E%3Cpath d='M13.6 8C13.6 11.0928 11.0928 13.6 8 13.6M13.6 8C13.6 4.90721 11.0928 2.4 8 2.4M13.6 8H15M8 13.6C4.90721 13.6 2.4 11.0928 2.4 8M8 13.6V15M2.4 8C2.4 4.90721 4.90721 2.4 8 2.4M2.4 8H1M8 2.4V1M10.1 8C10.1 9.1598 9.1598 10.1 8 10.1C6.8402 10.1 5.9 9.1598 5.9 8C5.9 6.8402 6.8402 5.9 8 5.9C9.1598 5.9 10.1 6.8402 10.1 8Z' stroke='%23758EBC' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2061_28986'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_98_7353)'%3E%3Cpath d='M13.6 8C13.6 11.0928 11.0928 13.6 8 13.6M13.6 8C13.6 4.90721 11.0928 2.4 8 2.4M13.6 8H15M8 13.6C4.90721 13.6 2.4 11.0928 2.4 8M8 13.6V15M2.4 8C2.4 4.90721 4.90721 2.4 8 2.4M2.4 8H1M8 2.4V1M10.1 8C10.1 9.1598 9.1598 10.1 8 10.1C6.8402 10.1 5.9 9.1598 5.9 8C5.9 6.8402 6.8402 5.9 8 5.9C9.1598 5.9 10.1 6.8402 10.1 8Z' stroke='%23464646' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_98_7353'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
     margin-right: 4px;
   }
 }
 
 .store-list {
-  margin-top: 10px;
+  margin-top: 8px;
   border-radius: 12px;
   border: 1px solid var(--j-gray200);
-  height: 368px;
+  height: 542px;
   padding: 10px;
 
   .store {
@@ -149,12 +140,12 @@ const storeList = ref([
     font-size: 14px;
     color: var(--j-gray500);
 
-    &:first-child {
+    &:not(:last-child) {
       border-bottom: 1px solid #E6E6E6;
     }
 
     &.selected {
-      background-color: var(--j-bluegray300);
+      background-color: var(--j-gray100);
 
       &:first-child {
         border-radius: 8px 8px 0 0;
@@ -211,18 +202,23 @@ const storeList = ref([
 
     button {
       width: 76px;
-      margin-top: 10px;
+      margin-top: 7px;
       align-self: flex-end;
-      background-color: var(--j-bluegray400);
+      border-radius: 2px;
     }
   }
+}
+.empty {
+  height: 482px;
 }
 
 .mapArea {
   border-radius: 12px;
-  width: 800px;
-  height: 650px;
+  width: 610px;
+  height: 748px;
   background-image: url('@/assets/images/intro/store-map.svg');
+  background-position: right;
+  margin-left: 20px;
 }
 
 /* ============== */
