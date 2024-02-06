@@ -33,10 +33,10 @@
             선물가능 포인트 확인 후 선물 받을 정관장 멤버스 회원에게 <br />
             원하는 만큼 포인트 선물을 할 수 있습니다.
           </p>
-          <Button label="포인트 선물하기" size="small" class="mt-[40px]" />
+          <Button label="포인트 선물하기" size="small" class="mt-[40px]" @click="$router.push('/pubs/MP/PG/UI_FU_0020')" />
         </div>
 
-        <img src="@/assets/images/intro/present.png" width="250" height="305" class="ml-[150px]" />
+        <img src="@/assets/images/intro/present.svg" width="250" height="305" class="ml-[150px]" />
       </div>
     </div>
   </div>
@@ -91,7 +91,7 @@ definePageMeta({
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background-image: url('@/assets/images/intro/store.png');
+    background-image: url('@/assets/images/intro/store.svg');
     background-position: right bottom;
   }
 
@@ -102,7 +102,7 @@ definePageMeta({
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background-image: url('@/assets/images/intro/mall.png');
+    background-image: url('@/assets/images/intro/mall.svg');
     background-position: right bottom;
   }
 
@@ -113,7 +113,7 @@ definePageMeta({
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background-image: url('@/assets/images/intro/sapun.png');
+    background-image: url('@/assets/images/intro/sapun.svg');
     background-position: right bottom;
   }
 }
@@ -131,7 +131,7 @@ definePageMeta({
     height: 16px;
     width: 16px;
     display: inline-block;
-    margin-right: 3px;
+    margin-right: 4px;
     background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='7.5' fill='white'/%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='7.5' stroke='%23BDBDBD'/%3E%3Crect x='7.25' y='7' width='1.5' height='5' rx='0.75' fill='%23BDBDBD'/%3E%3Crect x='7' y='4' width='2' height='2' rx='1' fill='%23BDBDBD'/%3E%3C/svg%3E%0A");
   }
 }

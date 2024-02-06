@@ -92,7 +92,7 @@ definePageMeta({
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background-image: url('@/assets/images/intro/level-benefit.png');
+    background-image: url('@/assets/images/intro/level-benefit.svg');
     background-position: right bottom;
   }
 
@@ -103,7 +103,7 @@ definePageMeta({
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background-image: url('@/assets/images/intro/point-acml.png');
+    background-image: url('@/assets/images/intro/point-acml.svg');
     background-position: right bottom;
   }
 
@@ -114,7 +114,7 @@ definePageMeta({
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background-image: url('@/assets/images/intro/point-use.png');
+    background-image: url('@/assets/images/intro/point-use.svg');
     background-position: right bottom;
   }
 }
