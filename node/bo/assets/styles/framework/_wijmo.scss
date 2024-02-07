@@ -1122,7 +1122,7 @@
     &.wj-inputnumber {
       width: 100%;
       border-radius: 4px;
-      height: 32px;
+      height: 34px;
     }
 
     &:hover,
@@ -1408,6 +1408,47 @@
         cursor: default;
         &.btn_find {
           background: url(/assets/images/svg/ico_search_disable.svg) no-repeat center center;
+        }
+      }
+    }
+  }
+}
+
+// v-input
+.v-input {
+  width: 100%;
+  &.v-text-field {
+    .v-input__control {
+      .v-field {
+        opacity: 1;
+        .v-field__input {
+          background-color: #fff;
+          border: 1px solid $gray120;
+          border-radius: 4px;
+          min-height: 32px;
+          padding: 0 10px;
+
+          &:hover,
+          &:active,
+          &:focus {
+            border: 1px solid $gray260;
+          }
+
+          &:read-only,
+          &:disabled {
+            border-color: $gray80;
+            background-color: $gray60;
+          }
+        }
+      }
+    }
+
+    &.is-outline {
+      .v-input__control {
+        .v-field {
+          .v-field__input {
+            border-color: $gray260;
+          }
         }
       }
     }

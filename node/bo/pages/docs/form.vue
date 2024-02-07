@@ -59,6 +59,14 @@
               <WjInputNumber class="wj-state-disabled" disabled />
             </UField>
           </UFieldRow>
+          <UFieldRow :ratio="[1, 1]">
+            <UField label="UPhoneNoBox">
+              <UPhoneNoBox />
+            </UField>
+            <UField label="Phone Disable">
+              <UPhoneNoBox disabled />
+            </UField>
+          </UFieldRow>
         </UFieldSet>
       </div>
     </div>
@@ -84,6 +92,7 @@
 import { WjTabPanel, WjTab } from '#ustra/nuxt-wijmo/components'
 import { useWijmoTabPanel } from '#ustra/nuxt-wijmo/composables/tab'
 import { WjFlexGrid, WjFlexGridColumn, WjFlexGridCellTemplate, WjInputDate, WjInputNumber } from '#ustra/nuxt-wijmo/components'
+import { UPhoneNoBox } from '#ustra/nuxt-vuetify/components'
 
 definePageMeta({
   layout: false,
