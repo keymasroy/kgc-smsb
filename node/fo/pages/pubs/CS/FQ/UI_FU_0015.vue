@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col items-center w-[650px]">
-    <h1 class="text-[30px] font-medium mb-[30px]">자주하는 질문</h1>
+  <div class="flex flex-col items-center w-[980px] mt-[80px]">
+    <h1 class="text-[40px] font-bold mb-[30px]">자주하는 질문</h1>
 
-    <span class="p-input-icon-right w-full">
-      <i class="pi pi-search qa-search-ico" />
-      <InputText class="qa-search w-full" v-model="value1" placeholder="검색어를 입력하세요." size="large"/>
+    <span class="p-input-icon-right w-full mt-[12px]">
+      <button class="pi pi-search text-[24px] indent-[-999em] mr-[12px]" style="font-size: 24px;">검색</button>
+      <InputText v-model="value1" size="large" placeholder="검색어를 입력하세요." class="w-full completed" />
     </span>
 
     <div class="qa-select w-full flex mt-[40px]">
@@ -45,9 +45,8 @@
 import { ref } from 'vue';
 
 definePageMeta({
-  layout: 'side',
-  name: 'customer'
-})
+  layout: 'side'
+});
 
 const value1 = ref(null);
 

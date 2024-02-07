@@ -106,7 +106,9 @@ const emit = defineEmits(['update:showSide', 'update:isLogin', 'openBarcode']);
 const menuList = ref([
   { url: '', title: '소개', isOpen: false, children: [
     { url: '/pubs/MI/ID/UI_FU_0044', title: '멤버스 소개' },
-    { url: '', title: '영수증 적립안내' }
+    { url: '/pubs/MI/ID/UI_FU_0044_1', title: '멤버스 혜택' },
+    { url: '/pubs/MI/ID/UI_FU_0044_2', title: '매장 찾기' },
+    { url: '/pubs/MI/ID/UI_FU_0044_3', title: '포인트 쓰기' },
   ]},
   { url: '', title: '마이페이지', isOpen: false, children: [
     { url: '/pubs/MP/PI/UI_FU_0051', title: '포인트 조회' },

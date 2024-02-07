@@ -40,6 +40,7 @@ const title = computed(() => {
   position: fixed;
   background-color: var(--j-white);
   z-index: 3;
+  border-bottom: 1px solid var(--j-gray200);
 
   .header-title{
     color: var(--j-black);

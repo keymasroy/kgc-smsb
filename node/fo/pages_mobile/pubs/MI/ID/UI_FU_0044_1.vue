@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center my-[20px]">
-    <TabView class="fill_tab industry_custom_tab" v-model:activeIndex="activeTab">
+    <TabView class="fill_tab industry_custom_tab" @tab-click="onClickTab" v-model:activeIndex="activeTab">
       <TabPanel header="멤버스 소개" />
 
       <!-- 멤버스 혜택 -->
@@ -34,9 +34,9 @@
               <div class="card_list">
                 <div class="card level">
                   <span>
-                    <span class="title">{{ `${rankLIst[tab.value].label} 멤버 등급조건` }}</span>
+                    <span class="title">{{ `${rankList[tab.value].label} 멤버 등급조건` }}</span>
                     <span class="desc">
-                      {{ `전년도 ${rankLIst[tab.value].pay}만원 이상 구매` }}
+                      {{ `전년도 ${rankList[tab.value].pay}만원 이상 구매` }}
                     </span>
                   </span>
                 </div>
@@ -44,7 +44,7 @@
                   <span>
                     <span class="title">포인트 적립률</span>
                     <span class="desc">
-                      {{ `${rankLIst[tab.value].point}%` }}
+                      {{ `${rankList[tab.value].point}%` }}
                     </span>
                   </span>
                 </div>
@@ -52,7 +52,7 @@
                   <span>
                     <span class="title">서비스 혜택</span>
                     <span class="desc">
-                      {{ rankLIst[tab.value].service }}
+                      {{ rankList[tab.value].service }}
                     </span>
                   </span>
                 </div>
@@ -113,12 +113,23 @@ const rankTab = ref([
   { label : '패밀리', value: 'family', color: '#860D14', img_select: ico_family, img_unselect: ico_gray_family }
 ])
 
-const rankLIst = {
+const rankList = {
   royal: { label: 'ROYAL GOLD', pay: 350, point: '2.0', service: `생일축하 Gift 제공, \n 시즌구매 혜택 제공` },
   gold: { label: 'GOLD', pay: 300, point: '1.5', service: '골드 등급별 생일 혜택' },
   silver: { label: 'SILER', pay: 200, point: '1.0', service: '실버 등급별 생일 혜택' },
   family: { label: 'FAMILY', pay: 100, point: '0.5', service: '패밀리 등급별 생일 혜택' }
 }
+
+const tabs = {
+  0: '/pubs/MI/ID/UI_FU_0044',
+  1: '/pubs/MI/ID/UI_FU_0044_1',
+  2: '/pubs/MI/ID/UI_FU_0044_2',
+  3: '/pubs/MI/ID/UI_FU_0044_3'
+};
+
+const onClickTab = () => {
+  useRouter().push(tabs[activeTab.value]);
+};
 
 definePageMeta({
   layout: 'sub',
@@ -225,6 +236,7 @@ definePageMeta({
         font-weight: 700;
         line-height: 24px;
         white-space: pre-line;
+        margin-top: 2px;
       }
     }
 
@@ -254,7 +266,7 @@ definePageMeta({
 .warning__box {
   margin-top: 24px;
   border-radius: 12px;
-  background-color: var(--j-bluegray200);
+  background-color: #FBFBFB;
   padding: 24px;
   font-size: 14px;
   margin-bottom: 27px;

@@ -4,8 +4,8 @@
       <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
-    <!-- <UDialog />
-    <ULoadingBar /> -->
+    <UDialog />
+    <ULoadingBar />
     <!-- <UstraManagementApp>
       <template v-slot:config-popup>
         <CustomConfigPopup v-model="showConfigPopup" />

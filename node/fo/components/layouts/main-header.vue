@@ -1,6 +1,6 @@
 <template>
   <header :class="['header', { '!bg-[#FFF] active': headerActive }]">
-    <router-link class="mt-[37px] z-[2] ml-[120px]" to="/">
+    <router-link class="mt-[22px] z-[2] ml-[120px]" to="/">
       <img class="whiteLogo" src="@/assets/images/svg/logo-white.svg" alt="JUNG KWAN JANG Members" />
       <img class="defaultLogo" src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
     </router-link>
@@ -92,7 +92,8 @@ watchThrottled(
   width: 100%;
   min-width: 1280px;
   background-color: transparent;
-  height: 100px;
+  
+  height: 70px;
   display: flex;
   justify-content: space-between;
   transition: background-color 0s 0.3s;
@@ -104,6 +105,7 @@ watchThrottled(
   }
 
   &.active {
+    border-bottom: 1px solid var(--j-gray200);
     transition: background-color 0s;
     .gnb > .gnb__link {
       color: var(--j-black);
@@ -123,7 +125,7 @@ watchThrottled(
     }
     .gnb {
       background-color: var(--j-white);
-      border-bottom: 1px solid var(--j-gray100);
+      border-bottom: 1px solid var(--j-gray200);
 
       .gnb__link {
         color: var(--j-black);
@@ -165,12 +167,12 @@ watchThrottled(
     font-size: 17px;
     text-align: center;
     color: var(--j-white);
-    max-height: 100px;
+    max-height: 70px;
     overflow: hidden;
     transition: max-height 0.3s ease-out, color 0.1s;
 
     .gnb__title {
-      line-height: 100px;
+      line-height: 70px;
       cursor: default;
       transition: all 0.3s;
     }
@@ -178,13 +180,13 @@ watchThrottled(
 
   &:before {
     content: "";
-    top: 100px;
+    top: 70px;
     left: -120px;
     position: absolute;
     overflow: hidden;
     width: calc(100% + 120px);
-    height: calc(100% - 100px);
-    max-height: calc(100% - 100px);
+    height: calc(100% - 70px);
+    max-height: calc(100% - 70px);
     background-color: var(--j-white);
   }
 

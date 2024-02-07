@@ -60,13 +60,16 @@
 }
 
 .p-inputtext.completed {
-  background-color: var(--j-bluegray300);
+  background-color: var(--j-gray100);
   border-radius: 999px;
   height: 48px;
+  color: var(--j-gray700);
+  font-size: 15px;
+  border-color: transparent;
 
   &:hover,
   &:focus {
-    border-color: var(--j-bluegray500);
+    border-color: var(--j-gray300);
   }
 
   &::placeholder {

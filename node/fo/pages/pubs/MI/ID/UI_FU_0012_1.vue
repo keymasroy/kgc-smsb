@@ -1,91 +1,84 @@
 <template>
-  <div class="flex flex-col items-center my-[80px] mx-auto">
-    <TabView class="fill_tab industry_custom_tab" v-model:activeIndex="activeTab">
-      <TabPanel header="멤버스 소개" />
+  <div class="flex flex-col items-center w-[980px] mt-[88px] mb-[50px] mx-auto">
+    <div class="tabInner__title w-full border-b">
+      <h2>멤버스 혜택</h2>
+      <p>정관장 멤버스 회원만이 누릴 수 있는 혜택! 언제, 어디서나 일상 속에서 혜택을 플러스해보세요.</p>
+    </div>
 
-      <!-- 멤버스 혜택 -->
-      <TabPanel header="멤버스 혜택">
-        <div class="tabInner__title w-[650px] border-b">
-          <h2>멤버스 혜택</h2>
-          <p>정관장 멤버스 회원만이 누릴 수 있는 혜택! 언제, 어디서나 일상 속에서 혜택을 플러스해보세요.</p>
-        </div>
+    <div class="rank">
+      <h3 class="rank__title">구매 금액별 정관장 멤버스 혜택</h3>
+      <p class="rank__desc">실적에 따라 달라지는 다양한 혜택을 확인하세요.</p>
 
-        <div class="rank">
-          <h3 class="rank__title">구매 금액별 정관장 멤버스 혜택</h3>
-          <p class="rank__desc">실적에 따라 달라지는 다양한 혜택을 확인하세요.</p>
-
-          <TabView class="default_tab" v-model:activeIndex="activeRankTab">
-            <TabPanel v-for="(tab, i) in rankTab" :index="i">
-              <template #header>
-                <div class="flex flex-col items-center gap-[4px]">
-                  <Avatar  :image="activeRankTab === i ? tab.img_select : tab.img_unselect" size="xlarge" />
-                  <span :style="{ color: activeRankTab === i ? tab.color : '' }">{{ tab.label }}</span>
-                </div>
-              </template>
-              <div class="card_list">
-                <div class="card level">
-                  <span>
-                    {{ `${rankLIst[tab.value].label} 멤버 등급조건` }}
-                    <br />
-                    <strong>
-                      {{ `전년도 ${rankLIst[tab.value].pay}만원 이상 구매` }}
-                    </strong>
-                  </span>
-                </div>
-                <div class="card point">
-                  <span>
-                    포인트 적립률
-                    <br />
-                    <strong>
-                      {{ `${rankLIst[tab.value].point}%` }}
-                    </strong>
-                  </span>
-                </div>
-                <div class="card service">
-                  <span>
-                    서비스 혜택
-                    <br />
-                    <strong>
-                      {{ rankLIst[tab.value].service }}
-                    </strong>
-                  </span>
-                </div>
-              </div>
-            </TabPanel>
-          </TabView>
-
-          <!-- 등급 산정 안내 -->
-          <div class="warning__box">
-            <ul class="warning__list">
-              <li>
-                <span class="dot"></span>
-                등급 선정일 : 매년 1월 1일
-              </li>
-              <li>
-                <span class="dot"></span>
-                등급 선정 방법 : 전년 1월 1일 ~ 12월 31일 구매내역
-              </li>
-              <li>
-                <span class="dot"></span>
-                현재 등급 선정 기준이며, 이는 매년 변경될 수 있습니다.
-              </li>
-              <li>
-                <span class="dot"></span>
-                서비스 혜택의 경우, 회사 사정에 따라 변경될 수 있습니다.
-              </li>
-            </ul>
+      <TabView class="default_tab" v-model:activeIndex="activeRankTab">
+        <TabPanel v-for="(tab, i) in rankTab" :index="i">
+          <template #header>
+            <div class="flex flex-col items-center gap-[4px]">
+              <Avatar  :image="activeRankTab === i ? tab.img_select : tab.img_unselect" size="xlarge" />
+              <span :style="{ color: activeRankTab === i ? tab.color : '' }">{{ tab.label }}</span>
+            </div>
+          </template>
+          <div class="card_list">
+            <div class="card level">
+              <span>
+                {{ `${rankList[tab.value].label} 멤버 등급조건` }}
+                <br />
+                <strong>
+                  {{ `전년도 ${rankList[tab.value].pay}만원 이상 구매` }}
+                </strong>
+              </span>
+            </div>
+            <div class="card point">
+              <span>
+                포인트 적립률
+                <br />
+                <strong>
+                  {{ `${rankList[tab.value].point}%` }}
+                </strong>
+              </span>
+            </div>
+            <div class="card service">
+              <span>
+                서비스 혜택
+                <br />
+                <strong class="whitespace-pre-line">
+                  {{ rankList[tab.value].service }}
+                </strong>
+              </span>
+            </div>
           </div>
-          
-        </div>
-      </TabPanel>
+        </TabPanel>
+      </TabView>
 
-      <TabPanel header="매장찾기" />
-      <TabPanel header="포인트 쓰기" />
-    </TabView>
+      <!-- 등급 산정 안내 -->
+      <div class="warning__box">
+        <ul class="warning__list">
+          <li>
+            <span class="dot"></span>
+            등급 선정일 : 매년 1월 1일
+          </li>
+          <li>
+            <span class="dot"></span>
+            등급 선정 방법 : 전년 1월 1일 ~ 12월 31일 구매내역
+          </li>
+          <li>
+            <span class="dot"></span>
+            현재 등급 선정 기준이며, 이는 매년 변경될 수 있습니다.
+          </li>
+          <li>
+            <span class="dot"></span>
+            서비스 혜택의 경우, 회사 사정에 따라 변경될 수 있습니다.
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { ref } from "vue";
+
+definePageMeta({
+  layout: 'side'
+});
 
 import ico_family from '@/assets/images/rank/ico_family.svg';
 import ico_gold from '@/assets/images/rank/ico_gold.svg';
@@ -96,8 +89,6 @@ import ico_gray_silver from '@/assets/images/rank/ico_gray_silver.svg';
 import ico_royalgold from '@/assets/images/rank/ico_royalgold.svg';
 import ico_silver from '@/assets/images/rank/ico_silver.svg';
 
-
-const activeTab = ref(1);
 const activeRankTab = ref(0);
 
 const rankTab = ref([
@@ -105,18 +96,18 @@ const rankTab = ref([
   { label : '골드', value: 'gold', color: '#CAA851', img_select: ico_gold, img_unselect: ico_gray_gold },
   { label : '실버', value: 'silver', color: '#84919B', img_select: ico_silver, img_unselect: ico_gray_silver },
   { label : '패밀리', value: 'family', color: '#860D14', img_select: ico_family, img_unselect: ico_gray_family }
-])
+]);
 
-const rankLIst = {
-  royal: { label: 'ROYAL GOLD', pay: 350, point: '2.0', service: '생일축하 Gift 제공, 시즌구매 혜택 제공' },
+const rankList = {
+  royal: { label: 'ROYAL GOLD', pay: 350, point: '2.0', service: '생일축하 Gift 제공,\n시즌구매 혜택 제공' },
   gold: { label: 'GOLD', pay: 300, point: '1.5', service: '골드 등급별 생일 혜택' },
   silver: { label: 'SILER', pay: 200, point: '1.0', service: '실버 등급별 생일 혜택' },
   family: { label: 'FAMILY', pay: 100, point: '0.5', service: '패밀리 등급별 생일 혜택' }
-}
+};
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 소개페이지 공통 css */
 .tabInner__title {
   text-align: center;
@@ -124,7 +115,7 @@ const rankLIst = {
   flex-direction: column;
 
   &.border-b {
-    border-color: #ECF0F8;
+    border-color: #E7E7E7;
     padding: 0 16.5px 40px;
     margin: auto;
   }
@@ -138,14 +129,15 @@ const rankLIst = {
   p {
     color: var(--j-gray500);
     margin-top: 8px;
+    font-size: 16px;
     line-height: 24px;
   }
 }
 
 /* == 멤버스 혜택 == */
 .rank {
-  margin: 40px auto 0;
-  width: 650px;
+  margin: 40px 0;
+  width: 100%;
 
   .rank__title {
     font-size: 20px;
@@ -163,7 +155,7 @@ const rankLIst = {
     margin-top: 40px;
 
     .p-tabview-nav-container {
-      width: 650px;
+      width: 100%;
 
       .p-tabview-header {
         padding: 0 0 12px;
@@ -184,16 +176,23 @@ const rankLIst = {
 
 .card_list {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 
   .card {
     background-color: var(--j-gray100);
     border-radius: 4px;
-    padding: 20px;
+    padding: 32px;
     position: relative;
     width: 100%;
+    height: 112px;
     display: flex;
+    align-items: center;
+    font-size: 14px;
+
+    strong {
+      font-size: 16px;
+      margin-top: 2px;
+    }
 
     &::before {
       content: '';
@@ -220,7 +219,7 @@ const rankLIst = {
 .warning__box {
   margin-top: 40px;
   border-radius: 12px;
-  background-color: var(--j-bluegray200);
+  background-color: #FBFBFB;
   padding: 24px;
 }
 /* ============== */

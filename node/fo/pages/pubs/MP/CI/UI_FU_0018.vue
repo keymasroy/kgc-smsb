@@ -189,7 +189,7 @@ const availableList = [
     tag: '12022', title: '[기획전] 환절기 건강관리엔 정몰 할인쿠폰', percent: 10, startDate: '2023-09-01', endDate: '2023-09-01',
     content: '상품금액이 20,000원 이상일 때/최대할인금액 제한없음 \n ※ 1개의 상품에 1개의 쿠폰 사용 가능\n ※ 사용처 : 온라인전용\n ※ 구매수량제한 : 20개 이하\n ※ 정관장 상품을 제외한 상품에 사용가능',
   }
-]
+];
 
 const unavailableList = [
   // {
@@ -214,25 +214,26 @@ const unavailableList = [
   //   tag: '12022', title: '[기획전] 환절기 건강관리엔 정몰 할인쿠폰', percent: 10, usedLocation: '기간만료', startDate: '2023-09-01', endDate: '2023-09-01',
   //   content: '상품금액이 20,000원 이상일 때/최대할인금액 제한없음 \n ※ 1개의 상품에 1개의 쿠폰 사용 가능\n ※ 사용처 : 온라인전용\n ※ 구매수량제한 : 20개 이하\n ※ 정관장 상품을 제외한 상품에 사용가능',
   // }
-]
+];
 
 const selectType = [
   { label: '온라인', value: 'online'},
   { label: '오프라인', value: 'offline'},
-]
+];
 
 const selected = ref({
   'available': 'online',
   'unavailable': 'online'
-})
-
-const onClickSearchType = (tabType, searchType) => {
-  selected.value[tabType] = searchType;
-}
+});
 
 definePageMeta({
   layout: 'side',
-})
+  name: 'mp'
+});
+
+const onClickSearchType = (tabType, searchType) => {
+  selected.value[tabType] = searchType;
+};
 
 </script>
 

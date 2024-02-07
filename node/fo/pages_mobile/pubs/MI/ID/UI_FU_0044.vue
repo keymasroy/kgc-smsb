@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center my-[20px]">
-    <TabView class="fill_tab industry_custom_tab mb-[46px]" v-model:activeIndex="activeTab">
+    <TabView class="fill_tab industry_custom_tab mb-[46px]" @tab-click="onClickTab" v-model:activeIndex="activeTab">
 
       <!-- 멤버스 소개 -->
       <TabPanel header="멤버스 소개">
@@ -41,6 +41,17 @@ import { ref } from "vue";
 
 const activeTab = ref(0);
 
+const tabs = {
+  0: '/pubs/MI/ID/UI_FU_0044',
+  1: '/pubs/MI/ID/UI_FU_0044_1',
+  2: '/pubs/MI/ID/UI_FU_0044_2',
+  3: '/pubs/MI/ID/UI_FU_0044_3'
+};
+
+const onClickTab = () => {
+  useRouter().push(tabs[activeTab.value]);
+};
+
 definePageMeta({
   layout: 'sub',
 });
@@ -77,7 +88,7 @@ definePageMeta({
 
 /* == 멤버스 소개 == */
 .card {
-  background-color: var(--j-bluegray300);
+  background-color: #fbfbfb;
   border-radius: 16px;
   padding: 30px 30px;
   position: relative;
@@ -101,34 +112,34 @@ definePageMeta({
   
   &.level::after {
     content: '';
-    height: 158px;
+    height: 120px;
     width: 180px;
     position: absolute;
-    bottom: 10px;
-    right: 20px;
-    background-image: url('@/assets/images/intro/level-benefit-mobile.png');
+    bottom: 30px;
+    right: 30px;
+    background-image: url('@/assets/images/intro/level-benefit-mobile.svg');
     background-position: right bottom;
   }
 
   &.point1::after {
     content: '';
-    height: 131px;
-    width: 195px;
+    height: 120px;
+    width: 180px;
     position: absolute;
-    bottom: 10px;
-    right: 20px;
-    background-image: url('@/assets/images/intro/point-acml-mobile.png');
+    bottom: 30px;
+    right: 30px;
+    background-image: url('@/assets/images/intro/point-acml-mobile.svg');
     background-position: right bottom;
   }
 
   &.point2::after {
     content: '';
-    height: 150px;
-    width: 190px;
+    height: 120px;
+    width: 180px;
     position: absolute;
-    bottom: 10px;
-    right: 20px;
-    background-image: url('@/assets/images/intro/point-use-mobile.png');
+    bottom: 30px;
+    right: 30px;
+    background-image: url('@/assets/images/intro/point-use-mobile.svg');
     background-position: right bottom;
   }
 }

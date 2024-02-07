@@ -5,10 +5,10 @@
         <h1 class="mb-4">Default ComboBox</h1>
         <WjComboBox :itemsSource="items" selectedValuePath="value" displayMemberPath="text" />
         <div class="mb-2"></div>
-        <WjComboBox :itemsSource="items" selectedValuePath="value" displayMemberPath="text" :disabled="true"/>
+        <WjComboBox :itemsSource="items" selectedValuePath="value" displayMemberPath="text" :disabled="true" />
         <div class="mb-2"></div>
         <span>readonly 속성 부여가 X</span>
-        <WjComboBox :itemsSource="items" selectedValuePath="value" displayMemberPath="text" :readonly="true"/>
+        <WjComboBox :itemsSource="items" selectedValuePath="value" displayMemberPath="text" :readonly="true" />
 
         <div></div>
       </div>
@@ -23,21 +23,20 @@
     <div class="columns has-gap mb-12">
       <div class="column is-half">
         <h1 class="mb-4">Date</h1>
-        <UDateBox v-model="test"/>
-        <br>
+        <UDateBox v-model="test" />
+        <br />
         <UDatePeriodBox v-model="dateArr1" />
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup>
-import { WjFlexGrid, WjFlexGridColumn, WjFlexGridCellTemplate, WjInputDate } from '#ustra/nuxt-wijmo/components';
+import { WjFlexGrid, WjFlexGridColumn, WjFlexGridCellTemplate, WjInputDate } from '#ustra/nuxt-wijmo/components'
 
 import { WjComboBox } from '#ustra/nuxt-wijmo/components'
 
-const test = ref('20220507');
+const test = ref('20220507')
 
 definePageMeta({
   layout: false,
@@ -53,11 +52,9 @@ const items = [
   { value: '04', text: '항목4' },
   { value: '05', text: '항목5' },
   { value: '06', text: '항목6' },
-];
+]
 
-const visible = ref(true);
-
-
+const visible = ref(true)
 </script>
 
 <style lang="scss" scoped>

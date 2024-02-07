@@ -102,7 +102,7 @@ interface ListType {
   type: string;
   pointType: string;
   point: string;
-}
+};
 
 const list: ListType[] = [
   { title: '케어나우', date: '2023-09-27 01:02', type: '활동 적립', pointType: 'plus', point: '+1,000' },
@@ -110,7 +110,7 @@ const list: ListType[] = [
   { title: '대치점', date: '2023-09-27 01:02', type: '영수증 적립', pointType: 'plus', point: '+10' },
   { title: '정관장', date: '2023-09-27 01:02', type: '특별 포인트', pointType: 'plus', point: '+1,000' },
   { title: '케어나우', date: '2023-09-27 01:02', type: '유효기간 만료로 소멸', pointType: 'minus', point: '-1,000' },
-]
+];
 
 
 const selectOptions = ref([
@@ -118,16 +118,17 @@ const selectOptions = ref([
   { label: '6개월' , value: 6 },
   { label: '9개월' , value: 9 },
   { label: '직접입력' , value: 0 }
-])
-const selectedValue = ref(3)
+]);
 
-const startDate = ref('')
-const endDate = ref('')
-const dropdownValue = ref('전체')
+const selectedValue = ref(3);
+
+const startDate = ref('');
+const endDate = ref('');
+const dropdownValue = ref('전체');
 
 definePageMeta({
   layout: 'side',
-})
+});
 
 const i18n = {
   dateFormat: 'yy-mm-dd',
@@ -136,12 +137,12 @@ const i18n = {
   monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
   monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
   showMonthAfterYear: true
-}
+};
 
 onMounted(() => {
   // Prime Vue Calendar 한국어 변경
   Object.assign(defaultOptions.locale, i18n);
-})
+});
 
 
 </script>

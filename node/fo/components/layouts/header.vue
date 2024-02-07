@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <router-link class="mt-[37px] z-[2] ml-[120px]" to="/">
+    <router-link class="mt-[22px] z-[2] ml-[120px]" to="/">
       <img src="@/assets/images/svg/logo.svg" alt="JUNG KWAN JANG Members" />
     </router-link>
 
@@ -29,7 +29,9 @@ import { ref } from 'vue';
 const menuList = ref([
   { url: '', title: '소개', children: [
     { url: '/pubs/MI/ID/UI_FU_0012', title: '멤버스 소개' },
-    { url: '', title: '영수증 적립안내' }
+    { url: '/pubs/MI/ID/UI_FU_0012_1', title: '멤버스 혜택' },
+    { url: '/pubs/MI/ID/UI_FU_0012_2', title: '매장 찾기' },
+    { url: '/pubs/MI/ID/UI_FU_0012_3', title: '포인트 쓰기' },
   ]},
   { url: '', title: '마이페이지', children: [
     { url: '/pubs/MP/PI/UI_FU_0019', title: '포인트 조회' },
@@ -54,13 +56,14 @@ const menuList = ref([
   z-index: 30;
   width: 100%;
   min-width: 1280px;
-  height: 100px;
+  height: 70px;
   background-color: var(--j-white);
+  border-bottom: 1px solid var(--j-gray200);
 
   &:hover {
     .gnb {
       background-color: var(--j-white);
-      border-bottom: 1px solid var(--j-gray100);
+      border-bottom: 1px solid var(--j-gray200);
       .gnb__link {
         color: var(--j-black);
         height: auto;
@@ -96,12 +99,12 @@ const menuList = ref([
     font-size: 17px;
     text-align: center;
     color: var(--j-black);
-    max-height: 100px;
+    max-height: 70px;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
 
     .gnb__title {
-      line-height: 100px;
+      line-height: 70px;
       cursor: default;
       transition: all 0.3s;
     }
@@ -109,13 +112,13 @@ const menuList = ref([
 
   &:before {
     content: '';
-    top: 100px;
+    top: 70px;
     left: -120px;
     position: absolute;
     overflow: hidden;
     width: calc(100% + 120px);
-    height: calc(100% - 100px);
-    max-height: calc(100% - 100px);
+    height: calc(100% - 70px);
+    max-height: calc(100% - 70px);
     background-color: var(--j-white);
   }
 

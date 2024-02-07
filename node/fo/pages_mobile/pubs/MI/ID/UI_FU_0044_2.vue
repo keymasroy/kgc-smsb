@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center my-[20px]">
-    <TabView class="fill_tab industry_custom_tab" v-model:activeIndex="activeTab">
+    <TabView class="fill_tab industry_custom_tab" @tab-click="onClickTab" v-model:activeIndex="activeTab">
       <TabPanel header="멤버스 소개" />
       <TabPanel header="멤버스 혜택" />
 
@@ -41,7 +41,7 @@
                 <span class="tel">{{ store.tel }}</span>
                 <span class="address">{{ store.address }}</span>
                 <span class="time">{{ store.time }}</span>
-                <Button label="매장선택" size="small" severity="secondary" />
+                <Button label="매장선택" size="small" />
               </div>
             </div>
           </template>
@@ -69,9 +69,21 @@ const activeBottomTab = ref(0);
 const value = ref();
 
 const storeList = ref([
-  // { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
-  // { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
+  { name: '동인비 테헤란로 본점 (직영)', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '9:00 ~ 20:00' },
+  { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' },
+  { name: '정관장 현대백화점 무역점', tel: '02.566.4430', address: '서울특별시 강남구 테헤란로 437 (삼성동)', time: '10:00 ~ 20:00' }
 ])
+
+const tabs = {
+  0: '/pubs/MI/ID/UI_FU_0044',
+  1: '/pubs/MI/ID/UI_FU_0044_1',
+  2: '/pubs/MI/ID/UI_FU_0044_2',
+  3: '/pubs/MI/ID/UI_FU_0044_3'
+};
+
+const onClickTab = () => {
+  useRouter().push(tabs[activeTab.value]);
+};
 
 definePageMeta({
   layout: 'sub',
@@ -122,14 +134,14 @@ definePageMeta({
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--j-bluegray700);
+  color: var(--j-gray400);
   font-size: 13px;
 
   &::before {
     content: '';
     width: 16px;
     height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_2061_28986)'%3E%3Cpath d='M13.6 8C13.6 11.0928 11.0928 13.6 8 13.6M13.6 8C13.6 4.90721 11.0928 2.4 8 2.4M13.6 8H15M8 13.6C4.90721 13.6 2.4 11.0928 2.4 8M8 13.6V15M2.4 8C2.4 4.90721 4.90721 2.4 8 2.4M2.4 8H1M8 2.4V1M10.1 8C10.1 9.1598 9.1598 10.1 8 10.1C6.8402 10.1 5.9 9.1598 5.9 8C5.9 6.8402 6.8402 5.9 8 5.9C9.1598 5.9 10.1 6.8402 10.1 8Z' stroke='%23758EBC' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2061_28986'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_98_7736)'%3E%3Cpath d='M13.6 8C13.6 11.0928 11.0928 13.6 8 13.6M13.6 8C13.6 4.90721 11.0928 2.4 8 2.4M13.6 8H15M8 13.6C4.90721 13.6 2.4 11.0928 2.4 8M8 13.6V15M2.4 8C2.4 4.90721 4.90721 2.4 8 2.4M2.4 8H1M8 2.4V1M10.1 8C10.1 9.1598 9.1598 10.1 8 10.1C6.8402 10.1 5.9 9.1598 5.9 8C5.9 6.8402 6.8402 5.9 8 5.9C9.1598 5.9 10.1 6.8402 10.1 8Z' stroke='%23888888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_98_7736'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
     margin-right: 4px;
   }
 }
@@ -147,12 +159,12 @@ definePageMeta({
     font-size: 14px;
     color: var(--j-gray500);
 
-    &:first-child {
+    &:not(:last-child) {
       border-bottom: 1px solid #E6E6E6;
     }
 
     &.selected {
-      background-color: var(--j-bluegray300);
+      background-color: var(--j-gray100);
 
       &:first-child {
         border-radius: 8px 8px 0 0;
@@ -212,7 +224,7 @@ definePageMeta({
       width: 76px;
       margin-top: 8px;
       align-self: flex-end;
-      background-color: var(--j-bluegray400);
+      border-radius: 2px;
     }
   }
 }
@@ -222,6 +234,10 @@ definePageMeta({
   border-radius: 12px;
   height: 260px;
   background-image: url('@/assets/images/intro/store-map.svg');
+}
+
+.empty {
+  margin-top: 10px;
 }
 
 /* ============== */
