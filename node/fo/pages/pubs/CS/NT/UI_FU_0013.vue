@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col items-center w-[650px]">
-    <h1 class="text-[30px] font-medium mb-[30px]">공지사항</h1>
+  <div class="flex flex-col items-center w-[980px] my-[80px]">
+    <h1 class="text-[40px] font-bold mb-[30px]">공지사항</h1>
 
     <span class="p-input-icon-right w-full">
       <i class="pi pi-search qa-search-ico" />

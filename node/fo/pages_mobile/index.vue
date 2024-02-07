@@ -23,7 +23,7 @@
             쓸수록 쌓이는 <strong>쇼핑의 즐거움!</strong>
           </span>
           <span class="text-[13px] mt-[4px] text-center text-[#222222] pretendard">
-            회원이 되시면 쿠폰부터 포인트까지 다양한 <br /> 혜택을 받을 수 있습니다.
+            회원이 되시면 쿠폰부터 포인트까지 다양한 혜택을 만나보세요.
           </span>
         </div>
 
@@ -73,9 +73,9 @@ const max_top = 145;
 
 const cardList = ref([
   { title: '멤버스', desc: '하나의 ID로 주요 서비스를 \n 편리하게 이용', router: '/pubs/MI/ID/UI_FU_0044' },
-  { title: '혜택', desc: '회원만을 위한 특별한 서비스와 혜택', router: '/pubs/MP/PI/UI_FU_0051' },
-  { title: '매장찾기', desc: '가까운 정관장 매장 찾기', router: '/pubs/MP/MI/UI_FU_0059' },
+  { title: '혜택', desc: '회원만을 위한 특별한 혜택', router: '/pubs/MP/PI/UI_FU_0051' },
   { title: '쓰기', desc: '나누는 행복, 쇼핑하는 즐거움', router: '/pubs/MP/PG/UI_FU_0055' },
+  { title: '매장찾기', desc: '가까운 정관장 매장 찾기', router: '/pubs/MP/MI/UI_FU_0059' },
 ])
 
 onMounted(async () => {
@@ -298,33 +298,35 @@ const handleChangeImage = (value) => {
   content: '';
   position: absolute;
   right: 0;
-  bottom: -1px;
-  background-position: right bottom;
-  pointer-events: none;
 }
 .card1::after {
-  width: 218.58px;
-  height: 139.29px;
-  background-image: url('@/assets/images/main/card1-mobile.png');
+  width: 104px;
+  height: 95.26px;
+  top: 33px;
+  background-image: url('@/assets/images/main/card1-mobile.svg');
 }
 
 .card2::after {
-  width: 261px;
-  height: 254px;
-  background-image: url('@/assets/images/main/card2-mobile.png');
+  width: 100.92px;
+  height: 104.81px;
+  top: 33px;
+  right: -1.5px;
+  background-image: url('@/assets/images/main/card2-mobile.svg');
 }
 
 .card3::after {
-  width: 179px;
-  height: 125px;
-  background-image: url('@/assets/images/main/card3-mobile.png');
-  background-position: center;
+  width: 98px;
+  height: 86.27px;
+  top: 41px;
+  background-image: url('@/assets/images/main/card3-mobile.svg');
 }
 
 .card4::after {
-  width: 157.97px;
-  height: 148.93px;
-  background-image: url('@/assets/images/main/card4-mobile.png');
+  width: 75.06px;
+  height: 98px;
+  top: 30px;
+  right: 20px;
+  background-image: url('@/assets/images/main/card4-mobile.svg');
 }
 // =====================
 

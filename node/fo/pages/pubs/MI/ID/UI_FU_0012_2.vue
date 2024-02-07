@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center my-[100px]">
+  <div class="flex flex-col items-center my-[80px]">
     <div class="tabInner__title">
       <h2>매장찾기</h2>
       <p>우리집 근처, 우리 회사, 약속 장소 가까운 매장을 쉽게 찾아보세요.</p>

@@ -6,6 +6,7 @@
           <span class="z-30 font-bold text-[100px] text-white">EARTH</span>
           <span class="z-10 mt-[-34px] font-semibold text-[80px] text-[#B39281] italic">To</span>
           <span class="z-30 font-bold text-[100px] text-white top-[67px]">HEALTH</span>
+          <p class="ext-base">정관장은 Healthy Life Style Supporter로서 건강한 삶의 기준을 제공합니다.</p>
           <img
             :src="visualImageSrc"
             alt="배경 이미지"
@@ -13,7 +14,7 @@
             :style="{top: `${visualImageTop || 0}px`}"
           />
         </div>
-        <p class="ext-base text-white mt-[49px]">정관장은 Healthy Life Style Supporter로서건강한 삶의 기준을 제공합니다.</p>
+        
       </div>
     </section>
     <div class="main__contents h-full">
@@ -26,7 +27,6 @@
             회원이 되시면 쿠폰부터 포인트까지 다양한 혜택을 받을 수 있습니다.
           </span>
         </div>
-
         <div class="cardList mt-[100px] z-10">
           <div
             v-for="(card, index) in cardList"
@@ -122,17 +122,19 @@ const handleChangeImage = (value) => {
 
 <style lang="scss" scoped>
 .main {
-  margin-top: -100px;
+  margin-top: -70px;
 }
+
 .main__visual {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
+  min-height: 900px;
   background: url('@/assets/images/main/bg.jpg') no-repeat;
   background-size: cover;
 
   &::before {
-    content: '';
+    content: "";
     z-index: 1;
     position: absolute;
     left: 50%;
@@ -157,15 +159,15 @@ const handleChangeImage = (value) => {
 .main__visual-inner {
   z-index: 1;
   position: absolute;
-  top: 23.77%;
+  width: 100%;
+  height: 100%;
   left: 50%;
   transform: translateX(-50%);
-  padding-top: 70px;
 
   &::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 140px;
     left: 50%;
     transform: translateX(-50%);
     width: 7px;
@@ -175,15 +177,23 @@ const handleChangeImage = (value) => {
 }
 
 .main__visual-text {
-  font-family: 'Montserrat';
-  position: relative;
-  padding-top: 20px;
-  padding-bottom: 30px;
+  font-family: "Montserrat";
+  width: 100%;
+  height: fit-content;
+  position: absolute;
+  top: calc(100% - 10vh - 70px - 50%);
   > span {
     display: block;
     position: relative;
     text-align: center;
     line-height: 1.2;
+  }
+  .ext-base {
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 60px;
+    margin-top: 30px;
   }
 }
 
@@ -195,7 +205,7 @@ const handleChangeImage = (value) => {
   height: 170px;
   margin-left: -140px;
   transition: all 0.1s;
-  margin-top: -90px;
+  margin-top: -110px;
 }
 
 .main__contents {
@@ -301,7 +311,7 @@ const handleChangeImage = (value) => {
   height: 171.19px;
   top: 66px;
   right: 48.1px;
-  background-image: url('@/assets/images/main/card1.png');
+  background-image: url('@/assets/images/main/card1.svg');
 }
 
 .card2::after {
@@ -309,7 +319,7 @@ const handleChangeImage = (value) => {
   height: 172.81px;
   right: 54.6px;
   top: 60px;
-  background-image: url('@/assets/images/main/card2.png');
+  background-image: url('@/assets/images/main/card2.svg');
 }
 
 .card3::after {
@@ -317,7 +327,7 @@ const handleChangeImage = (value) => {
   height: 188px;
   right: 70px;
   top: 46px;
-  background-image: url('@/assets/images/main/card3.png');
+  background-image: url('@/assets/images/main/card3.svg');
 }
 
 .card4::after {
@@ -325,7 +335,7 @@ const handleChangeImage = (value) => {
   height: 153px;
   right: 57px;
   top: 77px;
-  background-image: url('@/assets/images/main/card4.png');
+  background-image: url('@/assets/images/main/card4.svg');
 }
 // =====================
 

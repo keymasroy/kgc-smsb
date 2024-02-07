@@ -29,7 +29,9 @@ import { ref } from 'vue';
 const menuList = ref([
   { url: '', title: '소개', children: [
     { url: '/pubs/MI/ID/UI_FU_0012', title: '멤버스 소개' },
-    { url: '', title: '영수증 적립안내' }
+    { url: '/pubs/MI/ID/UI_FU_0012_1', title: '멤버스 혜택' },
+    { url: '/pubs/MI/ID/UI_FU_0012_2', title: '매장 찾기' },
+    { url: '/pubs/MI/ID/UI_FU_0012_3', title: '포인트 쓰기' },
   ]},
   { url: '', title: '마이페이지', children: [
     { url: '/pubs/MP/PI/UI_FU_0019', title: '포인트 조회' },
